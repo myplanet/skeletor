@@ -1,0 +1,6 @@
+[submodule "tmp/scripts/rerun/core"]
+	path = tmp/scripts/rerun/core
+	url = https://github.com/rerun/rerun.git
+[submodule "tmp/scripts/rerun/custom_modules"]
+	path = tmp/scripts/rerun/custom_modules
+	url = https://github.com/myplanetdigital/secondlevel-rerun-modules.git
