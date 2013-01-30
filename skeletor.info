@@ -1,0 +1,4 @@
+name = Skeletor
+description = Skeleton install profile.
+version = VERSION
+core = 7.x
