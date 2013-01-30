@@ -1,3 +1,0 @@
-# Required for user/password authentication on development environments.
-RewriteEngine on
-RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization},L]
