@@ -42,5 +42,5 @@ Here's the additional suggested folder structure for the install profile:
 *The `tmp/` directory is intended to be removed before pushing to Acquia.*
 
 * If you'd like any code to be appended to `settings.php`, simply add a
-  snippet as `tmp/snippets/mysnippetname.settings.php`. These snippets
-will be appended in alphabetical order during the build script.
+snippet as `tmp/snippets/settings.php/mysnippetname.settings.php`. These
+snippets will be appended in alphabetical order during the build script.
