@@ -1,4 +1,4 @@
-?php
+<?php
 /**
  * @file
  * Enables modules and site configuration for install profile.
