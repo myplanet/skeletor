@@ -44,3 +44,10 @@ Here's the additional suggested folder structure for the install profile:
 * If you'd like any code to be appended to `settings.php`, simply add a
 snippet as `tmp/snippets/settings.php/mysnippetname.settings.php`. These
 snippets will be appended in alphabetical order during the build script.
+
+To Build
+--------
+
+To build the site in full, run the following command:
+
+    bash kickstart.sh skeletor path/to/build/docroot
