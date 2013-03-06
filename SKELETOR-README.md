@@ -15,6 +15,14 @@ search-and-replace within project files:
     export RERUN_MODULES=$PWD/tmp/scripts/rerun/custom_modules
     rerun renamer:rename --to DESIRED_PROJECT_NAME_HERE
 
+This will edit `build-DESIRED_PROJECT_NAME_HERE.make` to point to a
+GitHub repo at
+`git@github.com:myplanetdigital/DESIRED_PROJECT_NAME_HERE.git` by
+default. You may point it to another repo url like by instead using this
+command:
+
+    rerun renamer:rename --to DESIRED_PROJECT_NAME_HERE --repo myusername/custom-repo-name 
+
 **Note:** This README file will be removed during the renaming process.
 
 - To ensure that your project-specific changes are not pushed back into
