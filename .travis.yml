@@ -4,6 +4,11 @@ php:
   - 5.4
 
 env:
+  global:
+    # SAUCE_USERNAME
+    - secure: "kCi2OlgjcNAXvTdA/2kXti680sTzj6gFIyPKusO2+wsK2ogagSm5taoImUs8\nWG/rkcwwtbTI7/5oc7IARo977N843b+F+stLcmpW+zUrUKAzIf+XIoqdR4al\nrYIIavf6KscSq9ngrX73yjirAeIRC2LnW9yJalYsDUyWN1B2tWk=" 
+    # SAUCE_ACCESS_KEY
+    - secure: "LFETwctt9t6KnJNg7mVtdPUZFxgWWo468ILSqNKvN2JWr4qFfhW7lgQLpZkv\nR8BHDRDJjfWTAflcxQ+9UQPEvk2vieRlCrc8eJWWIKAt1GGFJ9IK5YT6cJLd\nAdlUMjf9ngDsWpPTeZzYSMpvLnfRHueZeM81JBpE5qTzvPNIG2A="
   matrix:
     - DRUSH_VERSION=5.8.0
 
@@ -11,4 +16,6 @@ before_install: tmp/scripts/travis_before_install.sh
 
 before_script: tmp/scripts/travis_install.sh
 
-script: tmp/scripts/travis_test.sh
+script:
+  - tmp/scripts/travis_test.sh
+  - echo $SAUCE_USERNAME
