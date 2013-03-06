@@ -1,4 +1,4 @@
-Skeletor Install Profile
+skeletor Install Profile
 ===========================
 
 This is the D7 install profile for the skeletor project, to set up an
