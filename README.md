@@ -2,6 +2,7 @@ skeletor Install Profile
 ===========================
 
 [![Build Status](https://travis-ci.org/myplanetdigital/drupal-skeletor.png)](https://travis-ci.org/myplanetdigital/drupal-skeletor)
+[![Selenium Test Status](https://saucelabs.com/buildstatus/myplanet-skeletor)](https://saucelabs.com/u/myplanet-skeletor)
 
 This is the D7 install profile for the skeletor project, to set up an
 appropriate layout for a build-based development strategy, striving
