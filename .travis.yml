@@ -7,8 +7,8 @@ env:
   matrix:
     - DRUSH_VERSION=5.8.0
 
-before_install: ./tmp/scripts/travis_before_install.sh
+before_install: tmp/scripts/travis_before_install.sh
 
-before_script: ./tmp/scripts/travis_install.sh
+before_script: tmp/scripts/travis_install.sh
 
-#script: ./tmp/scripts/travis_test.sh
+#script: tmp/scripts/travis_test.sh

@@ -1,6 +1,8 @@
 skeletor Install Profile
 ===========================
 
+[![Build Status](https://travis-ci.org/myplanetdigital/drupal-skeletor.png?branch=master)](https://travis-ci.org/myplanetdigital/drupal-skeletor)
+
 This is the D7 install profile for the skeletor project, to set up an
 appropriate layout for a build-based development strategy, striving
 toward continuous delivery and great good.
