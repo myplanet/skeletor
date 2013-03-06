@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
-# Build drupal site
+# Build Drupal site
 cd $TRAVIS_BUILD_DIR
 cat build-*.make | sed "s/develop/$TRAVIS_COMMIT/g" | drush make --prepare-install php://stdin build
+
+# Install testing dependencies
+composer install
+
+# Prepare Sauce Labs configs
+vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY

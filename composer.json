@@ -1,0 +1,6 @@
+{
+    "require": {
+        "sauce/sausage": "0.*",
+        "sauce/connect": "3.*"
+    }
+}
