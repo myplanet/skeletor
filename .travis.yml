@@ -6,9 +6,9 @@ php:
 env:
   global:
     # SAUCE_USERNAME
-    - secure: "kCi2OlgjcNAXvTdA/2kXti680sTzj6gFIyPKusO2+wsK2ogagSm5taoImUs8\nWG/rkcwwtbTI7/5oc7IARo977N843b+F+stLcmpW+zUrUKAzIf+XIoqdR4al\nrYIIavf6KscSq9ngrX73yjirAeIRC2LnW9yJalYsDUyWN1B2tWk=" 
+    - secure: "Bl152XKC1n0NjLnu99w6ug3fSeusOkD+IEPXVF8EXY2XXZ2JZz8XSOCCGXWk\n2UyP+9p3nSNeqQ84+svGvBnxvzFQc00Y0QDx10KToHcs1qN94YUfwL+JsydR\nKV4sYbUGs/CbpgiKTBTFmaf/gOfhsJqrfvOFmj1YlwYqrC6dlX0="
     # SAUCE_ACCESS_KEY
-    - secure: "LFETwctt9t6KnJNg7mVtdPUZFxgWWo468ILSqNKvN2JWr4qFfhW7lgQLpZkv\nR8BHDRDJjfWTAflcxQ+9UQPEvk2vieRlCrc8eJWWIKAt1GGFJ9IK5YT6cJLd\nAdlUMjf9ngDsWpPTeZzYSMpvLnfRHueZeM81JBpE5qTzvPNIG2A="
+    - secure: "FegBL7IVCVSvOBg0rGwUqL+Lci9kT9xLI/yDMOqjE1J4C9cpSSzhz9pEe/w0\n1GHgGZOkPYwRHl28qGqxvF6oOoiX3dLS1xO39c89GPNwY1GPuCF6Sv3ySAm4\nD86FRhxuJmSDkYfucIYVMwmTWxNY+DoSDnBtnbPLSFXFCh+cXCM="
   matrix:
     - DRUSH_VERSION=5.8.0
 
