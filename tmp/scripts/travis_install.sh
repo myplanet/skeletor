@@ -11,7 +11,3 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 
 # Install testing dependencies
 composer install
-
-# Prepare Sauce Labs configs
-vendor/bin/sauce_config $SAUCE_USERNAME $SAUCE_ACCESS_KEY
-

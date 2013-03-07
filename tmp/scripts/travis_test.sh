@@ -1,35 +1,17 @@
 #!/usr/bin/env bash
 
-# In background process, loop every second until sauce connect tunnels.
-while true; do
-  sleep 1
-  # Loop back until readyfile exists.
-  if [ ! -e /tmp/sauce-connect-tunnel-ready ]; then continue; fi
-
-  # Run tests and break from loop.
-  cd $TRAVIS_BUILD_DIR/tmp/tests
-  vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
-  service sauceconnect stop
-  break
-done &
-
-cat <<EOH | sudo tee /etc/init/sauceconnect.conf
-description "SauceLabs SauceConnect Service"
-author "Patrick Connolly"
-
-start on runlevel [3]
-stop on shutdown
-
-expect fork
-
-script
-    cd $TRAVIS_BUILD_DIR/tmp/tests
-    java -jar vendor/sauce/connect/lib/Sauce-Connect.jar $SAUCE_USERNAME $SAUCE_ACCESS_KEY --readyfile=/tmp/sauce-connect-tunnel-ready
-    emit sauceconnect_running
-end script
+sudo tee /etc/default/sauce-connect > /dev/null <<EOH
+JAVA=java
+SAUCE_CONNECT=$TRAVIS_BUILD_DIR/tmp/tests/vendor/sauce/connect/lib/Sauce-Connect.jar
+API_USER=$SAUCE_USERNAME
+API_KEY=$SAUCE_ACCESS_KEY
+USERNAME=
+GROUP=
+LOG_DIR=/var/log/sauce-connect
 EOH
 
-
-# Set up Sauce Connect tunnel
+(cd /etc/init.d && sudo curl -o sauce-connect https://raw.github.com/rtyler/puppet-sauceconnect/master/files/init.d_sauce-connect)
+sudo service sauce-connect start
 cd $TRAVIS_BUILD_DIR/tmp/tests
-service sauceconnect start
+vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
+sudo service sauce-connect stop
