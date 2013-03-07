@@ -13,8 +13,10 @@ EOH
 
 (cd /etc/init.d && sudo curl -o sauce-connect https://raw.github.com/rtyler/puppet-sauceconnect/master/files/init.d_sauce-connect && sudo chmod 755 sauce-connect)
 sudo /etc/init.d/sauce-connect start
+sleep 60
 cd $TRAVIS_BUILD_DIR/tmp/tests
 vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
 ps ax |grep java
+sudo ls /var/log/sauce
 sudo cat /var/log/sauce/sauce-connect
 sudo /etc/init.d/sauce-connect stop
