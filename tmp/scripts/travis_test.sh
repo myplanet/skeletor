@@ -18,6 +18,8 @@ sudo cp $TRAVIS_BUILD_DIR/tmp/tests/sauce-connect.init /etc/init.d/sauce-connect
 sudo chmod 755 /etc/init.d/sauce-connect
 sudo /etc/init.d/sauce-connect start
 
+which php
+
 # Start serving the site
 php -S localhost:8000 -t $TRAVIS_BUILD_DIR/build 2> /dev/null &
 
