@@ -12,4 +12,4 @@ nbproject
 
 # Project
 */contrib
-vendor/
+tmp/tests/vendor/
