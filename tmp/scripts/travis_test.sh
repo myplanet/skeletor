@@ -5,7 +5,7 @@
 while true; do
   if [ -e /tmp/sauce-connect-tunnel-ready ]; then
     while true; do
-      kill -9 -1
+      pkill -f sauce_connect
     done
   fi
   sleep 1
