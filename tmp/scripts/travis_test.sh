@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo mkdir /var/log/sauce-connect
 sudo tee /etc/default/sauce-connect > /dev/null <<EOH
 JAVA=/usr/bin/java
 SAUCE_CONNECT=$TRAVIS_BUILD_DIR/tmp/tests/vendor/sauce/connect/lib/Sauce-Connect.jar
