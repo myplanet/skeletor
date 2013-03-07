@@ -4,9 +4,7 @@
 # then quit (for now).
 while true; do
   if [ -e /tmp/sauce-connect-tunnel-ready ]; then
-    while true; do
-      pkill -f sauce_connect
-    done
+    vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit tmp/tests/WebDriverDemo.php
   fi
   sleep 1
 done &
