@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-which java
-
 sudo tee /etc/default/sauce-connect > /dev/null <<EOH
-JAVA=java
+JAVA=/usr/bin/java
 SAUCE_CONNECT=$TRAVIS_BUILD_DIR/tmp/tests/vendor/sauce/connect/lib/Sauce-Connect.jar
 API_USER=$SAUCE_USERNAME
 API_KEY=$SAUCE_ACCESS_KEY
