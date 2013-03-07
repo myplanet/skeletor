@@ -10,8 +10,8 @@ GROUP=
 LOG_DIR=/var/log/sauce-connect
 EOH
 
-(cd /etc/init.d && sudo curl -o sauce-connect https://raw.github.com/rtyler/puppet-sauceconnect/master/files/init.d_sauce-connect)
-sudo service sauce-connect start
+(cd /etc/init.d && sudo curl -o sauce-connect https://raw.github.com/rtyler/puppet-sauceconnect/master/files/init.d_sauce-connect && sudo chmod 755 sauce-connect)
+sudo /etc/init.d/sauce-connect start
 cd $TRAVIS_BUILD_DIR/tmp/tests
 vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
-sudo service sauce-connect stop
+sudo /etc/init.d/sauce-connect stop
