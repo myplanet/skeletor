@@ -14,4 +14,5 @@ EOH
 sudo /etc/init.d/sauce-connect start
 cd $TRAVIS_BUILD_DIR/tmp/tests
 vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
+ps ax |grep sauce_connect
 sudo /etc/init.d/sauce-connect stop
