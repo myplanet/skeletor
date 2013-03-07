@@ -4,6 +4,10 @@
 cd $TRAVIS_BUILD_DIR
 cat build-*.make | sed "s/develop/$TRAVIS_COMMIT/g" | drush make --prepare-install php://stdin build
 
+# Start serving the site
+cd build
+sudo php -S localhost:80 &
+
 # Install testing dependencies
 composer install
 
