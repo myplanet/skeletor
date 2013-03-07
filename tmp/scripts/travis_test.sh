@@ -19,8 +19,10 @@ sudo chmod 755 /etc/init.d/sauce-connect
 sudo /etc/init.d/sauce-connect start
 
 # Start serving the site
-sudo /home/travis/.phpenv/shims/php -S precise64:80 -t $TRAVIS_BUILD_DIR/build 2> /dev/null &
-cat /etc/hosts
+php -S localhost:8888 -t $TRAVIS_BUILD_DIR/build &
+sleep 2
+curl locahost:8888
+sleep 10
 
 while [ ! -e /tmp/sauce-connect-tunnel-ready ]; do
   echo "Waiting for SauceConnect tunnel..."
