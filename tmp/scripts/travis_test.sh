@@ -18,6 +18,7 @@ sudo cp $TRAVIS_BUILD_DIR/tmp/tests/sauce-connect.init /etc/init.d/sauce-connect
 sudo chmod 755 /etc/init.d/sauce-connect
 sudo /etc/init.d/sauce-connect start
 
+curl localhost:8000
 while [ ! -e /tmp/sauce-connect-tunnel-ready ]; do
   echo "Waiting for SauceConnect tunnel..."
   sleep 2
