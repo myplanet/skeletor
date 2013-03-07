@@ -13,7 +13,7 @@ while true; do
   break
 done &
 
-cat <<EOH > /etc/init/sauceconnect.conf
+cat <<EOH | sudo tee /etc/init/sauceconnect.conf
 description "SauceLabs SauceConnect Service"
 author "Patrick Connolly"
 
