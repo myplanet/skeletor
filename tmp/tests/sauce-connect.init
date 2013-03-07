@@ -30,7 +30,7 @@ DAEMON=""
 [ -r /etc/default/$NAME ] && . /etc/default/$NAME
 
 DAEMON="$JAVA"
-DAEMON_ARGS=" -jar $SAUCE_CONNECT $API_USER $API_KEY"
+DAEMON_ARGS=" -jar $SAUCE_CONNECT $API_USER $API_KEY --readyfile=$READYFILE"
 
 
 # Exit if the package is not installed
