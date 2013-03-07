@@ -3,7 +3,7 @@
 sudo mkdir /var/log/sauce
 sudo tee /etc/default/sauce-connect > /dev/null <<EOH
 JAVA=/usr/bin/java
-SAUCE_CONNECT=$TRAVIS_BUILD_DIR/tmp/tests/vendor/sauce/connect/lib/Sauce-Connect.jar --readyfile=/tmp/sauce-connect-tunnel-ready
+SAUCE_CONNECT=$TRAVIS_BUILD_DIR/tmp/tests/vendor/sauce/connect/lib/Sauce-Connect.jar
 API_USER=$SAUCE_USERNAME
 API_KEY=$SAUCE_ACCESS_KEY
 USERNAME=
