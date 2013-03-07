@@ -8,10 +8,11 @@ API_USER=$SAUCE_USERNAME
 API_KEY=$SAUCE_ACCESS_KEY
 USERNAME=
 GROUP=
+READYFILE=/tmp/sauce-connect-tunnel-ready
 LOG_DIR=/var/log/sauce
 EOH
 
-(cd /etc/init.d && sudo curl -o sauce-connect https://raw.github.com/rtyler/puppet-sauceconnect/master/files/init.d_sauce-connect && sudo chmod 755 sauce-connect)
+(sudo cp $TRAVIS_BUILD_DIR/tmp/tests/sauce-connect.init /etc/init.d/sauce-connect && sudo chmod 755 /etc/init.d/sauce-connect)
 sudo /etc/init.d/sauce-connect start
 sleep 60
 ls -al /tmp
