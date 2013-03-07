@@ -2,3 +2,5 @@ name = skeletor
 description = skeletor install profile.
 version = VERSION
 core = 7.x
+dependencies[] = block
+dependencies[] = dblog
