@@ -31,7 +31,7 @@ class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
     public function setUp()
     {
         parent::setUp();
-        $this->setBrowserUrl('http://precise64');
+        $this->setBrowserUrl('http://localhost:8888/install.php');
     }
 
     public function testTitle()
