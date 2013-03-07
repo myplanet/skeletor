@@ -18,5 +18,5 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
 ps ax |grep java
 sudo ls /var/log/sauce
-sudo cat /var/log/sauce/sauce-connect
+sudo cat /var/log/sauce/sauce-connect.log
 sudo /etc/init.d/sauce-connect stop
