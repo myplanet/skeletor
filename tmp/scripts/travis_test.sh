@@ -24,7 +24,7 @@ expect fork
 
 script
     cd $TRAVIS_BUILD_DIR/tmp/tests
-    vendor/bin/sauce_connect --readyfile=/tmp/sauce-connect-tunnel-ready
+    java -jar vendor/sauce/connect/lib/Sauce-Connect.jar $SAUCE_USERNAME $SAUCE_ACCESS_KEY --readyfile=/tmp/sauce-connect-tunnel-ready
     emit sauceconnect_running
 end script
 EOH
