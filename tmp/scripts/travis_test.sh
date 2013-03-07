@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-# In background process, wait for sauce connect tunnel to connect,
-# then quit (for now).
+# In background process, loop every second until sauce connect tunnels.
 while true; do
-  if [ -e /tmp/sauce-connect-tunnel-ready ]; then
-    cd $TRAVIS_BUILD_DIR/tmp/tests
-    vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
-  fi
   sleep 1
+  # Loop back until readyfile exists.
+  if [ ! -e /tmp/sauce-connect-tunnel-ready ]; then continue; fi
+
+  # Run tests and break from loop.
+  cd $TRAVIS_BUILD_DIR/tmp/tests
+  vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
+  break
 done &
 
 # Set up Sauce Connect tunnel
