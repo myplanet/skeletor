@@ -21,7 +21,7 @@ sudo /etc/init.d/sauce-connect start
 # Start serving the site
 php -S localhost:8888 -t $TRAVIS_BUILD_DIR/build &
 sleep 2
-curl locahost:8888
+curl localhost:8888
 sleep 10
 
 while [ ! -e /tmp/sauce-connect-tunnel-ready ]; do
