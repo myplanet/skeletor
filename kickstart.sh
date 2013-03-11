@@ -8,15 +8,15 @@
 PATHTOHERE=`pwd`
 CURRENTBRANCH=`git rev-parse --abbrev-ref HEAD`
 
-if [ -z "$1" ] || [ -z "$2" ]; then
-    echo "Usage: kickstart ProjectName DocRoot"
-    echo "Where ProjectName is the name used in your build script files. e.g. build-ProjectName.make"
+if [ -z "$1" ]; then
+    echo "Usage: kickstart.sh DocRoot"
     echo "Where DocRoot is where you project is built to. e.g. /var/www/projectName/docroot"
 else
     git submodule update --init --recursive
 
     export PATH=${PATH}:$PATHTOHERE/tmp/scripts/rerun/core
     export RERUN_MODULES=$PATHTOHERE/tmp/scripts/rerun/custom_modules
-    rerun 2ndlevel:build --project $1 --buildfile build-"$1".make --destination $2 --revision $CURRENTBRANCH
+    PROJECT_NAME=`expr "$(ls *.profile 2>&1)" : '^\(.*\)\.profile$'`
+    rerun 2ndlevel:build --project $PROJECT_NAME --buildfile build-${PROJECT_NAME}.make --destination $1 --revision $CURRENTBRANCH
 
 fi

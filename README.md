@@ -53,4 +53,4 @@ To Build
 
 To build the site in full, run the following command:
 
-    bash kickstart.sh skeletor path/to/build/docroot
+    bash kickstart.sh path/to/build/docroot
