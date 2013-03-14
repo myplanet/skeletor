@@ -9,12 +9,8 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 # Install testing dependencies
 composer install
 
-# Sources uninitialized nvm and installs correct node/npm.
-source ~/.nvm/nvm.sh
-# Lots of output while building npm, so silencing
-echo "Installing npm v0.8.18. This may take several minutes..."
-nvm install v0.8.18 > /dev/null
-nvm use v0.8.18
+# Installs npm to $HOME/node/bin/npm
+curl https://gist.github.com/patcon/5164594/raw/16a178a57aac404e2a4ed3dacfbf4fa4d11143b3/install-nodejs.sh | bash
 
 # Install se-interpreter node app.
-sudo /home/travis/.nvm/v0.8.18/bin/npm install -g se-interpreter
+sudo $HOME/node/bin/npm install -g se-interpreter
