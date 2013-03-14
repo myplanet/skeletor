@@ -19,6 +19,10 @@ PREFIX="/usr/local"
 mkdir -p "$PREFIX" && \
 curl http://nodejs.org/dist/v$VERSION/node-v$VERSION-$PLATFORM-$ARCH.tar.gz \
   | sudo tar xzvf - --strip-components=1 -C "$PREFIX"
+sudo ln -s /usr/local/bin/node /usr/bin/node
+sudo ln -s /usr/local/lib/node /usr/lib/node
+sudo ln -s /usr/local/bin/npm /usr/bin/npm
+sudo ln -s /usr/local/bin/node-waf /usr/bin/node-waf
 
 # Install se-interpreter node app.
 sudo npm install -g se-interpreter
