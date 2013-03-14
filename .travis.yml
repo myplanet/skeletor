@@ -14,6 +14,8 @@ env:
 
 before_install: tmp/scripts/travis_before_install.sh
 
-before_script: tmp/scripts/travis_install.sh
+before_script:
+  - tmp/scripts/travis_install.sh
+  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 
 script: tmp/scripts/travis_test.sh
