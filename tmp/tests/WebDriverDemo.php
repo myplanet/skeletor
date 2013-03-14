@@ -11,7 +11,7 @@ class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
             'desiredCapabilities' => array(
                 'version' => '15',
                 'platform' => 'Windows 2012',
-                'tunnel-identifier' => $_SERVER['TRAVIS_JOB_NUMBER'],
+                'tunnel-identifier' => getenv('TRAVIS_JOB_NUMBER'),
             )
         )//,
         // run Chrome on Linux on Sauce
