@@ -17,4 +17,4 @@ nvm install v0.8.18 > /dev/null
 nvm use v0.8.18
 
 # Install se-interpreter node app.
-sudo npm install -g se-interpreter
+sudo /home/travis/.nvm/v0.8.18/bin/npm install -g se-interpreter
