@@ -14,11 +14,11 @@ composer install
 VERSION=0.8.18
 PLATFORM=linux
 ARCH=x86
-PREFIX="$HOME/node-v$VERSION-$PLATFORM-$ARCH"
+PREFIX="/usr/local"
 
 mkdir -p "$PREFIX" && \
 curl http://nodejs.org/dist/v$VERSION/node-v$VERSION-$PLATFORM-$ARCH.tar.gz \
-  | tar xzvf - --strip-components=1 -C "$PREFIX"
+  | sudo tar xzvf - --strip-components=1 -C "$PREFIX"
 
 # Install se-interpreter node app.
-sudo $PREFIX/bin/npm install -g se-interpreter
+sudo npm install -g se-interpreter
