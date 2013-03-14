@@ -18,18 +18,13 @@ sudo cp $TRAVIS_BUILD_DIR/tmp/tests/sauce-connect.init /etc/init.d/sauce-connect
 sudo chmod 755 /etc/init.d/sauce-connect
 sudo /etc/init.d/sauce-connect start
 
-# Start serving the site
-php -S localhost:8888 -t $TRAVIS_BUILD_DIR/build &
-sleep 2
-curl localhost:8888/install.php
-sleep 10
-
 while [ ! -e /tmp/sauce-connect-tunnel-ready ]; do
   echo "Waiting for SauceConnect tunnel..."
   sleep 2
 done
 
-curl precise64
+# Start serving the site
+php -S 127.0.0.1:8080 -t $TRAVIS_BUILD_DIR/build &
 
 # Running selenium tests.
 cd $TRAVIS_BUILD_DIR/tmp/tests
@@ -37,6 +32,5 @@ vendor/bin/paratest -p 2 -f --phpunit=vendor/bin/phpunit WebDriverDemo.php
 
 # Shutting down tunnel.
 sudo /etc/init.d/sauce-connect stop
-sleep 2
 
 cat /var/log/sauce/sauce_connect.log
