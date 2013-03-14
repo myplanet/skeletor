@@ -9,5 +9,9 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 # Install testing dependencies
 composer install
 
+# Install npm
+curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+nvm install 0.8
+
 # Install se-interpreter node app.
 sudo npm install -g se-interpreter
