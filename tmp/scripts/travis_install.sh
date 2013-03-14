@@ -9,8 +9,16 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 # Install testing dependencies
 composer install
 
-# Installs npm to $HOME/node/bin/npm
-curl https://gist.github.com/patcon/5164594/raw/16a178a57aac404e2a4ed3dacfbf4fa4d11143b3/install-nodejs.sh | bash
+# Installs npm
+# https://gist.github.com/TooTallNate/3288316
+VERSION=0.8.18
+PLATFORM=linux
+ARCH=x86
+PREFIX="$HOME/node-v$VERSION-$PLATFORM-$ARCH"
+
+mkdir -p "$PREFIX" && \
+curl http://nodejs.org/dist/v$VERSION/node-v$VERSION-$PLATFORM-$ARCH.tar.gz \
+  | tar xzvf - --strip-components=1 -C "$PREFIX"
 
 # Install se-interpreter node app.
-sudo $HOME/node/bin/npm install -g se-interpreter
+sudo $PREFIX/bin/npm install -g se-interpreter
