@@ -15,6 +15,7 @@ VERSION=0.8.18
 PLATFORM=linux
 ARCH=x86
 
+cd ~
 wget http://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-x86.tar.gz
 tar xzvf node-v$VERSION-linux-x86.tar.gz
 rm node-v$VERSION-linux-x86.tar.gz
