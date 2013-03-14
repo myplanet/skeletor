@@ -1,5 +1,7 @@
 <?php
 
+$travis_job_number = getenv('TRAVIS_JOB_NUMBER');
+
 require_once 'vendor/autoload.php';
 
 class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
@@ -11,7 +13,7 @@ class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
             'desiredCapabilities' => array(
                 'version' => '15',
                 'platform' => 'Windows 2012',
-                'tunnel-identifier' => '52.1',
+                'tunnel-identifier' => $travis_job_number,
             )
         )//,
         // run Chrome on Linux on Sauce
