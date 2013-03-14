@@ -13,4 +13,4 @@ composer install
 nvm install 0.8
 
 # Install se-interpreter node app.
-sudo npm install -g se-interpreter
+sudo ~/.nvm/v0.8.18/bin/npm install -g se-interpreter
