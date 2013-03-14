@@ -10,7 +10,8 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 composer install
 
 # Install npm
-nvm install 0.8
+source ~/.nvm/nvm.sh
+nvm install 0.8.18
 
 # Install se-interpreter node app.
 sudo ~/.nvm/v0.8.18/bin/npm install -g se-interpreter
