@@ -10,8 +10,8 @@ cd $TRAVIS_BUILD_DIR/tmp/tests
 composer install
 
 # Install non-fresh npm from repo.
-sudo apt-get update
-sudo apt-get install npm
+sudo apt-get update -qq
+sudo apt-get install npm -q
 
 # Install se-interpreter node app.
 sudo npm install -g se-interpreter
