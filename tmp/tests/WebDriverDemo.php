@@ -4,7 +4,6 @@ require_once 'vendor/autoload.php';
 
 class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
 {
-    print $argv[0];
     public static $browsers = array(
         // run FF15 on Windows 8 on Sauce
         array(
@@ -12,7 +11,7 @@ class WebDriverDemo extends Sauce\Sausage\WebDriverTestCase
             'desiredCapabilities' => array(
                 'version' => '15',
                 'platform' => 'Windows 2012',
-                'tunnel-identifier' => '51.1',
+                'tunnel-identifier' => '52.1',
             )
         )//,
         // run Chrome on Linux on Sauce
