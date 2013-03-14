@@ -5,8 +5,7 @@ php:
 
 env:
   global:
-    # SAUCE_USERNAME
-    - secure: "Bl152XKC1n0NjLnu99w6ug3fSeusOkD+IEPXVF8EXY2XXZ2JZz8XSOCCGXWk\n2UyP+9p3nSNeqQ84+svGvBnxvzFQc00Y0QDx10KToHcs1qN94YUfwL+JsydR\nKV4sYbUGs/CbpgiKTBTFmaf/gOfhsJqrfvOFmj1YlwYqrC6dlX0="
+    - SAUCE_USERNAME=myplanet-skeletor
     # SAUCE_ACCESS_KEY
     - secure: "FegBL7IVCVSvOBg0rGwUqL+Lci9kT9xLI/yDMOqjE1J4C9cpSSzhz9pEe/w0\n1GHgGZOkPYwRHl28qGqxvF6oOoiX3dLS1xO39c89GPNwY1GPuCF6Sv3ySAm4\nD86FRhxuJmSDkYfucIYVMwmTWxNY+DoSDnBtnbPLSFXFCh+cXCM="
   matrix:
@@ -16,6 +15,6 @@ before_install: tmp/scripts/travis_before_install.sh
 
 before_script:
   - tmp/scripts/travis_install.sh
-  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
+  - curl https://gist.github.com/patcon/5164034/raw/e2a090e6ea639a0d700e6d02cee048fa2f6c8617/sauce_connect_setup.sh | bash
 
 script: tmp/scripts/travis_test.sh

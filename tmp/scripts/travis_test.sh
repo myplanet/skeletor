@@ -7,7 +7,4 @@ php \
 
 # Running selenium tests.
 cd $TRAVIS_BUILD_DIR/tmp/tests
-vendor/bin/paratest WebDriverDemo.php \
-  --processes 2 \
-  --functional \
-  --phpunit vendor/bin/phpunit
+se-interpreter selenium/interpreter_config.json
