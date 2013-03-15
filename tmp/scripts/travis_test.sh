@@ -9,7 +9,7 @@ php \
 cd $TRAVIS_BUILD_DIR/tmp/tests
 TEST_CMD='se-interpreter selenium/interpreter_config.json'
 
-if "$TEST_CMD"; then
+if $TEST_CMD; then
   PASS_STATE=true
 else
   PASS_STATE=false
