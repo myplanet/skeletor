@@ -12,14 +12,12 @@
             "browserName": "${SAUCE_BROWSER}",
             "build": "${TRAVIS_BUILD_NUMBER}",
             "tags": [
-              "${TRAVIS_BRANCH}",
-              "${TRAVIS_COMMIT}",
-              "${TRAVIS_JOB_NUMBER}",
-              "${TRAVIS_JOB_ID}"
+              "${TRAVIS_BRANCH}"
             ],
             "passed": "true",
             "username": "${SAUCE_USERNAME}",
-            "accessKey": "${SAUCE_ACCESS_KEY}"
+            "accessKey": "${SAUCE_ACCESS_KEY}",
+            "tunnel-identifier": "${TRAVIS_JOB_NUMBER}"
           }
         }
       ],
