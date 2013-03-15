@@ -10,9 +10,9 @@
           },
           "browserOptions": {
             "browserName": "firefox",
+            "build": "${TRAVIS_JOB_NUMBER}",
             "username": "${SAUCE_USERNAME}",
-            "accessKey": "${SAUCE_ACCESS_KEY}",
-            "build": "${TRAVIS_BUILD_NUMBER}"
+            "accessKey": "${SAUCE_ACCESS_KEY}"
           }
         },
         {
@@ -22,6 +22,7 @@
           },
           "browserOptions": {
             "browserName": "opera",
+            "build": "${TRAVIS_JOB_NUMBER}",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
@@ -33,6 +34,7 @@
           },
           "browserOptions": {
             "browserName": "iexplore",
+            "build": "${TRAVIS_JOB_NUMBER}",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
@@ -44,6 +46,7 @@
           },
           "browserOptions": {
             "browserName": "googlechrome",
+            "build": "${TRAVIS_JOB_NUMBER}",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
