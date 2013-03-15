@@ -24,6 +24,7 @@
           "browserOptions": {
             "browserName": "opera",
             "build": "${TRAVIS_JOB_NUMBER}",
+            "passed": "true",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
@@ -36,6 +37,7 @@
           "browserOptions": {
             "browserName": "iexplore",
             "build": "${TRAVIS_JOB_NUMBER}",
+            "passed": "true",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
@@ -48,6 +50,7 @@
           "browserOptions": {
             "browserName": "googlechrome",
             "build": "${TRAVIS_JOB_NUMBER}",
+            "passed": "true",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
