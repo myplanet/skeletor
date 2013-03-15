@@ -11,6 +11,7 @@
           "browserOptions": {
             "browserName": "firefox",
             "build": "${TRAVIS_JOB_NUMBER}",
+            "passed": "true",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
           }
