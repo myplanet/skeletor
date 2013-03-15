@@ -9,47 +9,14 @@
             "port": 80
           },
           "browserOptions": {
-            "browserName": "firefox",
-            "build": "${TRAVIS_JOB_NUMBER}",
-            "passed": "true",
-            "username": "${SAUCE_USERNAME}",
-            "accessKey": "${SAUCE_ACCESS_KEY}"
-          }
-        },
-        {
-          "driverOptions": {
-            "host": "ondemand.saucelabs.com",
-            "port": 80
-          },
-          "browserOptions": {
-            "browserName": "opera",
-            "build": "${TRAVIS_JOB_NUMBER}",
-            "passed": "true",
-            "username": "${SAUCE_USERNAME}",
-            "accessKey": "${SAUCE_ACCESS_KEY}"
-          }
-        },
-        {
-          "driverOptions": {
-            "host": "ondemand.saucelabs.com",
-            "port": 80
-          },
-          "browserOptions": {
-            "browserName": "iexplore",
-            "build": "${TRAVIS_JOB_NUMBER}",
-            "passed": "true",
-            "username": "${SAUCE_USERNAME}",
-            "accessKey": "${SAUCE_ACCESS_KEY}"
-          }
-        },
-        {
-          "driverOptions": {
-            "host": "ondemand.saucelabs.com",
-            "port": 80
-          },
-          "browserOptions": {
-            "browserName": "googlechrome",
-            "build": "${TRAVIS_JOB_NUMBER}",
+            "browserName": "${SAUCE_BROWSER}",
+            "build": "${TRAVIS_BUILD_NUMBER}",
+            "tags": [
+              "${TRAVIS_BRANCH}",
+              "${TRAVIS_COMMIT}",
+              "${TRAVIS_JOB_NUMBER}",
+              "${TRAVIS_JOB_ID}"
+            ],
             "passed": "true",
             "username": "${SAUCE_USERNAME}",
             "accessKey": "${SAUCE_ACCESS_KEY}"
