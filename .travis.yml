@@ -18,6 +18,6 @@ before_install: tmp/scripts/travis_before_install.sh
 
 before_script:
   - tmp/scripts/travis_install.sh
-  - curl https://gist.github.com/patcon/5164034/raw/e2a090e6ea639a0d700e6d02cee048fa2f6c8617/sauce_connect_setup.sh | bash
+  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 
 script: tmp/scripts/travis_test.sh
