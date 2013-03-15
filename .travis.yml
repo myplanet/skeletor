@@ -20,6 +20,8 @@ before_script:
   - tmp/scripts/travis_install.sh
   - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 
+after_script: tmp/scripts/travis_after.sh
+
 notifications:
   email: false
 
