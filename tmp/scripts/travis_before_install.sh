@@ -15,4 +15,4 @@ sudo mv composer.phar /usr/local/bin/composer
 # Install httpie
 sudo add-apt-repository ppa:afcowie/network --yes
 sudo apt-get update
-apt-get install httpie
+sudo apt-get install httpie
