@@ -7,6 +7,17 @@ tools:
     php_code_sniffer:
         config:
             standard: Drupal
+        extensions:
+            - php
+            - module
+            - inc
+            - install
+            - test
+            - profile
+            - theme
+        filter:
+            excluded_paths:
+              - tmp/
     php_mess_detector: true
     php_analyzer:
         filter:
