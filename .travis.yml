@@ -18,9 +18,7 @@ before_install: tmp/scripts/travis_before_install.sh
 
 before_script:
   - tmp/scripts/travis_install.sh
-  - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
-
-after_script: tmp/scripts/travis_after.sh
+  - $TRAVIS_SECURE_ENV_VAR && curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 
 notifications:
   email: false
