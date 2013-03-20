@@ -6,7 +6,7 @@ php \
   --docroot $TRAVIS_BUILD_DIR/build &
 
 # Exit script early if unless in secure environment with credentials available.
-$TRAVIS_SECURE_ENV_VAR || exit
+[[ "$TRAVIS_SECURE_ENV_VARS" == "false" ]] && exit
 
 # Running selenium tests.
 cd $TRAVIS_BUILD_DIR/tmp/tests
