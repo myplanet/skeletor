@@ -24,4 +24,6 @@ SESSION_ID=$(ruby -r 'json' -e "\$stdout.write JSON.parse('$JSON_RESPONSE').keep
 http --auth $SAUCE_USERNAME:$SAUCE_ACCESS_KEY PUT https://saucelabs.com/rest/v1/$SAUCE_USERNAME/jobs/$SESSION_ID passed:=$PASS_STATE
 
 # Mark Travis build as failed.
-[[ "$PASS_STATE" == "false" ]] && exit 1
+if [[ "$PASS_STATE" == "false" ]]; then
+  exit 1
+fi
