@@ -52,6 +52,10 @@
       }
     },
     {
+      "type": "waitForTitle",
+      "title": "Configure site | Drupal"
+    },
+    {
       "type": "setElementText",
       "locator": {
         "type": "id",
