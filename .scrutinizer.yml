@@ -1,12 +1,10 @@
 before_commands:
     - git clone --branch 7.x-2.x http://git.drupal.org/project/coder.git /tmp/coder
-    - sudo ln -sv /tmp/coder/coder_sniffer/Drupal $(pear config-get php_dir)/PHP/CodeSniffer/Standards
 
 tools:
-    php_cs_fixer: true
     php_code_sniffer:
         config:
-            standard: Drupal
+            standard: /tmp/coder/coder_sniffer/Drupal
         extensions:
             - php
             - module
@@ -17,9 +15,4 @@ tools:
             - theme
         filter:
             excluded_paths:
-              - tmp/
-    php_mess_detector: true
-    php_analyzer:
-        filter:
-            excluded_paths: ["*/Tests/*"]
-    sensiolabs_security_checker: true
+              - tmp/*
