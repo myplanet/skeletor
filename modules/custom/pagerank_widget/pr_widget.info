@@ -1,0 +1,11 @@
+name = PageRank Widget
+description = A block showing the Google PageRank of the site.
+core = 7.x
+configure = admin/config/system/pr_widget
+
+; Information added by drupal.org packaging script on 2013-03-20
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "pagerank_widget"
+datestamp = "1363786051"
+

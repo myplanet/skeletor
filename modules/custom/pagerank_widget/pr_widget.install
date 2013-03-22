@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Sets post-install messages and deletes variables when uninstalled.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function pr_widget_install() {
+  variable_set('pr_widget_ratio', st('[No data yet]') . ' ');
+  $t = get_t();
+  $text = $t('Congrats! All pages now contain an PageRank Widget in the footer. !config_link and change the block settings at !blocks_link.', array(
+    '!config_link' => l($t('Check the settings'), 'admin/config/system/pr_widget'),
+    '!blocks_link' => l($t('Structure > Blocks > PageRank Widget > Configure'), 'admin/structure/block/manage/pr_widget/pr_widget_widget/configure'),
+    )
+  );
+  drupal_set_message($text);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pr_widget_uninstall() {
+  // Delete all variables set in variable table.
+  db_delete('variable')
+  ->condition('name', 'pr_widget_%', 'LIKE')
+  ->execute();
+  cache_clear_all('variables', 'cache_bootstrap');
+}

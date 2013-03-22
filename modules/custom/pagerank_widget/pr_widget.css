@@ -1,0 +1,35 @@
+table.pr_widget-table {
+width: auto;
+float: left; /* LTR */
+}
+
+table.pr_widget-table td {
+padding: 2px;}
+
+div.pr_widget-wrap td.pr_widget-first {
+background: YellowGreen !important; /* CHANGE THE COLOR HERE */
+text-align: center; 
+text-shadow: Black 2px 2px 7px;
+color: white;
+border: solid 3px; 
+border-color: YellowGreen !important; /* CHANGE THE COLOR HERE */
+font-weight: bold;
+}
+
+div.pr_widget-wrap td.pr_widget-last {
+background: WhiteSmoke;
+color: DimGray;
+font-weight: bold;
+border: solid 3px; 
+border-color: YellowGreen !important; /* CHANGE THE COLOR HERE */
+}
+
+div.pr_widget-wrap td {
+text-align: center;
+padding: 0 5px 0 5px;
+}
+
+.pr_widget-table, .pr_widget-body, td.pr_widget-notice {
+border: 0px none !important;
+border-collapse: separate;
+}

@@ -1,0 +1,7 @@
+/**
+ * Mirror in y-axis in right-to-left content.
+ */
+table.pr_widget-table {
+float: right;
+}
+  
