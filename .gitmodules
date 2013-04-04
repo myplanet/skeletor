@@ -4,3 +4,6 @@
 [submodule "tmp/scripts/rerun/custom_modules"]
 	path = tmp/scripts/rerun/custom_modules
 	url = https://github.com/myplanetdigital/secondlevel-rerun-modules.git
+[submodule "tmp/tools/jenkins-inception"]
+	path = tmp/tools/jenkins-inception
+	url = https://github.com/myplanetdigital/jenkins-inception.git
