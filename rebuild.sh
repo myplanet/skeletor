@@ -22,4 +22,18 @@ for d in $DIRS; do
 done
 drush make --yes --working-copy --no-core --contrib-destination=. drupal-org.make
 
-# TODO: Copy default.settings.php and append snippets again.
+# Copy default.settings.php and append snippets again.
+rm -f ../../sites/default/settings.bak.php
+mv ../../sites/default/settings.php ../../sites/default/settings.bak.php
+cp ../../sites/default/default.settings.php ../../sites/default/settings.php
+chmod 666 ../../sites/default/settings.php
+
+echo "Appending settings.php snippets..."
+for f in tmp/snippets/settings.php/*.settings.php
+do
+  # Concatenate newline and snippet, then append to settings.php
+  echo "" | cat - $f | tee -a ../../sites/default/settings.php > /dev/null
+done
+
+chmod 444 ../../sites/default/settings.php
+drush cc all
