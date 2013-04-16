@@ -23,7 +23,7 @@ done
 drush make --yes --working-copy --no-core --contrib-destination=. drupal-org.make
 
 # Copy default.settings.php and append snippets again.
-chmod +w ../../sites/default
+chmod u+w ../../sites/default
 rm -f ../../sites/default/settings.bak.php
 mv ../../sites/default/settings.php ../../sites/default/settings.bak.php
 cp ../../sites/default/default.settings.php ../../sites/default/settings.php
