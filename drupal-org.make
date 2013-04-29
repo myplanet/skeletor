@@ -16,5 +16,4 @@ core = 7.x
 ; LIBRARIES
 
 ; libraries[samplelib][download][type] = file
-; libraries[samplelib][download][url] = http://example.com/download/samplelib.tar.gz"
-; libraries[samplelib][destination] = libraries/contrib
+; libraries[samplelib][download][url] = http://example.com/download/samplelib.tar.gz

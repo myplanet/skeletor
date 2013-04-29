@@ -29,9 +29,7 @@ Here's the additional suggested folder structure for the install profile:
     +-themes/
     | +-contrib/  (gitignored - any contrib themes should go here via makefile)
     | +-custom/   (custom themes for the site)
-    +-libraries/
-    | +-contrib/  (gitignored - any libraries should go here via makefile)
-    | +-custom/   (custom libraries for the site)
+    +-libraries/  (gitignored - any libraries should go here via makefile)
     +-tmp/        (for things that don't fit in standard install profile structure)
       +-conf/
       +-docs/     (project-specific docs)
