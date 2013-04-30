@@ -12,7 +12,7 @@ $cli = (php_sapi_name() == 'cli');
 
 if (!$cli && isset($_ENV['AH_NON_PRODUCTION'])) {
   $username = 'admin';
-  $password = 'flint&unsung;duckweeds';
+  $password = 'sekret';
 
   // PHP-cgi fix
   $a = base64_decode( substr($_SERVER["REMOTE_USER"],6)) ;
