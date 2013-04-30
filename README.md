@@ -52,3 +52,20 @@ To Build
 To build the site in full, run the following command:
 
     bash kickstart.sh path/to/build/docroot
+
+To Utilize Inception
+--------------------
+
+**Inception** is a Jenkins-based project used to coordinate deployment
+via build pipeline. It is used to set up and manage a remote Jenkins
+server that will me maximally accessible and configurable by team
+members.
+
+    git submodule update --init --recursive
+    cd tmp/tools/jenkins-inception
+    # Tell Inception to create and look for config file in project repo.
+    # (Remember: Exported environment variables must be reset in each new shell.)
+    export INCEPTION_CONFIG=$PWD/../../conf/inception-config.yml
+    bundle install
+    # View all tasks. See Inception README for details.
+    bundle exec rake -D
