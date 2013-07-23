@@ -1,0 +1,212 @@
+#!/usr/bin/env ruby
+
+require 'open3'
+
+# If two env's are needed, using TARGET_ENV is destructive to that env!
+# Currently, prod (SOURCE) will override test (TARGET), which is ok.
+SOURCE_ENV = 'prod'
+TARGET_ENV = 'test'
+BRANCH = 'develop'
+
+PROFILE_PATH = ENV['WORKSPACE'] ? "#{ENV['WORKSPACE']}/profile" : Dir.pwd
+DRUSH_CONFIGS_PATH = "#{PROFILE_PATH}/tmp/scripts/drush"
+
+def get_project_name(profile_path)
+  info_filepath = Dir.glob("#{profile_path}/*.info").first
+  project_name = File.basename(info_filepath, ".info")
+end
+
+def get_acquia_name(drush_configs_path)
+  drush_alias_filepath = Dir.glob("#{drush_configs_path}/*.aliases.drushrc.php").first
+  acquia_name = File.basename(drush_alias_filepath, ".aliases.drushrc.php")
+end
+
+PROJECT = get_project_name(PROFILE_PATH)
+ACQUIA_NAME = get_acquia_name(DRUSH_CONFIGS_PATH)
+
+GIT_REFERENCE_DIR = File.expand_path "~/#{PROJECT}.reference.git"
+REPO = "#{ACQUIA_NAME}@svn-3224.prod.hosting.acquia.com:#{ACQUIA_NAME}.git"
+
+# Function not currently used.
+def get_acapi_credentials(drush_configs_path)
+  acapi_file_contents = IO.read("#{drush_configs_path}/#{ACQUIA_NAME}.acapi.drushrc.php")
+  acapi_user = /username.*=.*'(.+)';/.match(acapi_file_contents)[1]
+  acapi_pass = /password.*=.*'(.+)';/.match(acapi_file_contents)[1]
+  data = {
+    "acapi_user" => acapi_user,
+    "acapi_pass" => acapi_pass,
+  }
+
+  data
+end
+
+def convert_hash_to_opts(opt_hash={})
+  opt_hash.to_a.collect do |pair|
+    "--#{pair.join('=')}"
+  end.join(' ')
+end
+
+def build_drush_command(env = nil, args = 'status', profile_dir = PROFILE_PATH)
+  raise if env.nil?
+  drush_dir = "#{profile_dir}/tmp/scripts/drush"
+
+  opt_hash = {
+    "include" => drush_dir,
+    "config" => "#{drush_dir}/#{ACQUIA_NAME}.acapi.drushrc.php",
+    "alias-path" => drush_dir,
+  }
+  opts = convert_hash_to_opts(opt_hash)
+
+  cmd = "drush @#{ACQUIA_NAME}.#{env} #{args} #{opts}"
+
+  cmd
+end
+
+def get_stdout(cmd = nil)
+  stdin, stdout, stderr = Open3.popen3(cmd)
+  output = stdout.readlines.collect { |line| line.chomp }
+
+  Array.new(output)
+end
+
+def get_stderr(cmd = nil)
+  stdin, stdout, stderr = Open3.popen3(cmd)
+  output = stderr.readlines.collect { |line| line.chomp }
+
+  Array.new(output)
+end
+
+def get_deployed_git_ref(env = 'dev')
+  cmd = build_drush_command(env, 'ac-environment-info')
+
+
+  puts "Getting deployed git ref on environment #{env}..."
+  gitref_line = get_stdout(cmd).grep(/vcs_path/).first
+  gitref_line.match(/vcs_path[\s:]+(\S+)/)
+  deployed_git_ref = Regexp.last_match[1]
+
+  deployed_git_ref
+end
+
+def task_completed?(task_id = nil)
+  raise if task_id.nil?
+  cmd = build_drush_command('dev', "ac-task-info #{task_id}")
+
+  for i in 0..100
+    output = get_stdout(cmd)
+    state = output.grep(/state/).first.match(/state[\s:]+(\S+)/)[1]
+    return true if state == 'done'
+    sleep 5
+  end
+
+  false
+end
+
+def run_queued_acapi_call(source_env = nil, drush_args = nil)
+  raise if drush_args.nil? || source_env.nil?
+
+  cmd = build_drush_command(source_env, drush_args)
+  output = get_stderr(cmd).first
+  task_id = output.match(/Task (\S+) started/)[1]
+
+  if task_completed?(task_id)
+    task_id
+  else
+    false
+  end
+end
+
+def copy_files!(source_env = nil, target_env = nil)
+  raise if source_env.nil? || target_env.nil?
+
+  puts "Copying files from #{source_env} to #{target_env}..."
+  run_queued_acapi_call(source_env, "ac-files-copy #{target_env}")
+end
+
+def migrate_db!(source_env = nil, target_env = nil)
+  raise if source_env.nil? || target_env.nil?
+
+  database = ACQUIA_NAME
+
+  puts "Migrating database #{database} from #{source_env} to #{target_env}..."
+  run_queued_acapi_call(source_env, "ac-database-copy #{database} #{target_env}")
+end
+
+# See: http://stackoverflow.com/a/8791484/504018
+def in_tmpdir
+  require 'tmpdir'
+  path = File.expand_path "#{Dir.tmpdir}/#{Time.now.to_i}#{rand(1000)}/"
+  FileUtils.mkdir_p path
+  yield path
+ensure
+  FileUtils.rm_rf(path) if File.exists?(path)
+end
+
+def get_acquia_git_commit(profile_commit = ENV['GIT_COMMIT'])
+  raise if profile_commit.nil?
+
+  in_tmpdir do |tmpdir|
+    system "git clone #{REPO} #{tmpdir} --reference=#{GIT_REFERENCE_DIR}"
+    FileUtils.cd(tmpdir) do
+      system "git checkout #{BRANCH}"
+
+      cmd = "git log --format=oneline"
+      output = get_stdout(cmd)
+      profile_commit = profile_commit[0..6]
+      acquia_commit_log_line = output.grep(/#{profile_commit}/).first
+      acquia_commit = acquia_commit_log_line.match(/^(\S+)/)[1]
+
+      return acquia_commit
+    end
+  end
+end
+
+def tag_specific_commit_in_acquia_repo(git_tag = nil, profile_commit = ENV['GIT_COMMIT'])
+  raise if git_tag.nil? || profile_commit.nil?
+  acquia_commit = get_acquia_git_commit(profile_commit)
+  in_tmpdir do |tmpdir|
+    system "git clone #{REPO} #{tmpdir} --reference=#{GIT_REFERENCE_DIR}"
+    FileUtils.cd(tmpdir) do
+      system "git checkout #{BRANCH}"
+      system "git tag #{git_tag} #{acquia_commit}"
+      system "git push --tags"
+    end
+  end
+end
+
+def deploy_git_tag!(env = nil, git_tag = nil)
+  raise if env.nil? || git_tag.nil?
+
+  puts "Deploying Git tag #{git_tag} to environment #{env}..."
+  run_queued_acapi_call(env, "ac-code-path-deploy tags/#{git_tag}")
+end
+
+def finalize_deploy!(env = nil)
+  drush_cmds = [
+    "updatedb",
+    "features-revert-all --force",
+    "cache-clear all",
+    "features-list",
+  ]
+
+  drush_cmds.each do |cmd|
+    system build_drush_command(env, "--yes #{cmd}")
+  end
+end
+
+raise if ENV['BUILD_NUMBER'].nil?
+git_tag = "#{Time.now.strftime("%Y-%m-%d")}-build-#{ENV['BUILD_NUMBER']}"
+
+raise if ENV['GIT_COMMIT'].nil?
+
+copy_files!(SOURCE_ENV, TARGET_ENV)
+migrate_db!(SOURCE_ENV, TARGET_ENV)
+tag_specific_commit_in_acquia_repo(git_tag, ENV['GIT_COMMIT'])
+deploy_git_tag!(TARGET_ENV, git_tag)
+finalize_deploy!(TARGET_ENV)
+
+# Rollback to initial commit if anything goes wrong
+# https://cloudapi.acquia.com/#POST__sites__site_envs__env_dbs__db_backups__backup_restore-instance_route
+# https://github.com/acquia/cloud-hooks/tree/master/samples/rollback_demo
+#
+#get_deployed_git_ref(TARGET_ENV)
