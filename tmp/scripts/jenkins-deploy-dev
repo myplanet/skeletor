@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Determine project name from files.
+for file in ${WORKSPACE}/profile/*.info; do
+  INFO_FILENAME="${file##*/}"
+done
+PROJECT=`expr "$INFO_FILENAME" : "^\([a-zA-Z_]*\)"`
+
+# Determine Acquia subscription name from files.
+for file in ${WORKSPACE}/profile/tmp/scripts/drush/*.aliases.drushrc.php; do
+  ALIAS_FILENAME="${file##*/}"
+done
+ACQUIA_NAME=`expr "$ALIAS_FILENAME" : "^\([a-zA-Z_]*\)"`
+
+# Determine Acquia Cloud API username from file.
+while read -r line
+do
+  MATCH=`expr "$line" : ".*username.*'\(.*\)'"`
+  if [ -n "$MATCH" ]; then ACAPI_USER="$MATCH"; fi
+done < "${WORKSPACE}/profile/tmp/scripts/drush/*.acapi.drushrc.php"
+
+# Determine Acquia Cloud API password from file.
+while read -r line
+do
+  MATCH=`expr "$line" : ".*password.*'\(.*\)'"`
+  if [ -n "$MATCH" ]; then ACAPI_PASS="$MATCH"; fi
+done <"${WORKSPACE}/profile/tmp/scripts/drush/*.acapi.drushrc.php"
+
+# Config how automated commits from Jenkins will show up in git log.
+git config --global user.email "${PROJECT}@myplanetdigital.com"
+git config --global user.name "Jenkins - ${PROJECT}"
+
+# Turn on colored output (helpful for console log)
+git config --global color.ui auto
+
+mkdir -p ~/.ssh
+echo -e "Host *\n  StrictHostKeyChecking no" > ~/.ssh/config
+
+# Set up for rerun
+export PATH=$PATH:${WORKSPACE}/profile/tmp/scripts/rerun/core
+export RERUN_MODULES=${WORKSPACE}/profile/tmp/scripts/rerun/custom_modules
+export RERUN_COLOR=true
+
+# Error out if expected files don't exist.
+requiredFiles=(
+  "$WORKSPACE/profile/tmp/scripts/drush/$ACQUIA_NAME.acapi.drushrc.php"
+  "$WORKSPACE/profile/tmp/scripts/drush/$ACQUIA_NAME.aliases.drushrc.php"
+  "$WORKSPACE/profile/tmp/scripts/drush/cloudapi.acquia.com.pem"
+  "$WORKSPACE/profile/tmp/scripts/drush/acapi.drush.inc"
+)
+for i in "${requiredFiles[@]}"; do
+  printf "Checking for file: $i..."
+  [ -f $i ] || exit 1
+  echo " Success!"
+done
+
+#FIX THIS SOON AS IT IS UGLY
+PATH=$PATH:/var/lib/gems/1.9.1/bin ACQUIA_SUBSCRIPTION=$ACQUIA_NAME rerun 2ndlevel:deploy \
+  --project ${PROJECT} \
+  --repo ${ACQUIA_NAME}@svn-3.devcloud.hosting.acquia.com:${ACQUIA_NAME}.git \
+  --acapi-user $ACAPI_USER \
+  --apapi-pass $ACAPI_PASS
