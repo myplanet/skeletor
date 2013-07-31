@@ -52,6 +52,10 @@ To Build
 To build the site in full, run the following command:
 
     bash kickstart.sh path/to/build/docroot
+    
+**Note: For the above script to work, it must be run within a project path without whitespace.
+You may run `pwd` in the project repo path to ensure that no parent
+directories have spaces.**
 
 To Utilize Inception
 --------------------
