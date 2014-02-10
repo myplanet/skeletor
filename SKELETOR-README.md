@@ -20,6 +20,13 @@ GitHub repo at
 default. You may point it to another repo url like by instead using this
 command:
 
-    rerun renamer:rename --to DESIRED_PROJECT_NAME_HERE --repo myusername/custom-repo-name 
+    rerun renamer:rename --to DESIRED_PROJECT_NAME_HERE --repo myusername/custom-repo-name
+    
+The above command will NOT create the repo on GitHub; this must be done manually before pushing.
+
+The command WILL automatically commit the renaming changes locally, but you will need
+to set the git remote url before pushing those changes:
+
+    git remote set-url origin git@github.com:myusername/custom-repo-name.git
 
 **Note:** This README file will be removed during the renaming process.
