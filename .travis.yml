@@ -1,0 +1,83 @@
+language: php
+sudo: false
+php:
+  - 5.5.9
+
+cache: 
+  apt: true
+  directories:
+  - $HOME/.rvm
+  - $HOME/.buildcache
+
+branches:
+  only:
+    - 8.x
+
+env:
+  global:
+  - PROJECT=skeletor
+  - INSTALL_PROFILE=$HOME/build/$TRAVIS_REPO_SLUG
+  - DRUSH_VERSION=master
+  - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/scripts
+  - BUILD_CACHE=$HOME/.buildcache
+  - BUILD_DB=$TRAVIS_REPO_SLUG.sql
+  - BUILD_TEST=$HOME/build/$PROJECT
+  - BUILD_DEPLOY=$HOME/build/$PROJECT_deploy
+  # Add deploy destination repo
+  - DEPLOY_REPO=project@hosting.com:proect.git
+  - DEPLOY_DEST=$HOME/$PROJECT
+
+services:
+  - memcached
+addons:
+  apt:
+    packages:
+    - apache2
+    - libapache2-mod-fastcgi
+    - openssl
+    - php5
+    - php5-fpm
+    - php5-cli
+    - php5-curl
+    - php5-mysql
+    - mysql-common
+    - mysql-client
+    - mysql-server
+  ssh_known_hosts:
+  # Add git and drush hosts for remote deploy
+  hosts:
+  - default
+  - skeletor.local
+mysql:
+  database: skeletor
+  username: root
+  encoding: utf8
+
+before_install:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- export PATH="$HOME/.composer/vendor/bin:$PATH"
+- composer global require drush/drush:$DRUSH_VERSION
+
+install: $BUILD_SCRIPTS/install.sh
+
+before_script:
+- cd $BUILD_TEST/sites/$PROJECT
+
+script: $BUILD_SCRIPTS/test.sh
+
+#after_success: $INSTALL_PROFILE/tmp/travis_scripts/deploy.sh
+
+after_failure:
+- cat /var/log/apache2/error.log
+- cat /var/log/apache2/access.log
+- cat $HOME/php/error.log
+- php -i | grep memory
+- grep -i memory_limit ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+notifications:
+  email:
+    recipients:
+#      - you@myplanet.com
+    on_success: change
+    on_failure: always

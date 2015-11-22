@@ -1,0 +1,27 @@
+# Set drush make API version.
+api: 2
+
+# Set contrib directory.
+#defaults:
+#  projects:
+#    subdir: "contrib"
+
+# Set drupal core version.
+core: "8.x"
+
+projects:
+  drupal:
+    type: "core"
+    version: "8.0.0"
+
+  skeletor:
+    type: "profile"
+    download:
+      url: "git@github.com:myplanetdigital/drupal-skeletor.git"
+      revision: "8.x"
+
+  #Contrib Modules & Theme
+  admin_toolbar:
+      type: "module"
+      version: "1.10"
+      subdir: "contrib"
