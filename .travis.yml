@@ -17,7 +17,7 @@ env:
   global:
   - PROJECT=skeletor
   - INSTALL_PROFILE=$HOME/build/$TRAVIS_REPO_SLUG
-  - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/scripts
+  - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/tmp/travis_scripts
   - BUILD_CACHE=$HOME/.buildcache
   - BUILD_DB=$TRAVIS_REPO_SLUG.sql
   - BUILD_TEST=$HOME/build/$PROJECT
