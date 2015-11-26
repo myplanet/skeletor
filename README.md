@@ -1,9 +1,7 @@
-# Skeletor Install Profile
+# Skeletor Install Profile 
 
-A skeleton Drupal install profile to set up an appropriate layout for Myplanet's install profile development strategy, striving toward continuous delivery and greater good.
 
-## Status
-[![Build Status](https://magnum.travis-ci.com/myplanetdigital/relay-robin-support-portal.svg?token=s3BFKzEdHAWesqwWTSpU&branch=develop)](https://magnum.travis-ci.com/myplanetdigital/relay-robin-support-portal)
+A skeleton Drupal 8 install profile to set up an appropriate layout for Myplanet's install profile development strategy, striving toward continuous delivery and greater good.
 
 ## Build instructions
 
@@ -19,13 +17,20 @@ May be usefull to get multiple versions of drush locally https://www.lullabot.co
 
 From the install profile folder:
 
-`bash tmp/scripts/build-dev.sh [ path/to/your/profile.make.yml] [ path/to/build/docroot ]`
+`bash tmp/scripts/build.sh [ project ] [ path/to/your/profile.make.yml] [ path/to/build/docroot ] [ dev ]`
 
-### 3. Installing drupal from the profile
+[dev] - only for local development build. Avoid this parameter for ACQUIA or PANTHEON build process.
 
-From the path/to/build/docroot/profile/profile folder:
 
-`bash install.sh [ mysql:// db url ] [ desired account pass ]`
+## ACQUIA or PANTHEON build requirements
+
+### Trusted host security setting in Drupal 8
+
+Drupal 8 supports [trusted host patterns](https://www.drupal.org/node/2410395), where you can (and should) 
+specify a set of regular expressions that the domains on incoming requests must match. 
+It is important to setup them before deploying to ACQUIA or PANTHEON environments.
+
+Trusted host settings location: tmp/snippets/settings.php/*-trusted-hosts.settings.php 
 
 ## Layout
 

@@ -3,7 +3,7 @@
 # USAGE
 # Run this script as given.
 #
-# $ bash build-prod.sh [ project ] [ /fullpath/to/project.make.yml ] [ /fullpath/to/build/project ]
+# $ bash build.sh [ project ] [ /fullpath/to/project.make.yml ] [ /fullpath/to/build/project ] [ build_dev ]
 
 # Bail if non-zero exit code
 set -e
@@ -12,14 +12,17 @@ set -e
 PROJECT="$1"
 BUILD_FILE="$2"
 BUILD_DEST="$3"
+BUILD_DEV="$4"
+MAKE_OPTS="--contrib-destination=profiles/${PROJECT} --prepare-install --yes --no-gitinfofile"
+
+# Prepending option for development building
+if [ -n "${BUILD_DEV}" ]; then
+  MAKE_OPTS="--working-copy ${MAKE_OPTS}"
+fi
 
 # Drush make the site structure
 echo "::Running drush make"
-drush make --force-complete ${BUILD_FILE} ${BUILD_DEST} \
-  --contrib-destination=profiles/${PROJECT} \
-  --prepare-install \
-  --yes \
-  --no-gitinfofile
+drush make --force-complete ${BUILD_FILE} ${BUILD_DEST} ${MAKE_OPTS}
 
 # Copy the settings.yml.
 cp ${BUILD_DEST}/sites/default/default.services.yml ${BUILD_DEST}/sites/default/services.yml
