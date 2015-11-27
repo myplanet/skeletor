@@ -20,11 +20,10 @@ cp $INSTALL_PROFILE/tmp/travis_scripts/$PROJECT.aliases.drushrc.php $HOME/.drush
 # Remove files that we don't want on prod.
 cd ${BUILD_DEST}
 rm -rf profiles/${PROJECT}/tmp
-rm profiles/${PROJECT}/rebuild.sh
 rm profiles/${PROJECT}/.gitignore
 rm profiles/${PROJECT}/.travis.yml
 rm profiles/${PROJECT}/README.md
-rm profiles/${PROJECT}/*.make
+rm profiles/${PROJECT}/*.make.yml
 rm .gitignore
 rm README.txt
 rm LICENSE.txt

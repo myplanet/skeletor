@@ -10,4 +10,4 @@ projects:
     type: "profile"
     download:
       url: "git@github.com:myplanetdigital/drupal-skeletor.git"
-      revision: "DS-snippets-updates"
+      revision: "8.x"

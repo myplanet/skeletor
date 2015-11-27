@@ -12,7 +12,7 @@ set -e
 PROJECT="$1"
 BUILD_DEST="$2"
 BUILD_DEV="$3"
-MAKE_OPTS=" --prepare-install --force-complete --no-cache --yes"
+MAKE_OPTS=" --prepare-install --force-complete --no-cache -vvv --yes"
 
 # Prepending option for development building
 if [ -n "${BUILD_DEV}" ]; then
