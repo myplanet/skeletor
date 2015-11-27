@@ -11,7 +11,7 @@ gem install compass --version "=1.0.3"
 
 # Run the make script.
 echo "::Running build"
-bash tmp/scripts/build.sh $PROJECT $INSTALL_PROFILE/$PROJECT.make.yml $BUILD_TEST
+bash tmp/scripts/build.sh $PROJECT $BUILD_TEST
 
 # Install Drush integration
 echo "::Installing Drush integration"
