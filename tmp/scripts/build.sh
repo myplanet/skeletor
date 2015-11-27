@@ -74,7 +74,7 @@ fi
 
 # Compile CSS
 echo "::Compiling stylesheets"
-for THEME in ${BUILD_DEST}/profiles/${PROJECT}/themes/*; do
+for THEME in ${BUILD_DEST}/profiles/${PROJECT}/themes/custom/*; do
   cd $THEME
   if [ -a config.rb ]; then
     compass compile
