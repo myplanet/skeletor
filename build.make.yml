@@ -10,5 +10,5 @@ projects:
     type: "profile"
     download:
       type: "git"
-      url: "git@github.com:myplanetdigital/drupal-skeletor.git"
+      url: "https://github.com/myplanetdigital/drupal-skeletor.git"
       revision: "8.x"
