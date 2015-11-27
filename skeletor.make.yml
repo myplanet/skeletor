@@ -7,6 +7,7 @@ includes:
 projects:
   skeletor:
     type: "profile"
+    subdir: ""
     download:
       url: "git@github.com:myplanetdigital/drupal-skeletor.git"
-      revision: 8.x
+      revision: "8.x"
