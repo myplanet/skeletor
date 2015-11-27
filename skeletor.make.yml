@@ -1,10 +1,9 @@
 # Set drush make API version.
-api: 2
-core: 8.x
+api: "2"
+core: "8.x"
 includes:
-- core.make.yml
-- contrib.make.yml
-
+  - "core.make.yml"
+  - "contrib.make.yml"
 projects:
   skeletor:
     type: "profile"
