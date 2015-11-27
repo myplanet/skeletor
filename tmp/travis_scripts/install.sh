@@ -11,7 +11,12 @@ gem install compass --version "=1.0.3"
 
 # Run the make script.
 echo "::Running build"
-bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $TRAVIS_PULL_REQUEST
+if [[ ! $TRAVIS_PULL_REQUEST == 'false' ]]; then
+  BUILD_DEV=true
+else
+  BUILD_DEV=false
+fi
+bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $BUILD_DEV
 
 # Install Drush integration
 echo "::Installing Drush integration"
