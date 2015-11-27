@@ -1,8 +1,0 @@
-# Specify common subdir of "contrib"
-defaults:
-  projects:
-    subdir: "contrib"
-
-# Contrib Modules and Themes
-projects:
-  admin_toolbar: "1.10"
