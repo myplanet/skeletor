@@ -20,11 +20,11 @@ env:
   - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/tmp/travis_scripts
   - BUILD_CACHE=$HOME/.buildcache
   - BUILD_DB=$TRAVIS_REPO_SLUG.sql
-  - BUILD_TEST=$HOME/build/$PROJECT
-  - BUILD_DEPLOY=$HOME/build/$PROJECT_deploy
+  - BUILD_TEST=$HOME/build/skeletor
+  - BUILD_DEPLOY=$HOME/build/skeletor_deploy
   # Add deploy destination repo
   - DEPLOY_REPO=project@hosting.com:proect.git
-  - DEPLOY_DEST=$HOME/$PROJECT
+  - DEPLOY_DEST=$HOME/skeletor
 
 services:
   - memcached
