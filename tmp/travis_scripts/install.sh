@@ -34,8 +34,8 @@ rm LICENSE.txt
 rm example.gitignore
 
 # Copy the built site over to the deploy folder.
-cd $HOME/build/
-mkdir $PROJECT_deploy
+echo "$BUILD_DEPLOY"
+mkdir "$BUILD_DEPLOY"
 cd $BUILD_TEST
 shopt -s dotglob
 cp -R * $BUILD_DEPLOY
