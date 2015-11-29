@@ -3,7 +3,7 @@
 # USAGE
 # Run this script as given from the root of your install profile
 #
-# $ bash build.sh [ project ] [ /fullpath/to/build/project ] [ build_dev ]
+# $ bash build.sh [ project ] [ /fullpath/to/build/project ] [ build_commit ]
 
 # Bail if non-zero exit code
 set -e
@@ -11,17 +11,18 @@ set -e
 # Set from args
 PROJECT="$1"
 BUILD_DEST="$2"
-BUILD_DEV="$3"
+BUILD_COMMIT="$3"
 MAKE_OPTS=" --prepare-install --force-complete --no-cache -vvv --yes"
 
-# Prepending option for development building
-if [[ "$BUILD_DEV" == true ]]; then
-  echo "::Building development environment"
-  MAKE_OPTS="--working-copy ${MAKE_OPTS}"
-else
+# Configure options for production or development build.
+if [[ -z "$BUILD_COMMIT" ]] || [[ "$BUILD_COMMIT" == 'false' ]]; then
   echo "::Building production environment"
   MAKE_OPTS="--no-gitinfofile ${MAKE_OPTS}"
+else
+  echo "::Building development environment"
+  MAKE_OPTS="--working-copy ${MAKE_OPTS}"
 fi
+
 
 # Drush make the site structure
 echo "::Running drush make"

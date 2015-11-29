@@ -11,17 +11,7 @@ gem install compass --version "=1.0.3"
 
 # Run the make script.
 echo "::Running build"
-if [[ ! $TRAVIS_PULL_REQUEST == 'false' ]]; then
-  BUILD_DEV=true
-  # Build at current revision.
-  . $BUILD_SCRIPTS/parse_yaml.sh
-  eval $(parse_yaml  $INSTALL_PROFILE/build.make.yml "build_")
-  sed -e "s/  revision: $TRAVIS_COMMIT/  revision: $build_projects_skeletor_download_revision/g" $INSTALL_PROFILE/build.make.yml > $INSTALL_PROFILE/build.make.yml
-  cat $INSTALL_PROFILE/build.make.yml
-else
-  BUILD_DEV=false
-fi
-bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $BUILD_DEV
+bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $TRAVIS_PULL_REQUEST
 
 # Install Drush integration
 echo "::Installing Drush integration"
