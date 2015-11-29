@@ -17,8 +17,6 @@ MAKE_OPTS=" --prepare-install --force-complete --no-cache -vvv --yes"
 # Prepending option for development building
 if [[ "$BUILD_DEV" == true ]]; then
   echo "::Building development environment"
-  # Check out at current revision.
-  echo "      revision: $TRAVIS_COMMIT" >> build.make.yml
   MAKE_OPTS="--working-copy ${MAKE_OPTS}"
 else
   echo "::Building production environment"

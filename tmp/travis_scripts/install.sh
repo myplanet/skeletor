@@ -13,6 +13,11 @@ gem install compass --version "=1.0.3"
 echo "::Running build"
 if [[ ! $TRAVIS_PULL_REQUEST == 'false' ]]; then
   BUILD_DEV=true
+  # Build at current revision.
+  . parse_yaml.sh
+  eval $(parse_yaml  $INSTALL_PROFILE/build.make.yml "build_")
+  sed -e "s/revision: $TRAVIS_COMMIT/revision: $build_projects_skeletor_download_revision/g" $INSTALL_PROFILE/build.make.yml > $INSTALL_PROFILE/build.make.yml
+
 else
   BUILD_DEV=false
 fi
@@ -34,7 +39,6 @@ rm LICENSE.txt
 rm example.gitignore
 
 # Copy the built site over to the deploy folder.
-echo "$BUILD_DEPLOY"
 mkdir "$BUILD_DEPLOY"
 cd $BUILD_TEST
 shopt -s dotglob
