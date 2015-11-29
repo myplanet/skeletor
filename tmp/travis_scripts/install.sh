@@ -16,7 +16,7 @@ if [[ ! $TRAVIS_PULL_REQUEST == 'false' ]]; then
   # Build at current revision.
   . $BUILD_SCRIPTS/parse_yaml.sh
   eval $(parse_yaml  $INSTALL_PROFILE/build.make.yml "build_")
-  sed -e "s/revision: $TRAVIS_COMMIT/revision: $build_projects_skeletor_download_revision/g" $INSTALL_PROFILE/build.make.yml > $INSTALL_PROFILE/build.make.yml
+  sed -e "s/  revision: $TRAVIS_COMMIT/  revision: $build_projects_skeletor_download_revision/g" $INSTALL_PROFILE/build.make.yml > $INSTALL_PROFILE/build.make.yml
   cat $INSTALL_PROFILE/build.make.yml
 else
   BUILD_DEV=false
