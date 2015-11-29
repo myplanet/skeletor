@@ -1,13 +1,14 @@
-# Set drush make API version.
-api: 2
-core: 8.x
-includes:
-- core.make.yml
-- contrib.make.yml
+##
+# @file skeletor.make.yml
+# Skeletor installation Profile
+##
+api: "2"
+core: "8.x"
+defaults:
+  projects:
+    subdir: "contrib"
+    overwrite: TRUE
 
+# Contrib Modules and Themes
 projects:
-  skeletor:
-    type: "profile"
-    download:
-      url: "git@github.com:myplanetdigital/drupal-skeletor.git"
-      revision: 8.x
+  admin_toolbar: "1.10"

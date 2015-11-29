@@ -11,28 +11,25 @@ gem install compass --version "=1.0.3"
 
 # Run the make script.
 echo "::Running build"
-bash tmp/scripts/build.sh $PROJECT $INSTALL_PROFILE/$PROJECT.make.yml $BUILD_TEST
+bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $TRAVIS_PULL_REQUEST
 
 # Install Drush integration
 echo "::Installing Drush integration"
 cp $INSTALL_PROFILE/tmp/travis_scripts/$PROJECT.aliases.drushrc.php $HOME/.drush/$PROJECT.aliases.drushrc.php
 
 # Remove files that we don't want on prod.
-cd ${BUILD_DEST}
+cd ${BUILD_TEST}
 rm -rf profiles/${PROJECT}/tmp
-rm profiles/${PROJECT}/rebuild.sh
 rm profiles/${PROJECT}/.gitignore
 rm profiles/${PROJECT}/.travis.yml
 rm profiles/${PROJECT}/README.md
-rm profiles/${PROJECT}/*.make
-rm .gitignore
+rm profiles/${PROJECT}/*.make.yml
 rm README.txt
 rm LICENSE.txt
 rm example.gitignore
 
 # Copy the built site over to the deploy folder.
-cd $HOME/build/
-mkdir $PROJECT_deploy
+mkdir "$BUILD_DEPLOY"
 cd $BUILD_TEST
 shopt -s dotglob
 cp -R * $BUILD_DEPLOY

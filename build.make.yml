@@ -1,0 +1,14 @@
+# Set drush make API version.
+api: "2"
+core: "8.x"
+
+projects:
+  drupal:
+    type: "core"
+    version: "8.0.0"
+  skeletor:
+    type: "profile"
+    download:
+      type: "git"
+      url: "https://github.com/myplanetdigital/drupal-skeletor.git"
+      revision: "8.x"
