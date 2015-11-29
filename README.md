@@ -1,5 +1,6 @@
 # Skeletor Install Profile 
 
+[![Build Status](https://travis-ci.org/myplanetdigital/drupal-skeletor.svg?branch=8.x)](https://travis-ci.org/myplanetdigital/drupal-skeletor)
 
 A skeleton Drupal install profile to set up an appropriate layout for Myplanet's install profile development strategy, striving toward continuous delivery and greater good.
 
@@ -11,7 +12,7 @@ A skeleton Drupal install profile to set up an appropriate layout for Myplanet's
 * Drush 8
 * Drupal Console 8.0.0+
 
-May be usefull to get multiple versions of drush locally https://www.lullabot.com/articles/switching-drush-versions
+May be useful to get multiple versions of drush locally https://www.lullabot.com/articles/switching-drush-versions
 
 ### 2. Building drupal
 
@@ -45,11 +46,10 @@ Here's the additional suggested folder structure for the install profile:
 
     +-modules/
     | +-contrib/  (gitignored - all contrib modules should go here via makefile)
-    | +-custom/   (custom modules and features for the site)
+    | +-custom/   (custom modules for the site)
     +-themes/
     | +-contrib/  (gitignored - any contrib themes should go here via makefile)
     | +-custom/   (custom themes for the site)
-    +-libraries/  (gitignored - any libraries should go here via makefile)
     +-tmp/        (for things that don't fit in standard install profile structure)
     | +-conf/
     | +-docs/     (project-specific docs)
