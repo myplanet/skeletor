@@ -45,6 +45,7 @@ cp -R * $BUILD_DEPLOY
 # Copy local settings file for Travis env to the test folder.
 cp $INSTALL_PROFILE/tmp/travis_scripts/settings.local.php $BUILD_TEST/sites/default/settings.local.php
 
-echo  ":: Installing $PROJECT"
+echo  "::Installing $PROJECT"
 cd $BUILD_TEST
 drush si $PROJECT --db-url=mysql://root:@localhost:3306/${PROJECT} --site-name="$PROJECT" --account-pass="admin" -y
+drush config-import $PROJECT --partial -y
