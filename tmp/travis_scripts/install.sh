@@ -25,17 +25,6 @@ bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $BUILD_COMMIT
 echo "::Installing Drush integration"
 cp $INSTALL_PROFILE/tmp/travis_scripts/$PROJECT.aliases.drushrc.php $HOME/.drush/$PROJECT.aliases.drushrc.php
 
-# Remove files that we don't want on prod.
-cd ${BUILD_TEST}
-rm -rf profiles/${PROJECT}/tmp
-rm profiles/${PROJECT}/.gitignore
-rm profiles/${PROJECT}/.travis.yml
-rm profiles/${PROJECT}/README.md
-rm profiles/${PROJECT}/*.make.yml
-rm README.txt
-rm LICENSE.txt
-rm example.gitignore
-
 # Copy the built site over to the deploy folder.
 mkdir "$BUILD_DEPLOY"
 cd $BUILD_TEST
