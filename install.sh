@@ -37,4 +37,4 @@ cp $INSTALL_PROFILE/tmp/travis_scripts/settings.local.php $BUILD_TEST/sites/defa
 echo  "::Installing $PROJECT"
 cd $BUILD_TEST
 drush si $PROJECT --db-url=mysql://root:@localhost:3306/${PROJECT} --site-name="$PROJECT" --account-pass="admin" -y
-drush config-import $PROJECT --partial -y
+drush config-import sync --partial -y
