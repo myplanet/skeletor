@@ -29,9 +29,9 @@ git rm -rf docroot -q
 rm -rf docroot
 mkdir docroot
 cd $BUILD_DEPLOY
-shopt -s dotglob
-mv * $DEPLOY_DEST/docroot
+cp -a * $DEPLOY_DEST/docroot
 cd $DEPLOY_DEST
+
 
 # If tmp/hooks exists, then copy all files to a folder outside docroot.
 if [ -d $INSTALL_PROFILE/tmp/hooks ]; then
@@ -39,10 +39,14 @@ if [ -d $INSTALL_PROFILE/tmp/hooks ]; then
   cp -a $INSTALL_PROFILE/tmp/hooks $DEPLOY_DEST
 fi
 
+# If tmp/config exists, then copy all files to a folder outside docroot.
 if [ -d $INSTALL_PROFILE/tmp/config ]; then
   echo "::Moving config sync dir outside docroot"
   cp -a $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
 fi
+
+echo "::Opening settings.php"
+chmod 755 $DEPLOY_DEST/docroot/sites/default/settings.php
 
 echo "::Adding new files."
 git add .
@@ -58,7 +62,7 @@ git push origin $DEPLOY_BRANCH
 sleep 10
 
 # Exporting project custom configurations run updb etc.
-echo "::Exporting config"
+echo "::Installing the site"
 drush @${PROJECT}.dev si $PROJECT -y
 drush @${PROJECT}.dev user-password admin --password=$ADMIN_PASS -y
 drush @${PROJECT}.dev cim sync --partial -y
