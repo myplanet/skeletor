@@ -60,5 +60,6 @@ sleep 10
 # Exporting project custom configurations run updb etc.
 echo "::Exporting config"
 drush @${PROJECT}.dev si $PROJECT -y
+drush @${PROJECT}.dev user-password admin --password=$ADMIN_PASS -y
 drush @${PROJECT}.dev cim sync --partial -y
 drush @${PROJECT}.dev updb -y
