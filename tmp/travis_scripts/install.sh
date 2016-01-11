@@ -16,7 +16,10 @@ echo "::Running build"
 if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
   BUILD_COMMIT=${TRAVIS_PULL_REQUEST}
 else
+  git log
+  echo ":: Using commit"
   BUILD_COMMIT=$(git rev-parse --verify HEAD~1 --pretty)
+  git show $BUILD_COMMIT
 fi
 
 bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $BUILD_COMMIT
