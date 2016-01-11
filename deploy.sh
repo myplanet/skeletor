@@ -45,9 +45,6 @@ if [ -d $INSTALL_PROFILE/tmp/config ]; then
   cp -a $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
 fi
 
-echo "::Opening settings.php"
-chmod 755 $DEPLOY_DEST/docroot/sites/default/settings.php
-
 echo "::Adding new files."
 git add .
 
