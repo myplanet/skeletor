@@ -2,7 +2,7 @@
 /**
   * Local settings configuration.
   */
-
+$settings['hash_salt'] = 'icPr2pIZ1jeCFxNzq6-S1ZbknGyuggdVGjqydY3OoNK6d9ow8ngOtyLAM71RwIUNPrW4C4oHug';
 $databases['default']['default'] = array (
   'database' => 'ami',
   'username' => 'root',
