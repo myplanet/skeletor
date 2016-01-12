@@ -28,10 +28,7 @@ echo "::Installing Drush integration"
 cp $INSTALL_PROFILE/tmp/travis_scripts/$PROJECT.aliases.drushrc.php $HOME/.drush/$PROJECT.aliases.drushrc.php
 
 # Copy the built site over to the deploy folder.
-mkdir "$BUILD_DEPLOY"
-cd $BUILD_TEST
-shopt -s dotglob
-cp -R * $BUILD_DEPLOY
+cp -R $BUILD_TEST $BUILD_DEPLOY
 
 # Copy local settings file for Travis env to the test folder.
 cp $INSTALL_PROFILE/tmp/travis_scripts/settings.local.php $BUILD_TEST/sites/default/settings.local.php
