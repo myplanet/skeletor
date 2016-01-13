@@ -28,8 +28,7 @@ git checkout $DEPLOY_BRANCH
 git rm -rf docroot -q
 rm -rf docroot
 mkdir docroot
-cd $BUILD_DEPLOY
-cp -a * $DEPLOY_DEST/docroot
+cp -a $BUILD_DEPLOY/. $DEPLOY_DEST/docroot
 cd $DEPLOY_DEST
 
 
