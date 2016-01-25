@@ -38,6 +38,11 @@ if [ -d $INSTALL_PROFILE/tmp/hooks ]; then
   cp -a $INSTALL_PROFILE/tmp/hooks $DEPLOY_DEST
 fi
 
+if [ -d $INSTALL_PROFILE/tmp/config ]; then
+  echo "::Moving config sync dir outside docroot"
+  mv $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
+fi
+
 echo "::Adding new files."
 git add .
 
