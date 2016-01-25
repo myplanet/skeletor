@@ -57,8 +57,6 @@ git push origin $DEPLOY_BRANCH
 sleep 10
 
 # Exporting project custom configurations run updb etc.
-echo "::Installing the site"
-drush @${PROJECT}.dev si $PROJECT -y
-drush @${PROJECT}.dev user-password admin --password=$ADMIN_PASS -y
-drush @${PROJECT}.dev cim sync --partial -y
+echo "::Importing config changes"
 drush @${PROJECT}.dev updb -y
+drush @${PROJECT}.dev config-import -y
