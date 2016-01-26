@@ -16,7 +16,7 @@ echo "::Deploying"
 
 # Git config user/email
 git config --global user.email "travis@myplanet.com"
-git config --global user.name  "Travis CI - $PROJECT"
+git config --global user.name  "Travis CI - $PROFILE"
 
 # Checkout existing deployment repo.
 cd $HOME
