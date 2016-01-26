@@ -20,11 +20,11 @@ else
   echo "::Using commit ${BUILD_COMMIT}"
 fi
 
-bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $BUILD_COMMIT
+bash tmp/scripts/build.sh $PROFILE $BUILD_TEST $BUILD_COMMIT
 
 # Install Drush integration
 echo "::Installing Drush integration"
-cp $INSTALL_PROFILE/tmp/travis_scripts/$PROJECT.aliases.drushrc.php $HOME/.drush/$PROJECT.aliases.drushrc.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/${ACQUIA_PROJECT}.aliases.drushrc.php $HOME/.drush/${ACQUIA_PROJECT}.aliases.drushrc.php
 
 # Copy the built site over to the deploy folder.
 cp -R $BUILD_TEST $BUILD_DEPLOY
@@ -32,7 +32,13 @@ cp -R $BUILD_TEST $BUILD_DEPLOY
 # Copy local settings file for Travis env to the test folder.
 cp $INSTALL_PROFILE/tmp/travis_scripts/settings.local.php $BUILD_TEST/sites/default/settings.local.php
 
-echo  "::Installing $PROJECT"
+echo  "::Importing development database"
 cd $BUILD_TEST
-drush si $PROJECT --db-url=mysql://root:@localhost:3306/${PROJECT} --site-name="$PROJECT" --account-pass="admin" -y
-drush config-import sync --partial -y
+
+# Sync the database from the development environment.
+drush sql-sync -y @${ACQUIA_PROJECT}.dev default
+
+echo  "::Updating Drupal environment"
+drush -y updatedb
+drush -y config-import
+drush cache-rebuild
