@@ -16,7 +16,7 @@ echo "::Deploying"
 
 # Git config user/email
 git config --global user.email "travis@myplanet.com"
-git config --global user.name  "Travis CI - $PROFILE"
+git config --global user.name  "Travis CI - $ACQUIA_PROJECT"
 
 # Checkout existing deployment repo.
 cd $HOME
@@ -35,28 +35,29 @@ cd $DEPLOY_DEST
 # If tmp/hooks exists, then copy all files to a folder outside docroot.
 if [ -d $INSTALL_PROFILE/tmp/hooks ]; then
   echo "::Adding Acquia Cloud hooks."
+  rm -rf $DEPLOY_DEST/hooks
   cp -a $INSTALL_PROFILE/tmp/hooks $DEPLOY_DEST
 fi
 
 if [ -d $INSTALL_PROFILE/tmp/config ]; then
   echo "::Moving config sync dir outside docroot"
-  mv $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
+  rm -rf $DEPLOY_DEST/config
+  cp -a $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
+fi
+
+if [[ -d $DEPLOY_DEST/profiles/${PROJECT}/tmp ]]; then
+  echo "::Removing non-production files"
+  rm -rf $DEPLOY_DEST/profiles/${PROJECT}/tmp
 fi
 
 echo "::Adding new files."
-git add .
+git add --all .
 
 # Copy our pull request over.
 cd $INSTALL_PROFILE
 PULL_REQUEST_MESSAGE=$(git log -n 1 --pretty=format:%s $TRAVIS_COMMIT)
 cd $DEPLOY_DEST
-git commit -m "$PULL_REQUEST_MESSAGE"
+git commit -m "${PULL_REQUEST_MESSAGE}
+
+Commit ${TRAVIS_COMMIT}"
 git push origin $DEPLOY_BRANCH
-
-# Pause so that the build process can run.
-sleep 10
-
-# Exporting project custom configurations run updb etc.
-echo "::Importing config changes"
-drush @${PROJECT}.dev updb -y
-drush @${PROJECT}.dev config-import -y

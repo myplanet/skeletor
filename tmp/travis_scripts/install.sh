@@ -24,13 +24,14 @@ bash tmp/scripts/build.sh $PROFILE $BUILD_TEST $BUILD_COMMIT
 
 # Install Drush integration
 echo "::Installing Drush integration"
-cp $INSTALL_PROFILE/tmp/travis_scripts/${ACQUIA_PROJECT}.aliases.drushrc.php $HOME/.drush/${ACQUIA_PROJECT}.aliases.drushrc.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/${ACQUIA_PROJECT}.aliases.drushrc.php $HOME/.drush/${ACQUIA_PROJECT}.aliases.drushrc.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/drushrc.php $HOME/.drush/drushrc.php
 
 # Copy the built site over to the deploy folder.
 cp -R $BUILD_TEST $BUILD_DEPLOY
 
 # Copy local settings file for Travis env to the test folder.
-cp $INSTALL_PROFILE/tmp/travis_scripts/settings.local.php $BUILD_TEST/sites/default/settings.local.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/settings.local.php $BUILD_TEST/sites/default/settings.local.php
 
 echo  "::Importing development database"
 cd $BUILD_TEST
