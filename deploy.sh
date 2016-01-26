@@ -61,11 +61,3 @@ git commit -m "${PULL_REQUEST_MESSAGE}
 
 Commit ${TRAVIS_COMMIT}"
 git push origin $DEPLOY_BRANCH
-
-# Pause so that the build process can run.
-sleep 10
-
-# Exporting project custom configurations run updb etc.
-echo "::Importing config changes"
-drush @${ACQUIA_PROJECT}.dev updb -y
-drush @${ACQUIA_PROJECT}.dev config-import sync -y
