@@ -25,6 +25,7 @@ bash tmp/scripts/build.sh $PROFILE $BUILD_TEST $BUILD_COMMIT
 # Install Drush integration
 echo "::Installing Drush integration"
 cp $INSTALL_PROFILE/tmp/travis_scripts/assets/${ACQUIA_PROJECT}.aliases.drushrc.php $HOME/.drush/${ACQUIA_PROJECT}.aliases.drushrc.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/drushrc.php $HOME/.drush/drushrc.php
 
 # Copy the built site over to the deploy folder.
 cp -R $BUILD_TEST $BUILD_DEPLOY
