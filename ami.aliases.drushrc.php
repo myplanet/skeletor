@@ -6,15 +6,14 @@ if (!isset($drush_major_version)) {
 }
 
 // Site ami, environment dev
-// Site amitemp, environment dev
 $aliases['dev'] = array(
-  'root' => '/var/www/html/amitemp.dev/docroot',
-  'ac-site' => 'amitemp',
+  'root' => '/var/www/html/ami1.dev/docroot',
+  'ac-site' => 'ami1',
   'ac-env' => 'dev',
   'ac-realm' => 'devcloud',
-  'uri' => 'amitempca3yhd6i88.devcloud.acquia-sites.com',
-  'remote-host' => 'free-4583.devcloud.hosting.acquia.com',
-  'remote-user' => 'amitemp.dev',
+  'uri' => 'dev.ami.ca',
+  'remote-host' => 'srv-4939.devcloud.hosting.acquia.com',
+  'remote-user' => 'ami.dev',
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
