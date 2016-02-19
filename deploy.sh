@@ -16,7 +16,7 @@ echo "::Deploying"
 
 # Git config user/email
 git config --global user.email "travis@myplanet.com"
-git config --global user.name  "Travis CI - $PROFILE"
+git config --global user.name  "Travis CI - $ACQUIA_PROJECT"
 
 # Checkout existing deployment repo.
 cd $HOME
@@ -63,5 +63,5 @@ sleep 10
 
 # Exporting project custom configurations run updb etc.
 echo "::Importing config changes"
-drush @${PROJECT}.dev updb -y
-drush @${PROJECT}.dev config-import -y
+drush @${ACQUIA_PROJECT}.dev updb -y
+drush @${ACQUIA_PROJECT}.dev config-import -y
