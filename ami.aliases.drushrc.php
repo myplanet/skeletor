@@ -13,7 +13,7 @@ $aliases['dev'] = array(
   'ac-realm' => 'devcloud',
   'uri' => 'dev.ami.ca',
   'remote-host' => 'srv-4939.devcloud.hosting.acquia.com',
-  'remote-user' => 'ami.dev',
+  'remote-user' => 'ami1.dev',
   'path-aliases' => array(
     '%drush-script' => 'drush' . $drush_major_version,
   )
