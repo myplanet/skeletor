@@ -35,13 +35,13 @@ cd $DEPLOY_DEST
 # If tmp/hooks exists, then copy all files to a folder outside docroot.
 if [ -d $INSTALL_PROFILE/tmp/hooks ]; then
   echo "::Adding Acquia Cloud hooks."
-  rm -rf $DEPLOY_DEST/hooks
+  rm $DEPLOY_DEST/hooks
   cp -a $INSTALL_PROFILE/tmp/hooks $DEPLOY_DEST
 fi
 
 if [ -d $INSTALL_PROFILE/tmp/config ]; then
   echo "::Moving config sync dir outside docroot"
-  rm -rf $DEPLOY_DEST/config
+  rm $DEPLOY_DEST/config
   cp -a $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
 fi
 
@@ -62,9 +62,7 @@ git add --all .
 cd $INSTALL_PROFILE
 PULL_REQUEST_MESSAGE=$(git log -n 1 --pretty=format:%s $TRAVIS_COMMIT)
 cd $DEPLOY_DEST
-git commit -m "${PULL_REQUEST_MESSAGE}
-
-Commit ${TRAVIS_COMMIT}"
+git commit -m "$PULL_REQUEST_MESSAGE"
 git push origin $DEPLOY_BRANCH
 
 # Pause so that the build process can run.
