@@ -50,6 +50,11 @@ if [[ -d $DEPLOY_DEST/profiles/${PROJECT}/tmp ]]; then
   rm -rf $DEPLOY_DEST/profiles/${PROJECT}/tmp
 fi
 
+if [[ -d $DEPLOY_DEST/profiles/${PROJECT}/tmp ]]; then
+  echo "::Removing non-production files"
+  rm -rf $DEPLOY_DEST/profiles/${PROJECT}/tmp
+fi
+
 echo "::Adding new files."
 git add --all .
 
