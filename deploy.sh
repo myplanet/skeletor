@@ -66,4 +66,4 @@ sleep 10
 # Exporting project custom configurations run updb etc.
 echo "::Importing config changes"
 drush @${ACQUIA_PROJECT}.dev updb -y
-drush @${ACQUIA_PROJECT}.dev config-import -y
+drush @${ACQUIA_PROJECT}.dev config-import sync -y
