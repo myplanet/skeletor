@@ -35,13 +35,13 @@ cd $DEPLOY_DEST
 # If tmp/hooks exists, then copy all files to a folder outside docroot.
 if [ -d $INSTALL_PROFILE/tmp/hooks ]; then
   echo "::Adding Acquia Cloud hooks."
-  rm $DEPLOY_DEST/hooks
+  rm -rf $DEPLOY_DEST/hooks
   cp -a $INSTALL_PROFILE/tmp/hooks $DEPLOY_DEST
 fi
 
 if [ -d $INSTALL_PROFILE/tmp/config ]; then
   echo "::Moving config sync dir outside docroot"
-  rm $DEPLOY_DEST/config
+  rm -rf $DEPLOY_DEST/config
   cp -a $INSTALL_PROFILE/tmp/config $DEPLOY_DEST
 fi
 
