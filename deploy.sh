@@ -57,7 +57,9 @@ git add .
 cd $INSTALL_PROFILE
 PULL_REQUEST_MESSAGE=$(git log -n 1 --pretty=format:%s $TRAVIS_COMMIT)
 cd $DEPLOY_DEST
-git commit -m "$PULL_REQUEST_MESSAGE"
+git commit -m "${PULL_REQUEST_MESSAGE}
+
+Commit ${TRAVIS_COMMIT}"
 git push origin $DEPLOY_BRANCH
 
 # Pause so that the build process can run.
