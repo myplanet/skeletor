@@ -51,7 +51,7 @@ if [[ -d $DEPLOY_DEST/profiles/${PROJECT}/tmp ]]; then
 fi
 
 echo "::Adding new files."
-git add .
+git add --all .
 
 # Copy our pull request over.
 cd $INSTALL_PROFILE
