@@ -9,7 +9,7 @@ A skeleton Drupal install profile to set up an appropriate layout for Myplanet's
 ### 1. Requirements
 
 * PHP 5.5.9 or higher
-* Drush 8
+* Drush 8.0.0
 * Drupal Console 8.0.0+
 
 May be useful to get multiple versions of drush locally https://www.lullabot.com/articles/switching-drush-versions
@@ -18,10 +18,9 @@ May be useful to get multiple versions of drush locally https://www.lullabot.com
 
 From the install profile folder:
 
-`bash tmp/scripts/build.sh [ project ] [ path/to/your/profile.make.yml] [ path/to/build/docroot ] [ dev ]`
+`bash tmp/scripts/build.sh [ project ] [ path/to/build/docroot ] [ branch ]`
 
-[dev] - only for local development build. Avoid this parameter for ACQUIA or PANTHEON build process.
-
+[ branch ] - Specify a branch (or commit) to build. Avoid this parameter for a production build process.
 
 ## ACQUIA or PANTHEON build requirements
 
@@ -45,22 +44,22 @@ to package our own distribution for drupal.org in the future.
 Here's the additional suggested folder structure for the install profile:
 
     +-modules/
-    | +-contrib/  (gitignored - all contrib modules should go here via makefile)
-    | +-custom/   (custom modules for the site)
+    | +-contrib/        (gitignored - all contrib modules should go here via makefile)
+    | +-custom/         (custom modules for the site)
     +-themes/
-    | +-contrib/  (gitignored - any contrib themes should go here via makefile)
-    | +-custom/   (custom themes for the site)
-    +-tmp/        (for things that don't fit in standard install profile structure)
-    | +-conf/
-    | +-docs/     (project-specific docs)
+    | +-contrib/        (gitignored - any contrib themes should go here via makefile)
+    | +-custom/         (custom themes for the site)
+    +-tmp/              (for things that don't fit in standard install profile structure)
+    | +-docs/           (project-specific docs)
     | +-patches/
-    | +-scripts/  (any scripts related to project)
-    | +-snippets/ (settings.php and htaccess snippets)
+    | +-scripts/        (any scripts related to project)
+    | +-snippets/       (settings.php and htaccess snippets)
     | | +-htaccess/
     | | +-settings.php/
-    | +-tests/
+    | | +-robots.txt/
+    | +-travis_scripts/ (travis specific scripts)
 
-*The `tmp/` directory is intended to be removed before pushing to production.*
+* The `tmp/` directory is intended to be removed before pushing to production.*
 
 * If you'd like any code to be appended to `settings.php`, simply add a
 snippet as `tmp/snippets/settings.php/mysnippetname.settings.php`. These

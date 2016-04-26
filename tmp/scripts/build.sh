@@ -2,8 +2,11 @@
 
 # USAGE
 # Run this script as given from the root of your install profile
+# To build out a specific commit, use the full 40char commit hash as the revision.
+# To build a branch, use the branch as the revision.
+# To build a stable production environment, exclude it.
 #
-# $ bash build.sh [ project ] [ /fullpath/to/build/project ] [ build_commit ]
+# $ bash build.sh [ project ] [ /fullpath/to/build/project ] [ revision ]
 
 # Bail if non-zero exit code
 set -e
@@ -11,18 +14,29 @@ set -e
 # Set from args
 PROJECT="$1"
 BUILD_DEST="$2"
-BUILD_COMMIT="$3"
-MAKE_OPTS=" --prepare-install --force-complete --no-cache -vvv --yes"
+REVISION="$3"
+MAKE_OPTS=" --prepare-install --y"
+REVISION_PATTERN="([a-f0-9]{40}|[a-f0-9]{6,8})$"
 
 # Configure options for production or development build.
-if [[ -z "$BUILD_COMMIT" ]] || [[ "$BUILD_COMMIT" == 'false' ]]; then
+if [[ -z "$REVISION" ]] || [[ "$REVISION" == 'false' ]]; then
   echo "::Building production environment"
   MAKE_OPTS="--no-gitinfofile ${MAKE_OPTS}"
 else
   echo "::Building development environment"
   MAKE_OPTS="--working-copy ${MAKE_OPTS}"
-fi
+  # Replace the last line of the build.make.yml with the revision or branch we need.
+  # @todo fix this when --overrides is included in drush dev-master on packagist.
 
+  if [[ "$REVISION" =~ $REVISION_PATTERN ]]; then
+    echo "::Using commit ${REVISION}"
+    echo "      revision: \"${REVISION}\"" >> build.make.yml
+  else
+    echo "::Using branch ${REVISION}"
+    find "build.make.yml" -type f -exec sed -i '' -e '$ d' {} \;
+    echo "      branch: \"${REVISION}\"" >> build.make.yml
+  fi
+fi
 
 # Drush make the site structure
 echo "::Running drush make"
@@ -35,7 +49,7 @@ chmod 777 ${BUILD_DEST}/sites/default/settings.php
 chmod 777 ${BUILD_DEST}/sites/default/services.yml
 
 echo "::Appending settings.php snippets"
-for f in ${BUILD_DEST}/profiles/${PROJECT}/tmp/snippets/*.settings.php
+for f in ${BUILD_DEST}/profiles/${PROJECT}/tmp/snippets/settings.php/*.settings.php
 do
   # Concatenate newline and snippet, then append to settings.php
   echo "" | cat - $f | tee -a ${BUILD_DEST}/sites/default/settings.php > /dev/null
@@ -77,13 +91,27 @@ if [ -d tmp/copy_to_sites_default ]; then
 fi
 
 # Compile CSS
-echo "::Compiling stylesheets"
+echo "::Finding custom themes"
 for THEME in ${BUILD_DEST}/profiles/${PROJECT}/themes/custom/*/;
 do
-  if [[ -d $THEME ]]; then
+  if [ -d "$THEME" ]; then
     cd $THEME
-    if [ -a config.rb ]; then
+    if [ -f config.rb ]; then
+      DIR_NAME=${PWD##*/}
+      echo "::Compiling stylesheets for '$DIR_NAME' theme"
       compass compile
     fi
   fi
 done
+
+if [[ -z "$REVISION" ]] || [[ "$REVISION" == 'false' ]]; then
+  echo "::Removing non-production files"
+  cd $BUILD_DEST
+  rm profiles/${PROJECT}/.gitignore
+  rm profiles/${PROJECT}/.travis.yml
+  rm profiles/${PROJECT}/README.md
+  rm profiles/${PROJECT}/*.make.yml
+  rm README.txt
+  rm LICENSE.txt
+  rm example.gitignore
+fi;

@@ -11,32 +11,35 @@ gem install compass --version "=1.0.3"
 
 # Run the make script.
 echo "::Running build"
-bash tmp/scripts/build.sh $PROJECT $BUILD_TEST $TRAVIS_PULL_REQUEST
+
+# Pass a commit if we're building a pull-request
+if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
+  BUILD_COMMIT=${TRAVIS_PULL_REQUEST}
+else
+  BUILD_COMMIT=$(git rev-list HEAD --max-count=1 --skip=1)
+  echo "::Using commit ${BUILD_COMMIT}"
+fi
+
+bash tmp/scripts/build.sh $PROFILE $BUILD_TEST $BUILD_COMMIT
 
 # Install Drush integration
 echo "::Installing Drush integration"
-cp $INSTALL_PROFILE/tmp/travis_scripts/$PROJECT.aliases.drushrc.php $HOME/.drush/$PROJECT.aliases.drushrc.php
-
-# Remove files that we don't want on prod.
-cd ${BUILD_TEST}
-rm -rf profiles/${PROJECT}/tmp
-rm profiles/${PROJECT}/.gitignore
-rm profiles/${PROJECT}/.travis.yml
-rm profiles/${PROJECT}/README.md
-rm profiles/${PROJECT}/*.make.yml
-rm README.txt
-rm LICENSE.txt
-rm example.gitignore
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/${ACQUIA_PROJECT}.aliases.drushrc.php $HOME/.drush/${ACQUIA_PROJECT}.aliases.drushrc.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/drushrc.php $HOME/.drush/drushrc.php
 
 # Copy the built site over to the deploy folder.
-mkdir "$BUILD_DEPLOY"
-cd $BUILD_TEST
-shopt -s dotglob
-cp -R * $BUILD_DEPLOY
+cp -R $BUILD_TEST $BUILD_DEPLOY
 
 # Copy local settings file for Travis env to the test folder.
-cp $INSTALL_PROFILE/tmp/travis_scripts/settings.local.php $BUILD_TEST/sites/default/settings.local.php
+cp $INSTALL_PROFILE/tmp/travis_scripts/assets/settings.local.php $BUILD_TEST/sites/default/settings.local.php
 
-echo  ":: Installing $PROJECT"
 cd $BUILD_TEST
-drush si $PROJECT --db-url=mysql://root:@localhost:3306/${PROJECT} --site-name="$PROJECT" --account-pass="admin" -y
+# Sync or install the database depending on your needs.
+echo  "::Installing development database"
+drush si skeletor -y
+
+#echo  "::Importing development database"
+#drush sql-sync @${ACQUIA_PROJECT}.dev default -y
+#drush -y updatedb
+#drush -y config-import
+#drush cache-rebuild
