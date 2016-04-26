@@ -29,7 +29,6 @@ env:
     - DEPLOY_REPO=skeletor1@svn-4934.devcloud.hosting.acquia.com:skeletor.git
     - DEPLOY_DEST=$HOME/skeletor
     - DEPLOY_BRANCH=develop
-    - secure: EgvbnEcw75jRPLzoazF5jOALeikCouXP022LE6KRgRS4HDI8S+eA2OHI5PvWSa7F4oOMOOWoqCJFwMDJL+EUMn85doQgKfhQAYWZ/UGKglehvHyo3k1L2AosQyVvalMsENnsJynaJmOwzRPktj4C9W20dXB6jzemjICOAA4VbVFVSQ7WLn5kQbPASUDsN9yGDAHax6p0x2YKCom/rf10A04lmxPF0qS7N30/vS/BTDlbO4OVzDG9lmaJ2AgbALqjXnElV0vFhLGT9Kn2AJ2LBAX2v+w6gPBhGjDiEr/KU3ubmAvDhCCX2kNNiybLNmhXeRqK//JTOuwpgYB1GwgiB8EahNZizZ3ehZcoT6VvWG8Fw/C1CMMBVDnW57BcvxygrB1ZydBRCqpHI4As6alP6ld9kvpdcqMbVegz6z1h77qtUuaTdR6xClqFPWn/KRfu4I73JkexwPFxsNOd/016R7QMKODspnOuG21QW/zje2o88w/Iow52sxf6dd9B4yNBDTsWsgn9RUf7d7gD+T7Q0O3j+3+xlTGs4JwkMK/4KZcFuZp2pcJW4I9Mj2LcXt/T7I9XrafAISev7VpnaVRBa1cv0c9BYRF/PatHOMg1tdozdR4+xtjHr0CkTKD/KY6ZoqGbb+gFa/ooPgOgQYPNAy99r/zpFlHrSqsqrqSWFkg=
 services:
   - memcached
   - mysql

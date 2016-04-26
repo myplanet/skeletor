@@ -15,7 +15,7 @@ set -e
 PROJECT="$1"
 BUILD_DEST="$2"
 REVISION="$3"
-MAKE_OPTS=" --prepare-install --force-complete --no-cache -vvv --yes"
+MAKE_OPTS=" --prepare-install --force-complete --no-cache --yes"
 
 # Configure options for production or development build.
 if [[ -z "$REVISION" ]] || [[ "$REVISION" == 'false' ]]; then
