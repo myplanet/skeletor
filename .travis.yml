@@ -47,7 +47,7 @@ before_install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - phpenv config-rm xdebug.ini
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - composer global require drush/drush:8.0.*
+  - composer global require drush/drush:8.1.*
   - mysql -e 'CREATE DATABASE IF NOT EXISTS $ACQUIA_PROJECT;'
   - cd $INSTALL_PROFILE
 install: $BUILD_SCRIPTS/install.sh
