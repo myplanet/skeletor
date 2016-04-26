@@ -1,79 +1,66 @@
 language: php
 sudo: false
 php:
-  - 5.5.9
-
-cache: 
+  - 5.6
+cache:
   apt: true
   directories:
-  - $HOME/.rvm
-  - $HOME/.buildcache
-
+    - $HOME/.rvm
+    - $HOME/.buildcache
+    - $HOME/.composer
+    - $HOME/.drush/cache
 branches:
   only:
     - 8.x
 
 env:
   global:
-  - PROJECT=skeletor
-  - INSTALL_PROFILE=$HOME/build/$TRAVIS_REPO_SLUG
-  - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/tmp/travis_scripts
-  - BUILD_CACHE=$HOME/.buildcache
-  - BUILD_DB=$TRAVIS_REPO_SLUG.sql
-  - BUILD_TEST=$HOME/build/skeletor
-  - BUILD_DEPLOY=$HOME/build/skeletor_deploy
-  # Add deploy destination repo
-  - DEPLOY_REPO=project@hosting.com:proect.git
-  - DEPLOY_DEST=$HOME/skeletor
-
+    # The Acquia site name, as used in drush aliases.
+    - ACQUIA_PROJECT=skeletor
+    # The Drupal profile name.
+    - PROFILE=skeletor
+    - INSTALL_PROFILE=$HOME/build/$TRAVIS_REPO_SLUG
+    - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/tmp/travis_scripts
+    - BUILD_CACHE=$HOME/.buildcache
+    - BUILD_DB=$TRAVIS_REPO_SLUG.sql
+    - BUILD_TEST=$HOME/build/skeletor
+    - BUILD_DEPLOY=$HOME/build/skeletor_deploy
+    # The Acquia git repository to deploy built commits to.
+    - DEPLOY_REPO=skeletor1@svn-4934.devcloud.hosting.acquia.com:skeletor.git
+    - DEPLOY_DEST=$HOME/skeletor
+    - DEPLOY_BRANCH=develop
+    - secure: EgvbnEcw75jRPLzoazF5jOALeikCouXP022LE6KRgRS4HDI8S+eA2OHI5PvWSa7F4oOMOOWoqCJFwMDJL+EUMn85doQgKfhQAYWZ/UGKglehvHyo3k1L2AosQyVvalMsENnsJynaJmOwzRPktj4C9W20dXB6jzemjICOAA4VbVFVSQ7WLn5kQbPASUDsN9yGDAHax6p0x2YKCom/rf10A04lmxPF0qS7N30/vS/BTDlbO4OVzDG9lmaJ2AgbALqjXnElV0vFhLGT9Kn2AJ2LBAX2v+w6gPBhGjDiEr/KU3ubmAvDhCCX2kNNiybLNmhXeRqK//JTOuwpgYB1GwgiB8EahNZizZ3ehZcoT6VvWG8Fw/C1CMMBVDnW57BcvxygrB1ZydBRCqpHI4As6alP6ld9kvpdcqMbVegz6z1h77qtUuaTdR6xClqFPWn/KRfu4I73JkexwPFxsNOd/016R7QMKODspnOuG21QW/zje2o88w/Iow52sxf6dd9B4yNBDTsWsgn9RUf7d7gD+T7Q0O3j+3+xlTGs4JwkMK/4KZcFuZp2pcJW4I9Mj2LcXt/T7I9XrafAISev7VpnaVRBa1cv0c9BYRF/PatHOMg1tdozdR4+xtjHr0CkTKD/KY6ZoqGbb+gFa/ooPgOgQYPNAy99r/zpFlHrSqsqrqSWFkg=
 services:
   - memcached
+  - mysql
 addons:
-  apt:
-    packages:
-    - apache2
-    - libapache2-mod-fastcgi
-    - openssl
-    - php5
-    - php5-fpm
-    - php5-cli
-    - php5-curl
-    - php5-mysql
-    - mysql-common
-    - mysql-client
-    - mysql-server
   ssh_known_hosts:
-  # Add git and drush hosts for remote deploy
+    - srv-4939.devcloud.hosting.acquia.com
+    - svn-4934.devcloud.hosting.acquia.com
+    - 50.19.9.176
   hosts:
-  - default
-  - skeletor.local
-mysql:
-  database: skeletor
-  username: root
-  encoding: utf8
-
+    - default
+    - skeletor.local
 before_install:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- export PATH="$HOME/.composer/vendor/bin:$PATH"
-- composer global require drush/drush
-
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - phpenv config-rm xdebug.ini
+  - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - composer global require drush/drush:8.0.*
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS $ACQUIA_PROJECT;'
+  - cd $INSTALL_PROFILE
 install: $BUILD_SCRIPTS/install.sh
-
 before_script:
-- cd $BUILD_TEST
-
+  - cd $BUILD_TEST
 script: $BUILD_SCRIPTS/test.sh
-
-#after_success: $INSTALL_PROFILE/tmp/travis_scripts/deploy.sh
-
+after_success: $INSTALL_PROFILE/tmp/travis_scripts/deploy.sh
 after_failure:
-- cat /var/log/apache2/error.log
-- cat /var/log/apache2/access.log
-- cat $HOME/php/error.log
-- php -i | grep memory
-- grep -i memory_limit ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-
+  - cat /var/log/apache2/error.log
+  - cat /var/log/apache2/access.log
+  - cat $HOME/php/error.log
+  - php -i | grep memory
+  - grep -i memory_limit ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 notifications:
   email:
     recipients:
