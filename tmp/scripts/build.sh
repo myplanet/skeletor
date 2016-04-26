@@ -2,8 +2,11 @@
 
 # USAGE
 # Run this script as given from the root of your install profile
+# To build out a specific commit, use the full 40char commit hash as the revision.
+# To build a branch, use the branch as the revision.
+# To build a stable production environment, exclude it.
 #
-# $ bash build.sh [ project ] [ /fullpath/to/build/project ] [ build_commit ]
+# $ bash build.sh [ project ] [ /fullpath/to/build/project ] [ revision ]
 
 # Bail if non-zero exit code
 set -e
@@ -11,18 +14,29 @@ set -e
 # Set from args
 PROJECT="$1"
 BUILD_DEST="$2"
-BUILD_COMMIT="$3"
+REVISION="$3"
 MAKE_OPTS=" --prepare-install --force-complete --no-cache -vvv --yes"
 
 # Configure options for production or development build.
-if [[ -z "$BUILD_COMMIT" ]] || [[ "$BUILD_COMMIT" == 'false' ]]; then
+if [[ -z "$REVISION" ]] || [[ "$REVISION" == 'false' ]]; then
   echo "::Building production environment"
   MAKE_OPTS="--no-gitinfofile ${MAKE_OPTS}"
 else
   echo "::Building development environment"
   MAKE_OPTS="--working-copy ${MAKE_OPTS}"
-fi
+  # Replace the last line of the build.make.yml with the revision or branch we need.
+  # @todo fix this when --overrides is included in drush dev-master on packagist.
+  if [[ "$REVISION" =~ ([a-f0-9]{40}|[a-f0-9]{6,8})$ ]]; then
+    echo "::Using commit ${REVISION}"
+    REV_TYPE="revision"
+  else
+    echo "::Using branch ${REVISION}"
+    REV_TYPE="branch"
+  fi
+  sed -i '' -e '$ d' build.make.yml
+  echo "      ${REV_TYPE}: \"${REVISION}\"" >> build.make.yml
 
+fi
 
 # Drush make the site structure
 echo "::Running drush make"
