@@ -8,9 +8,9 @@ A skeleton Drupal install profile to set up an appropriate layout for Myplanet's
 
 ### 1. Requirements
 
-* PHP 5.5.9 or higher
-* Drush 8.0.0
-* Drupal Console 8.0.0+
+* PHP 5.6 or higher
+* Drush 8.0.x
+* Drupal Console 8.1.x
 
 May be useful to get multiple versions of drush locally https://www.lullabot.com/articles/switching-drush-versions
 
@@ -49,17 +49,19 @@ Here's the additional suggested folder structure for the install profile:
     +-themes/
     | +-contrib/        (gitignored - any contrib themes should go here via makefile)
     | +-custom/         (custom themes for the site)
-    +-tmp/              (for things that don't fit in standard install profile structure)
-    | +-docs/           (project-specific docs)
+    +-tmp/              (files used for development. removed during production builds)
+    | +-config/         
+    | | +-sync/         (config used to sync across environments)
+    | | +-translations/ (translation files)
     | +-patches/
     | +-scripts/        (any scripts related to project)
-    | +-snippets/       (settings.php and htaccess snippets)
+    | +-snippets/       (text snippets prepended/appended to files during the deploy process)
     | | +-htaccess/
     | | +-settings.php/
     | | +-robots.txt/
     | +-travis_scripts/ (travis specific scripts)
 
-* The `tmp/` directory is intended to be removed before pushing to production.*
+* The `tmp/` directory is intended to be removed before pushing to production.
 
 * If you'd like any code to be appended to `settings.php`, simply add a
 snippet as `tmp/snippets/settings.php/mysnippetname.settings.php`. These
