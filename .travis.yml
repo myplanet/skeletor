@@ -61,7 +61,7 @@ before_install:
 install: $BUILD_SCRIPTS/install.sh
 
 before_script:
-- cd $BUILD_TEST/sites/$PROJECT
+- cd $BUILD_TEST
 
 script: $BUILD_SCRIPTS/test.sh
 
