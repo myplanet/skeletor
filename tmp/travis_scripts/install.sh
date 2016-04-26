@@ -33,13 +33,13 @@ cp -R $BUILD_TEST $BUILD_DEPLOY
 # Copy local settings file for Travis env to the test folder.
 cp $INSTALL_PROFILE/tmp/travis_scripts/assets/settings.local.php $BUILD_TEST/sites/default/settings.local.php
 
-echo  "::Importing development database"
 cd $BUILD_TEST
+# Sync or install the database depending on your needs.
+echo  "::Installing development database"
+drush si skeletor -y
 
-# Sync the database from the development environment.
-drush sql-sync -y @${ACQUIA_PROJECT}.dev default
-
-echo  "::Updating Drupal environment"
-drush -y updatedb
-drush -y config-import
-drush cache-rebuild
+#echo  "::Importing development database"
+#drush sql-sync @${ACQUIA_PROJECT}.dev default -y
+#drush -y updatedb
+#drush -y config-import
+#drush cache-rebuild
