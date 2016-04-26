@@ -33,6 +33,7 @@ else
     echo "::Using branch ${REVISION}"
     REV_TYPE="branch"
   fi
+  pwd
   sed -i '' -e '$ d' build.make.yml
   echo "      ${REV_TYPE}: \"${REVISION}\"" >> build.make.yml
 
