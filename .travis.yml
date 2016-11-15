@@ -46,7 +46,7 @@ before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer global require drush/drush:8.0.*
   - mysql -e "CREATE DATABASE IF NOT EXISTS $PROFILE;"
-  - ls -la $BUILD_SCRIPTS/install.sh
+  - 'ls -la $BUILD_SCRIPTS/install.sh'
   
 install: $BUILD_SCRIPTS/install.sh
 script: $BUILD_SCRIPTS/test.sh
