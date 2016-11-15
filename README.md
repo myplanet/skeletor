@@ -27,22 +27,29 @@ May be useful to get [multiple versions of drush locally](https://www.lullabot.c
 
 ### Building drupal
 
-From the install profile folder:
+From the project root:
 
-`bash tmp/scripts/build.sh [ project ] [ path/to/build/docroot ] [ branch ]`
+`bash scripts/travis/build.sh [ project ]`
 
 * `[ project ]` - The name of the installation profile that you'll be building. To build default, use drupal-skeletor.
-* `[ path/to/build/docroot ]` - Specify the location of the full docroot for the drupal build.
-* `[ branch ]` - Specify a branch (or commit) to build. Avoid this parameter for a production build process.
 
 ## 2. Layout
 
-We will be attempting to follow [the Drupal 8 installation profile guidelines laid out for 
-packaging distributions on drupal.org](https://www.drupal.org/node/2210443).
+We will be attempting to follow [guidelines for a Drupal 8 composer project](https://github.com/drupal-composer/drupal-project).
 
-The rationale being that when we layout our projects according to these
-guidelines, we don't need to document as much, and we will also know how
-to package our own distribution for drupal.org in the future.
+From the project root, we will be following this structure:
+
+    +-config/         (configuration that will be version controlled)
+    +-docroot/        (configuration that will be version controlled)
+    | +-core/         (drupal 8 core)
+    | +-sites/        (sites directory with required settings.php et al.)
+    | +-profiles/     
+    | | +-skeletor/   (full installation profile including modules for Skeletor project)
+    +-drush/          (commands, configuration and site aliases for Drush)
+    +-hooks/          (Acquia cloud hooks)
+    +-scripts/        
+    | +-composer/     (scripts used during the composer build process)
+    | +-travis/       (scripts used during the travis build process)
 
 Here's the additional suggested folder structure for the install profile:
 
@@ -52,17 +59,6 @@ Here's the additional suggested folder structure for the install profile:
     +-themes/
     | +-contrib/        (gitignored - any contrib themes should go here via makefile)
     | +-custom/         (custom themes for the site)
-    +-tmp/              (files used for development. removed during prod builds)
-    | +-config/         
-    | | +-sync/         (config used to sync across environments)
-    | | +-translations/ (translation files)
-    | +-patches/
-    | +-scripts/        (any scripts related to project)
-    | +-snippets/       (text snippets attached to files during the deploy process)
-    | | +-htaccess/
-    | | +-settings.php/
-    | | +-robots.txt/
-    | +-travis_scripts/ (travis specific scripts)
 
 * The `tmp/` directory is intended to be removed before pushing to production.
 
@@ -87,7 +83,3 @@ configuration management in our wiki](https://github.com/myplanetdigital/drupal-
 Drupal 8 supports [trusted host patterns](https://www.drupal.org/node/2410395), where you can (and should) 
 specify a set of regular expressions that the domains on incoming requests must match. 
 It is important to setup them before deploying to ACQUIA or PANTHEON environments.
-
-Trusted host settings location: `tmp/snippets/settings.php/*-trusted-hosts.settings.php` 
-
-

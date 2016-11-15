@@ -19,12 +19,10 @@ env:
     - ACQUIA_PROJECT=skeletor
     # The Drupal profile name.
     - PROFILE=skeletor
-    - INSTALL_PROFILE=$HOME/build/$TRAVIS_REPO_SLUG
-    - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/tmp/travis_scripts
+    - PROJECT_ROOT=$HOME/build/$TRAVIS_REPO_SLUG
+    - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/scripts/travis
     - BUILD_CACHE=$HOME/.buildcache
     - BUILD_DB=$TRAVIS_REPO_SLUG.sql
-    - BUILD_TEST=$HOME/build/skeletor
-    - BUILD_DEPLOY=$HOME/build/skeletor_deploy
     # The Acquia git repository to deploy built commits to.
     - DEPLOY_REPO=skeletor1@svn-4934.devcloud.hosting.acquia.com:skeletor.git
     - DEPLOY_DEST=$HOME/skeletor
@@ -48,12 +46,9 @@ before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer global require drush/drush:8.0.*
   - mysql -e "CREATE DATABASE IF NOT EXISTS $PROFILE;"
-  - cd $INSTALL_PROFILE
 install: $BUILD_SCRIPTS/install.sh
-before_script:
-  - cd $BUILD_TEST
 script: $BUILD_SCRIPTS/test.sh
-after_success: $INSTALL_PROFILE/tmp/travis_scripts/deploy.sh
+after_success: $BUILD_SCRIPTS/deploy.sh
 after_failure:
   - cat /var/log/apache2/error.log
   - cat /var/log/apache2/access.log
