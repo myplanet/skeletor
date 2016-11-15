@@ -17,7 +17,7 @@ MAKE_OPTS=""
 # Configure options for production or development build.
 if [[ -n "$PRODUCTION" ]]; then
   echo "::Building production environment"
-  MAKE_OPTS=" --prefer-dist ${MAKE_OPTS}"
+  MAKE_OPTS=" --prefer-dist --no-dev ${MAKE_OPTS}"
 fi
 
 # Drush make the site structure
