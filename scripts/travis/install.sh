@@ -32,6 +32,7 @@ echo  "::Updating Drupal environment"
 drush -y updatedb
 
 echo  "::Import configs if they exist"
+drush core-status
 export DIR=../config/sync
 if ls ${DIR}/*.yml &>/dev/null
 then
