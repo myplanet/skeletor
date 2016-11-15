@@ -23,16 +23,16 @@ bash $PROJECT_ROOT/scripts/build.sh $PROFILE $BUILD_ENV
 cp scripts/travis/assets/settings.local.php docroot/sites/default/settings.local.php
 
 echo  "::Importing development database"
+drush core-status
 cd ${PROJECT_ROOT}/docroot
 
 # Install profile to dev DB.
-drush si $PROFILE -y
+drush --debug si $PROFILE -y
 
 echo  "::Updating Drupal environment"
 drush -y updatedb
 
 echo  "::Import configs if they exist"
-drush core-status
 export DIR=../config/sync
 if ls ${DIR}/*.yml &>/dev/null
 then
