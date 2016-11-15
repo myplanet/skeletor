@@ -25,9 +25,8 @@ cp scripts/travis/assets/settings.local.php docroot/sites/default/settings.local
 echo  "::Importing development database"
 cd ${PROJECT_ROOT}/docroot
 
-# Sync the database from the development environment.
-drush sql-sync -y @${ACQUIA_PROJECT}.dev default
-drush -y rsync @${ACQUIA_PROJECT}.dev:%files default:%files/
+# Install profile.
+drush si $PROFILE -y
 
 echo  "::Updating Drupal environment"
 drush -y updatedb
