@@ -30,5 +30,13 @@ drush si $PROFILE -y
 
 echo  "::Updating Drupal environment"
 drush -y updatedb
-drush -y config-import
+
+echo  "::Import configs if they exist"
+export DIR=/config/sync
+if ls ${DIR}/*.yml &>/dev/null
+then
+  drush -y config-import
+else
+    echo "Config sync directory is empty."
+fi
 drush cache-rebuild
