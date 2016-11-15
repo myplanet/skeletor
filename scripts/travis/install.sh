@@ -25,9 +25,6 @@ cp scripts/travis/assets/settings.local.php docroot/sites/default/settings.local
 echo  "::Importing development database"
 cd ${PROJECT_ROOT}/docroot
 
-# Install profile.
-drush si $PROFILE -y
-
 echo  "::Updating Drupal environment"
 drush -y updatedb
 drush -y config-import
