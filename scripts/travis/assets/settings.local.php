@@ -4,7 +4,7 @@
   */
 $settings['hash_salt'] = 'put-here-skeletor-hash-salt';
 $databases['default']['default'] = array (
-  'database' => 'skeletor-db',
+  'database' => 'skeletor',
   'username' => 'root',
   'password' => '',
   'prefix' => '',
