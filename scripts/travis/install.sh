@@ -25,19 +25,23 @@ fi
 
 bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
 
-# Copy local settings file for Travis env to the test folder.
-cp scripts/travis/assets/settings.local.php docroot/sites/default/settings.local.php
+# Copy local settings file for Travis env to the site folder.
+cp $PROJECT_ROOT/scripts/travis/assets/settings.local.php $PROJECT_ROOT/docroot/sites/default/settings.local.php
 
-echo  "::Importing development database"
-cd ${PROJECT_ROOT}/docroot
-drush core-status
+if [[ ls ${PROJECT_ROOT}/docroot/sites/default/settings.local.php &>/dev/null ]]; then
+  echo  "::Importing development database"
+  cd ${PROJECT_ROOT}/docroot
+  drush core-status
 
-# Install profile to dev DB.
-echo  "::Install profile ${PROFILE}"
-drush --debug si $PROFILE -y
+  # Install profile to dev DB.
+  echo  "::Install profile ${PROFILE}"
+  drush --debug si $PROFILE -y
 
-echo  "::Updating DB"
-drush -y updatedb
+  echo  "::Updating DB"
+  drush -y updatedb
+else
+    echo "File settings.local.php was not copied."
+fi
 
 echo  "::Import configs if they exist"
 export DIR=../config/sync
