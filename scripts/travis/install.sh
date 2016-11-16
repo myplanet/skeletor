@@ -38,7 +38,7 @@ if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
 
   # Install profile to dev DB.
   echo  "::Install profile ${PROFILE}"
-  drush --debug si $PROFILE -y
+  drush --debug si $PROFILE --db-url=mysql://root:root@127.0.0.1:3306/skeletor -y
 
   echo  "::Updating DB"
   drush -y updatedb
