@@ -26,14 +26,10 @@ fi
 bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
 
 # Copy local settings file for Travis env to the site folder.
-chmod 777 $PROJECT_ROOT/docroot
-ls -la $PROJECT_ROOT
-ls -la $PROJECT_ROOT/docroot
-ls -la $PROJECT_ROOT/docroot/sites
-ls -la $PROJECT_ROOT/docroot/sites/default
-cp $PROJECT_ROOT/scripts/travis/assets/settings.local.php $PROJECT_ROOT/docroot/sites/default/settings.local.php
-ls -la $PROJECT_ROOT/docroot/sites/default/settings.local.php
-chmod 755 $PROJECT_ROOT/docroot
+echo  "::Copy local settings file to the site folder"
+chmod 777 ${PROJECT_ROOT}/docroot
+cp ${PROJECT_ROOT}/scripts/travis/assets/settings.local.php ${PROJECT_ROOT}/docroot/sites/default/settings.local.php
+chmod 755 ${PROJECT_ROOT}/docroot
 
 if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
   echo  "::Importing development database"
@@ -47,7 +43,7 @@ if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
   echo  "::Updating DB"
   drush -y updatedb
 else
-    echo "File settings.local.php was not copied."
+  echo "File settings.local.php was not copied."
 fi
 
 echo  "::Import configs if they exist"
