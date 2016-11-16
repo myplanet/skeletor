@@ -26,7 +26,7 @@ fi
 bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
 
 # Copy local settings file for Travis env to the test folder.
-cp /scripts/travis/assets/settings.local.php /docroot/sites/default/settings.local.php
+cp scripts/travis/assets/settings.local.php docroot/sites/default/settings.local.php
 
 echo  "::Importing development database"
 cd ${PROJECT_ROOT}/docroot
