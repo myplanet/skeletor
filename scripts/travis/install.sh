@@ -26,7 +26,7 @@ fi
 bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
 
 # Copy local settings file for Travis env to the test folder.
-cp ${PROJECT_ROOT}/scripts/travis/assets/settings.local.php ${PROJECT_ROOT}/docroot/sites/default/settings.local.php
+cp /scripts/travis/assets/settings.local.php /docroot/sites/default/settings.local.php
 
 echo  "::Importing development database"
 cd ${PROJECT_ROOT}/docroot
@@ -34,7 +34,7 @@ drush core-status
 
 # Install profile to dev DB.
 echo  "::Install profile ${PROFILE}"
-drush --debug si $PROFILE --root=${PROJECT_ROOT}/docroot -y
+drush --debug si $PROFILE -y
 
 echo  "::Updating DB"
 drush -y updatedb
