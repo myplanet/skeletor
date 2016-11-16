@@ -34,7 +34,7 @@ drush core-status
 
 # Install profile to dev DB.
 echo  "::Install profile ${PROFILE}"
-drush --debug si $PROFILE -y
+drush --debug si $PROFILE --root=${PROJECT_ROOT}/docroot -y
 
 echo  "::Updating DB"
 drush -y updatedb
