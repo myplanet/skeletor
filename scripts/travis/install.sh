@@ -31,7 +31,6 @@ ls -la $PROJECT_ROOT
 ls -la $PROJECT_ROOT/docroot
 ls -la $PROJECT_ROOT/docroot/sites
 ls -la $PROJECT_ROOT/docroot/sites/default
-ls -la $PROJECT_ROOT/docroot/sites/default/settings.local.php
 cp $PROJECT_ROOT/scripts/travis/assets/settings.local.php $PROJECT_ROOT/docroot/sites/default/settings.local.php
 chmod 755 $PROJECT_ROOT/docroot/sites/default
 
