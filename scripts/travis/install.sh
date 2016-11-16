@@ -11,20 +11,26 @@ gem install compass --version "=1.0.3"
 
 # Run the make script.
 echo "::Running build"
-BUILD_ENV="";
-#if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
+
+# Pass a commit if we're building a pull-request
+if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
+  BUILD_COMMIT=${TRAVIS_PULL_REQUEST}
   echo "::Using production settings."
   BUILD_ENV="prod";
-#fi
+else
+  BUILD_COMMIT=$(git rev-list HEAD --max-count=1 --skip=1)
+  echo "::Using commit ${BUILD_COMMIT}"
+  BUILD_ENV="";
+fi
 
-bash $PROJECT_ROOT/scripts/build.sh $PROFILE $BUILD_ENV
+bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
 
 # Copy local settings file for Travis env to the test folder.
-cp scripts/travis/assets/settings.local.php docroot/sites/default/settings.local.php
+cp ${PROJECT_ROOT}/scripts/travis/assets/settings.local.php ${PROJECT_ROOT}/docroot/sites/default/settings.local.php
 
 echo  "::Importing development database"
-drush core-status
 cd ${PROJECT_ROOT}/docroot
+drush core-status
 
 # Install profile to dev DB.
 drush --debug si $PROFILE -y
@@ -34,8 +40,7 @@ drush -y updatedb
 
 echo  "::Import configs if they exist"
 export DIR=../config/sync
-if ls ${DIR}/*.yml &>/dev/null
-then
+if [[ ls ${DIR}/*.yml &>/dev/null ]]; then
   drush -y config-import
 else
     echo "Config sync directory is empty."
