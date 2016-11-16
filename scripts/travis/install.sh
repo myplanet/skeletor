@@ -28,7 +28,7 @@ bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
 # Copy local settings file for Travis env to the site folder.
 cp $PROJECT_ROOT/scripts/travis/assets/settings.local.php $PROJECT_ROOT/docroot/sites/default/settings.local.php
 
-if [[ ls ${PROJECT_ROOT}/docroot/sites/default/settings.local.php &>/dev/null ]]; then
+if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
   echo  "::Importing development database"
   cd ${PROJECT_ROOT}/docroot
   drush core-status
