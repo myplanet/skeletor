@@ -11,12 +11,12 @@ set -e
 
 # Set from args
 PROJECT="$1"
-PRODUCTION="$2"
+ENVIRONMENT="$2"
 MAKE_OPTS=""
 
 # Configure options for production or development build.
-if [[ -n "$PRODUCTION" ]]; then
-  echo "::Building production environment"
+if [[ -n "$ENVIRONMENT" ]]; then
+  echo "::Building environment: ${ENVIRONMENT}"
   MAKE_OPTS=" --prefer-dist --no-dev ${MAKE_OPTS}"
 fi
 
@@ -25,22 +25,22 @@ echo "::Running composer install"
 composer install $MAKE_OPTS
 composer drupal-scaffold
 
-if [[ -n "$PRODUCTION" ]]; then
+if [[ -n "$ENVIRONMENT" ]]; then
   # Overwrite the dev .gitignore with our acquia specific one.
   echo "::Placing prod gitignore"
-  mv $PROJECT_ROOT/scripts/travis/assets/prod.gitignore .gitignore
+  mv ${PROJECT_ROOT}/scripts/travis/assets/prod.gitignore .gitignore
 
   # Remove any git repos contained in contrib folders
-  rm -rf docroot/modules/contrib/*/.git
-  rm -rf docroot/themes/contrib/*/.git
-  rm -rf docroot/profiles/contrib/*/.git
-  rm -rf docroot/profiles/${PROJECT}/modules/contrib/*/.git
-  rm -rf docroot/profiles/${PROJECT}/libraries/contrib/*/.git
+  rm -rf ${PROJECT_ROOT}/docroot/modules/contrib/*/.git
+  rm -rf ${PROJECT_ROOT}/docroot/themes/contrib/*/.git
+  rm -rf ${PROJECT_ROOT}/docroot/profiles/contrib/*/.git
+  rm -rf ${PROJECT_ROOT}/docroot/profiles/${PROJECT}/modules/contrib/*/.git
+  rm -rf ${PROJECT_ROOT}/docroot/profiles/${PROJECT}/libraries/contrib/*/.git
 fi
 
 # Compile CSS
 echo "::Finding custom themes"
-for THEME in docroot/profiles/${PROJECT}/themes/custom/*/;
+for THEME in ${PROJECT_ROOT}/docroot/profiles/${PROJECT}/themes/custom/*/;
 do
   if [ -d "$THEME" ]; then
     cd $THEME

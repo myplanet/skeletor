@@ -33,9 +33,10 @@ cd ${PROJECT_ROOT}/docroot
 drush core-status
 
 # Install profile to dev DB.
+echo  "::Install profile ${PROFILE}"
 drush --debug si $PROFILE -y
 
-echo  "::Updating Drupal environment"
+echo  "::Updating DB"
 drush -y updatedb
 
 echo  "::Import configs if they exist"
