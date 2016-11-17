@@ -34,9 +34,8 @@ chmod 755 ${PROJECT_ROOT}/docroot
 if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
   if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.php ]]; then
     # Uncomment lines in settings.php to include settings.local.php.
-    cd ${PROJECT_ROOT}/docroot/sites/default
-    sed -i '/^# .*\/settings.local.php/gm' settings.php
-    sed -i '/.*\/settings.local.php.*\n# }/gm' settings.php
+    sed -i '/^# \(.*\)settings.local.php\(.*\)/s/# //g' ${PROJECT_ROOT}/docroot/sites/default/settings.php
+    sed -i '/^# }$/s/# //g' ${PROJECT_ROOT}/docroot/sites/default/settings.php
 
     echo  "::Importing development database"
     cd ${PROJECT_ROOT}/docroot
