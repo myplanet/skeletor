@@ -54,7 +54,7 @@ fi
 
 echo  "::Import configs if they exist"
 export DIR=../config/sync
-if [[ ls ${DIR}/*.yml &>/dev/null ]]; then
+if [[ -e ${DIR}/*.yml ]]; then
   drush -y config-import
 else
     echo "Config sync directory is empty."
