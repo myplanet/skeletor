@@ -32,20 +32,22 @@ cp ${PROJECT_ROOT}/scripts/travis/assets/settings.local.php ${PROJECT_ROOT}/docr
 chmod 755 ${PROJECT_ROOT}/docroot
 
 if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
-  # Uncomment lines in settings.php to include settings.local.php.
-  sed '/^# .*\/settings.local.php/gm' ${PROJECT_ROOT}/docroot/sites/default/settings.php
-  sed '/.*\/settings.local.php.*\n# }/gm' ${PROJECT_ROOT}/docroot/sites/default/settings.php
+  if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.php ]]; then
+    # Uncomment lines in settings.php to include settings.local.php.
+    sed '/^# .*\/settings.local.php/gm' ${PROJECT_ROOT}/docroot/sites/default/settings.php
+    sed '/.*\/settings.local.php.*\n# }/gm' ${PROJECT_ROOT}/docroot/sites/default/settings.php
 
-  echo  "::Importing development database"
-  cd ${PROJECT_ROOT}/docroot
-  drush core-status
+    echo  "::Importing development database"
+    cd ${PROJECT_ROOT}/docroot
+    drush core-status
 
-  # Install profile to dev DB.
-  echo  "::Install profile ${PROFILE}"
-  drush --debug si $PROFILE -y
+    # Install profile to dev DB.
+    echo  "::Install profile ${PROFILE}"
+    drush --debug si $PROFILE -y
 
-  echo  "::Updating DB"
-  drush -y updatedb
+    echo  "::Updating DB"
+    drush -y updatedb
+  fi
 else
   echo "File settings.local.php was not copied."
 fi
