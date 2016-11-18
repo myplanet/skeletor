@@ -12,7 +12,6 @@ cache:
 branches:
   only:
     - 8.x
-
 env:
   global:
     # The Acquia site name, as used in drush aliases.
@@ -24,7 +23,7 @@ env:
     - BUILD_CACHE=$HOME/.buildcache
     - BUILD_DB=$TRAVIS_REPO_SLUG.sql
     # The Acquia git repository to deploy built commits to.
-    - DEPLOY_REPO=skeletor1@svn-4934.devcloud.hosting.acquia.com:skeletor.git
+    - DEPLOY_REPO=skeletor@svn-NNNN.devcloud.hosting.acquia.com:skeletor.git
     - DEPLOY_DEST=$HOME/skeletor
     - DEPLOY_BRANCH=develop
 services:
@@ -32,12 +31,16 @@ services:
   - mysql
 addons:
   ssh_known_hosts:
-    - srv-4939.devcloud.hosting.acquia.com
-    - svn-4934.devcloud.hosting.acquia.com
+    - srv-NNNN.devcloud.hosting.acquia.com
+    - svn-NNNN.devcloud.hosting.acquia.com
     - 50.19.9.176
   hosts:
     - default
     - skeletor.local
+mysql:
+  database: skeletor_dev
+  username: root
+  encoding: utf8
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
