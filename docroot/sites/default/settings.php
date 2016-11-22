@@ -722,7 +722,7 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  * If on Acquia environment, include file with DB credentials.
 */
 
-$subscription = 'ami1';
+$subscription = 'skeletor1';
 
 if (file_exists('/var/www/site-php')) {
   require("/var/www/site-php/${subscription}/${subscription}-settings.inc");
@@ -734,42 +734,27 @@ if (file_exists('/var/www/site-php')) {
  */
 $cli = (php_sapi_name() == 'cli');
 
-$is_local     = !isset($_ENV['AH_SITE_ENVIRONMENT']);
-$is_prod      = isset($_ENV['AH_PRODUCTION']) ? $_ENV['AH_PRODUCTION'] : FALSE;
-$protect_prod = FALSE;
+$is_local = !isset($_ENV['AH_SITE_ENVIRONMENT']);
+$is_prod  = isset($_ENV['AH_PRODUCTION']) ? $_ENV['AH_PRODUCTION'] : FALSE;
 
 // Password protect non-production sites.
-// Password protect production sites, if flagged.
-$is_protected = (!$is_prod) || ($is_prod && $protect_prod);
+if (!$cli && !$is_local && !$is_prod) {
+  $username = $_ENV['AH_SITE_ENVIRONMENT'];
+  $password = 'testing'; //TODO: change!
+}
 
-if (!$cli && !$is_local && $is_protected){
-  switch ($_ENV['AH_SITE_ENVIRONMENT']) {
-    case 'prod':
-      $username = 'Donmills';
-      $password = 'marcom';
-      break;
-    case 'test':
-      $username = 'Donmills';
-      $password = 'marcom';
-      break;
-    default:
-      $username = $_ENV['AH_SITE_ENVIRONMENT'];
-      $password = 'testing'; //TODO: change!
-  }
-
-  if (!(isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER']==$username && $_SERVER['PHP_AUTH_PW']==$password))) {
-    header('WWW-Authenticate: Basic realm="This site is protected"');
-    header('HTTP/1.0 401 Unauthorized');
-    // Fallback message when the user presses cancel / escape
-    echo 'Access denied';
-    exit;
-  }
+if (!(isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER']==$username && $_SERVER['PHP_AUTH_PW']==$password))) {
+  header('WWW-Authenticate: Basic realm="This site is protected"');
+  header('HTTP/1.0 401 Unauthorized');
+  // Fallback message when the user presses cancel / escape
+  echo 'Access denied';
+  exit;
 }
 
 /**
  * Put in action custom config settings only after drupal installation is completed
  */
-$settings['install_profile'] = 'ami';
+$settings['install_profile'] = 'skeletor';
 
 if (drupal_installation_attempted()) {
   // Installer seems to require a writable directory.
@@ -777,63 +762,6 @@ if (drupal_installation_attempted()) {
 }
 else {
   $config_directories[CONFIG_SYNC_DIRECTORY] = './../config/sync';
-}
-
-/**
- * Domain language detection configuration.
- */
-$env = isset($_ENV['AH_SITE_ENVIRONMENT']) ? $_ENV['AH_SITE_ENVIRONMENT'] : 'local';
-switch ($env) {
-  case 'dev':
-    $config['language.negotiation']['url']['domains']['en'] = 'dev.ami.ca';
-    $config['language.negotiation']['url']['domains']['fr'] = 'dev.amitele.ca';
-
-    $config['gacsp.settings']['plugins']['linker'] = [
-      'enable' => TRUE,
-      'domains' => [
-        'dev.ami.ca',
-        'dev.amitele.ca',
-      ],
-    ];
-    break;
-
-  case 'test':
-    $config['language.negotiation']['url']['domains']['en'] = 'stage.ami.ca';
-    $config['language.negotiation']['url']['domains']['fr'] = 'stage.amitele.ca';
-
-    $config['gacsp.settings']['plugins']['linker'] = [
-      'enable' => TRUE,
-      'domains' => [
-        'stage.ami.ca',
-        'stage.amitele.ca',
-      ],
-    ];
-    break;
-
-  case 'prod':
-    $config['language.negotiation']['url']['domains']['en'] = 'www.ami.ca';
-    $config['language.negotiation']['url']['domains']['fr'] = 'www.amitele.ca';
-
-    $config['gacsp.settings']['plugins']['linker'] = [
-      'enable' => TRUE,
-      'domains' => [
-        'www.ami.ca',
-        'www.amitele.ca',
-      ],
-    ];
-    break;
-
-  default:
-    $config['language.negotiation']['url']['domains']['en'] = 'ami.local';
-    $config['language.negotiation']['url']['domains']['fr'] = 'amitele.local';
-
-    $config['gacsp.settings']['plugins']['linker'] = [
-      'enable' => TRUE,
-      'domains' => [
-        'ami.local',
-        'amitele.local',
-      ],
-    ];
 }
 
 /**
@@ -847,7 +775,7 @@ if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
 }
 else {
   // Local config management settings.
-  $config['locale.settings']['translation']['path'] = 'profiles/ami/tmp/config/translations';
+  $config['locale.settings']['translation']['path'] = 'profiles/skeletor/tmp/config/translations';
 }
 
 /**

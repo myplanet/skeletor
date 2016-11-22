@@ -1,26 +1,4 @@
 #
-# Custom Settings
-#
-
-<IfModule mod_rewrite.c>
-  RewriteEngine on
-
-  # Set "protossl" to "s" if we were accessed via https://.  This is used during
-  # "www." enforcement, in order to prevent bounce between http and https.
-  RewriteRule ^ - [E=protossl]
-  RewriteCond %{HTTPS} on
-  RewriteRule ^ - [E=protossl:s]
-
-  # Redirect all users to access the site WITH the 'www.' prefix.
-  # Only apply to production domains.
-  RewriteCond %{HTTP_HOST} .
-  RewriteCond %{HTTP_HOST} ^ami(tele)?\.ca$ [NC]
-  RewriteRule ^ http%{ENV:protossl}://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-</IfModule>
-
-
-#
 # Apache/PHP/Drupal settings:
 #
 
