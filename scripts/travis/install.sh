@@ -12,46 +12,27 @@ gem install compass --version "=1.0.3"
 # Run the make script.
 echo "::Running build"
 
-# Pass a commit if we're building a pull-request
+# If this isn't a pull request, pass the production flag.
 if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
-  BUILD_COMMIT=${TRAVIS_PULL_REQUEST}
   echo "::Using production settings."
   BUILD_ENV="prod";
-else
-  BUILD_COMMIT=$(git rev-list HEAD --max-count=1 --skip=1)
-  echo "::Using commit ${BUILD_COMMIT}"
-  BUILD_ENV="";
 fi
 
-bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV $BUILD_COMMIT
+bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV
 
 # Copy local settings file for Travis env to the site folder.
-echo  "::Copy local settings file to the site folder"
-chmod 777 ${PROJECT_ROOT}/docroot
+echo  "::Copying local settings file to the site folder"
 cp ${PROJECT_ROOT}/scripts/travis/assets/settings.local.php ${PROJECT_ROOT}/docroot/sites/default/settings.local.php
-chmod 755 ${PROJECT_ROOT}/docroot
 
-if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.local.php ]]; then
-  if [[ -e ${PROJECT_ROOT}/docroot/sites/default/settings.php ]]; then
-    echo  "::Importing development database"
-    cd ${PROJECT_ROOT}/docroot
+cd ${PROJECT_ROOT}/docroot
 
-    # Install profile to dev DB.
-    echo  "::Install profile ${PROFILE}"
-    drush --debug si $PROFILE -y
+# Install profile to dev DB.
+echo  "::Installing profile ${PROFILE}"
+drush --debug si $PROFILE -y
 
-    echo  "::Updating DB"
-    drush -y updatedb
-  fi
-else
-  echo "File settings.local.php was not copied."
-fi
-
-echo  "::Import configs if they exist"
 export DIR=../config/sync
 if [[ -e ${DIR}/*.yml ]]; then
+  echo  "::Importing configuration"
   drush -y config-import
-else
-    echo "Config sync directory is empty."
 fi
 drush cache-rebuild
