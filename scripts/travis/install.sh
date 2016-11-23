@@ -28,7 +28,7 @@ cd ${PROJECT_ROOT}/docroot
 
 # Install profile to dev DB.
 echo  "::Installing profile ${PROFILE}"
-drush --debug si $PROFILE -y
+drush si $PROFILE -y
 
 export DIR=../config/sync
 if [[ -e ${DIR}/*.yml ]]; then

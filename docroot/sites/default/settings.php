@@ -739,7 +739,7 @@ $is_prod = isset($_ENV['AH_PRODUCTION']) ? $_ENV['AH_PRODUCTION'] : FALSE;
 
 // Password protect non-production sites.
 if (!$cli && !$is_local && !$is_prod) {
-  $username = $_ENV['AH_SITE_ENVIRONMENT'];
+  $username = $_ENV['AH_SITE_ENVIRONMENT']; //TODO: change!
   $password = 'testing'; //TODO: change!
 
   if (!(isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER'] == $username && $_SERVER['PHP_AUTH_PW'] == $password))) {
