@@ -1,5 +1,5 @@
 
-skeletor.site:
+ami.site:
   type: config_object
   label: 'Site Information'
   mapping:
