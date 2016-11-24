@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 set -e
-# Increase max_allowed_packet so it's easier to revert features.
-mysql -e "SET GLOBAL max_allowed_packet=128*1024*1024;"
 
 # Run the make script.
 echo "::Running build"
