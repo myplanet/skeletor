@@ -29,11 +29,8 @@ May be useful to get [multiple versions of drush locally](https://www.lullabot.c
 
 From the project root:
 
-`bash scripts/travis/build.sh [ project ] [ production ]`
+`composer install`
 
-* `[ project ]`    - The name of the profile that you'll be building. To build default, use drupal-skeletor.
-* `[ production ]` - The flag ('prod') if we're running a production build. Files will be scrubed, and the .gitignore 
- will be replaced with `prod.gitignore`.
 
 ### Adjusting Drupal files
 
