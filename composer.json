@@ -55,6 +55,13 @@
       "docroot/profiles/skeletor/themes/contrib/{$name}": ["type:drupal-theme"],
       "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
       "drush/contrib/{$name}": ["type:drupal-drush"]
+    },
+    "patches": {},
+    "drupal-scaffold": {
+      "excludes": [
+        "web.config",
+        "sites/default/default.settings.php"
+      ]
     }
   }
 }

@@ -12,12 +12,11 @@ set -e
 # Set from args
 PROJECT="$1"
 ENVIRONMENT="$2"
-MAKE_OPTS=""
 
 # Configure options for production or development build.
 if [[ -n "$ENVIRONMENT" ]]; then
-  echo "::Building environment: ${ENVIRONMENT}"
-  MAKE_OPTS=" --prefer-dist --no-dev ${MAKE_OPTS}"
+  echo "::Building production environment"
+  MAKE_OPTS=" --prefer-dist --no-dev"
 fi
 
 # Drush make the site structure
@@ -27,8 +26,8 @@ composer drupal-scaffold
 
 if [[ -n "$ENVIRONMENT" ]]; then
   # Overwrite the dev .gitignore with our acquia specific one.
-  echo "::Placing prod gitignore"
-  mv ${PROJECT_ROOT}/scripts/travis/assets/prod.gitignore .gitignore
+  echo "::Placing prodution gitignore"
+  mv ${PROJECT_ROOT}/prod.gitignore ${PROJECT_ROOT}/.gitignore
 
   # Remove any git repos contained in contrib folders
   rm -rf ${PROJECT_ROOT}/docroot/modules/contrib/*/.git

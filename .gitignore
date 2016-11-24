@@ -22,11 +22,17 @@ docroot/core
 docroot/profiles/*/themes/custom/*/static/vendor
 docroot/profiles/*/themes/custom/*/static/css
 
+# Ignore example or default files
+example.*
+default.*
 
 # Ignore Drupal's file directory
+robots.txt
+.htaccess
 docroot/sites/*/files
 docroot/autoload.php
 docroot/index.php
-robots.txt
 docroot/update.php
 docroot/web.config
+docroot/modules/
+docroot/themes/
