@@ -4,8 +4,8 @@
   */
 $settings['hash_salt'] = 'put-here-skeletor-hash-salt';
 $databases['default']['default'] = array (
-  'database' => 'skeletor',
-  'username' => 'root',
+  'database' => getenv('PROFILE'),
+  'username' => 'travis',
   'password' => '',
   'prefix' => '',
   'host' => '127.0.0.1',
