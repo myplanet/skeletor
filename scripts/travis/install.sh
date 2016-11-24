@@ -2,6 +2,8 @@
 
 set -e
 
+mysql -e "CREATE DATABASE IF NOT EXISTS ${PROFILE};"
+
 # Run the make script.
 echo "::Running build"
 COMPOSER_COMMAND="install";
