@@ -37,10 +37,6 @@ addons:
   hosts:
     - default
     - skeletor.local
-mysql:
-  database: skeletor_dev
-  username: root
-  encoding: utf8
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -48,7 +44,6 @@ before_install:
   - phpenv config-rm xdebug.ini
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - composer global require drush/drush:8.0.*
-  - mysql -e "CREATE DATABASE IF NOT EXISTS $PROFILE;"
 install: $BUILD_SCRIPTS/install.sh
 script: $BUILD_SCRIPTS/test.sh
 after_success: 

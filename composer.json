@@ -29,11 +29,16 @@
   "prefer-stable": true,
   "autoload": {
     "classmap": [
-    "scripts/composer/ScriptHandler.php"
+    "scripts/composer/ScriptHandler.php",
+    "scripts/composer/ProductionBuild.php"
     ]
   },
   "scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "deploy": [
+      "@composer install --prefer-dist --no-dev",
+      "DrupalSkeletor\\composer\\ProductionBuild::placeGitIgnore",
+      "DrupalSkeletor\\composer\\ProductionBuild::removeGitFolders"
+    ],
     "pre-install-cmd": [
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
@@ -41,7 +46,9 @@
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+      "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+      "DrupalSkeletor\\composer\\ProductionBuild::installNPM"
     ],
     "post-update-cmd": [
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
@@ -55,6 +62,13 @@
       "docroot/profiles/skeletor/themes/contrib/{$name}": ["type:drupal-theme"],
       "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
       "drush/contrib/{$name}": ["type:drupal-drush"]
+    },
+    "patches": {},
+    "drupal-scaffold": {
+      "excludes": [
+        "web.config",
+        "sites/default/default.settings.php"
+      ]
     }
   }
 }

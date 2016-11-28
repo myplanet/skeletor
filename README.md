@@ -29,9 +29,26 @@ May be useful to get [multiple versions of drush locally](https://www.lullabot.c
 
 From the project root:
 
-`bash scripts/travis/build.sh [ project ]`
+`composer install`
 
-* `[ project ]` - The name of the installation profile that you'll be building. To build default, use drupal-skeletor.
+
+### Adjusting Drupal files
+
+You an make adjustments to files provided by Drupal directly, such as `settings.php`, `.htaccess`, or `robots.txt`.
+
+Commit the file with the changes in it's desired place within the docroot, such as `robots.txt`. Add it to
+drupal-scaffold:excludes array in composer.json, to prevent it from being overwritten during the build process.
+
+    "extra": {
+      "drupal-scaffold": {
+        "excludes": [
+          "robots.txt",
+          "sites/default/default.settings.php"
+        ]
+
+By default, we have excluded the settings.php file in the build process already. You can read more about further
+[customizing the drupal build process at the Drupal-Scaffold
+documentation](https://github.com/drupal-composer/drupal-scaffold/blob/master/README.md).
 
 ## 2. Layout
 
@@ -60,15 +77,9 @@ Here's the additional suggested folder structure for the install profile:
     | +-contrib/        (gitignored - any contrib themes should go here via makefile)
     | +-custom/         (custom themes for the site)
 
-* The `tmp/` directory is intended to be removed before pushing to production.
-
-* If you'd like any code to be appended to `settings.php`, `htaccess`, or `robots.txt`, simply add a
-snippet as `tmp/snippets/[filename]/mysnippetname.[filename]`. These snippets will be appended in alphabetical order during the build script.
-
 ## 3. Documentation
 
-Documentation for this project (and Skeletor based projects) should be placed in their [github
-wiki](/wiki).
+Documentation for this project (and Skeletor based projects) should be placed in their [github wiki](/wiki).
 
 ## 4. Configuration Management
 

@@ -1,24 +1,20 @@
 #!/usr/bin/env bash
 
 set -e
-# Increase max_allowed_packet so it's easier to revert features.
-mysql -e "SET GLOBAL max_allowed_packet=128*1024*1024;"
 
-# Install Compass
-gem update --system
-gem install sass --version "=3.4.12"
-gem install compass --version "=1.0.3"
+mysql -e "CREATE DATABASE IF NOT EXISTS ${PROFILE};"
 
 # Run the make script.
 echo "::Running build"
+COMPOSER_COMMAND="install";
 
 # If this isn't a pull request, pass the production flag.
 if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
   echo "::Using production settings."
-  BUILD_ENV="prod";
+  COMPOSER_COMMAND="deploy";
 fi
 
-bash ${PROJECT_ROOT}/scripts/build.sh $PROFILE $BUILD_ENV
+composer $COMPOSER_COMMAND
 
 # Copy local settings file for Travis env to the site folder.
 echo  "::Copying local settings file to the site folder"
