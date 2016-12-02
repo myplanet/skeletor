@@ -1,0 +1,9 @@
+<?php
+
+
+/**
+ * Include preprocess functions
+ */
+foreach (glob(dirname(__FILE__) . "/preprocess/*.theme") as $filename) {
+  include_once $filename;
+}

@@ -25,11 +25,24 @@ A skeleton Drupal install profile to set up an appropriate layout for Myplanet's
 
 May be useful to get [multiple versions of drush locally](https://www.lullabot.com/articles/switching-drush-versions)
 
+To install compass, follow this procedure:
+
+```
+gem update --system
+gem install compass
+```
+
+If you are on Mac OSx El Capiten/Sierra, perhaps [this tutorial](http://stackoverflow.com/questions/31972968/cant-install-gems-on-os-x-el-capitan) might be of help when trying to install Compass.
+
 ### Building drupal
 
 From the project root:
 
 `composer install`
+
+To perform site install, use the following command in your terminal:
+
+`drush si skeletor --db-url=mysql://<DBUSER>:<DBPASS>@localhost/<DBNAME> --account-name=<ADMIN_USER> --account-pass=<ADMIN_PASS>`
 
 
 ### Adjusting Drupal files

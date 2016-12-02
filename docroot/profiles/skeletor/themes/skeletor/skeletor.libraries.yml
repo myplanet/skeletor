@@ -1,0 +1,12 @@
+global-styling:
+   version: VERSION
+   css:
+     theme:
+       css/ie.css: {}
+       css/print.css: {}
+       css/screen.css: {}
+   js:
+     theme:
+	   js/skeletor.js
+	 dependencies
+	    core/jquery
