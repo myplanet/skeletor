@@ -21,7 +21,9 @@
     "drupal/console": "~1.0",
     "drupal/admin_toolbar": "1.15"
   },
-  "require-dev": {},
+  "require-dev": {
+    "drupal/coder": "^8.2"
+  },
   "conflict": {
     "drupal/drupal": "*"
   },
