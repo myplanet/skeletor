@@ -1,0 +1,41 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.skeletor_video_banner.field_skeletor_banner_desc
+    - field.field.paragraph.skeletor_video_banner.field_skeletor_banner_title
+    - field.field.paragraph.skeletor_video_banner.field_skeletor_hero_video
+    - paragraphs.paragraphs_type.skeletor_video_banner
+  module:
+    - text
+    - video_embed_field
+id: paragraph.skeletor_video_banner.default
+targetEntityType: paragraph
+bundle: skeletor_video_banner
+mode: default
+content:
+  field_skeletor_banner_desc:
+    weight: 2
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_skeletor_banner_title:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+  field_skeletor_hero_video:
+    weight: 0
+    label: hidden
+    settings:
+      responsive: true
+      width: 854
+      height: 480
+      autoplay: true
+    third_party_settings: {  }
+    type: video_embed_field_video
+hidden:
+  created: true
+  uid: true

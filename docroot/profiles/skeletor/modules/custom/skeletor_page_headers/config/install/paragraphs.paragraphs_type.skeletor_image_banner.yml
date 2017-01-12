@@ -1,0 +1,5 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_image_banner
+label: 'Image Banner'

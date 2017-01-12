@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.skeletor_header_banner_set.field_skeletor_header_banner
+    - paragraphs.paragraphs_type.skeletor_header_banner_set
+  module:
+    - entity_reference_revisions
+id: paragraph.skeletor_header_banner_set.default
+targetEntityType: paragraph
+bundle: skeletor_header_banner_set
+mode: default
+content:
+  field_skeletor_header_banner:
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+hidden:
+  created: true
+  uid: true

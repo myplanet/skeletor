@@ -1,0 +1,20 @@
+name: 'Skeletor Page Headers'
+type: module
+description: 'A basic module to add page headers to all site pages'
+core: 8.x
+package: 'Skeletor Features'
+dependencies:
+  - entity_reference_revisions
+  - features
+  - field
+  - file
+  - image
+  - inline_entity_form
+  - media_entity
+  - media_entity_image
+  - paragraphs
+  - path
+  - text
+  - user
+  - video_embed_field
+version: 8.x-1.0
