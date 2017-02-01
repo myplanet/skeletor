@@ -20,7 +20,8 @@
     "drush/drush": "~8.0",
     "drupal/console": "~1.0",
     "drupal/admin_toolbar": "1.15",
-    "drupal/devel": "1.0-alpha1"
+    "drupal/devel": "1.0-alpha1",
+    "drupal/bootstrap": "^3.0"
   },
   "require-dev": {},
   "conflict": {

@@ -1,0 +1,42 @@
+{
+  "name": "skeletor",
+  "description": "Skeletor Theme.",
+  "css": {
+    "src": [
+      "sass/*.scss"
+    ],
+    "dest": "assets/css/",
+    "includePaths": [
+      "./bower_components/bootstrap-sass/assets/stylesheets",
+      "./bower_components/font-awesome/scss",
+      "./bower_components/compass-mixins/lib"
+    ]
+  },
+  "js": {
+    "file" : "skeletor.script.js",
+    "src": [
+      "js/*.js",
+      "./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"
+    ],
+    "dest": "assets/js/"
+  },
+  "images": {
+    "src": [
+      "images/*"
+    ],
+    "dest": "assets/images/"
+  },
+  "fonts": {
+    "src": [
+      "./node_modules/bootstrap-sass/assets/fonts/bootstrap/*"
+    ],
+    "dest": "assets/fonts/"
+  },
+  "sourcemaps": {
+    "largeFile": true
+  },
+  "sass": {
+    "style": "compressed",
+    "errLogToConsole": false
+  }
+}

@@ -9,4 +9,7 @@ global-styling:
      theme:
 	   js/skeletor.js
 	 dependencies
-	    core/jquery
+        - core/drupal
+        - core/jquery
+        - core/jquery.once
+        - core/drupalSettings

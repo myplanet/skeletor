@@ -4,5 +4,4 @@
  * Implements hook_preprocess_page().
  */
 function skeletor_preprocess_page(&$vars) {
-  dpm($vars);
 }
