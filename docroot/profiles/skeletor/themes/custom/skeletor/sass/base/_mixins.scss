@@ -1,0 +1,112 @@
+/**
+ * @file
+ * Theme mixins
+ */
+
+//
+// SASS Mixins
+// --------------------------------------------------
+@mixin respond-to($media) {
+  @if $media == retina {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+      @content;
+    }
+  }
+
+  // Min widths
+  @if $media == phone-portrait-large {
+    @media only screen and (min-width: 360px) {
+      @content;
+    }
+  }
+  @if $media == xsw {
+    @media only screen and (min-width: $screen-xs-min) {
+      @content;
+    }
+  }
+  @if $media == sm {
+    @media only screen and (min-width: $screen-sm-min) {
+      @content;
+    }
+  }
+  @if $media == md {
+    @media only screen and (min-width: $screen-md) {
+      @content;
+    }
+  }
+  @if $media == lg {
+    @media only screen and (min-width: $screen-lg) {
+      @content;
+    }
+  }
+
+  // Max widths
+  @if $media == xs-max {
+    @media only screen and (max-width: $screen-xs-min - 1) {
+      @content;
+    }
+  }
+  @if $media == xsw-max {
+    @media only screen and (max-width: $screen-xs-max) {
+      @content;
+    }
+  }
+  @if $media == sm-max {
+    @media only screen and (max-width: $screen-sm-max) {
+      @content;
+    }
+  }
+  @if $media == md-max {
+    @media only screen and (max-width: $screen-md-max) {
+      @content;
+    }
+  }
+
+  // Ranges.
+  @if $media == xs-only {
+    @media only screen and (min-width: 0) and (max-width: $screen-xs-min - 1) {
+      @content;
+    }
+  }
+  @if $media == xsw-only {
+    @media only screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+      @content;
+    }
+  }
+  @if $media == sm-only {
+    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      @content;
+    }
+  }
+  @if $media == md-only {
+    @media only screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      @content;
+    }
+  }
+  @if $media == xsw-to-md-only {
+    @media only screen and (min-width: $screen-xs-min) and (max-width: $screen-md-max) {
+      @content;
+    }
+  }
+  @if $media == sm-to-md-only {
+    @media only screen and (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+      @content;
+    }
+  }
+}
+
+/**
+ * Opacity
+ */
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/**
+ * FONTS
+ */
+@mixin font-size($fontsize) {
+  font-size: ($fontsize / 10) + rem;
+}
