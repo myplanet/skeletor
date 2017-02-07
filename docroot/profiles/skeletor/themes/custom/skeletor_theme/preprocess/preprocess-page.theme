@@ -3,5 +3,5 @@
 /**
  * Implements hook_preprocess_page().
  */
-function skeletor_preprocess_page(&$vars) {
+function skeletor_theme_preprocess_page(&$vars) {
 }

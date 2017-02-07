@@ -1,0 +1,16 @@
+global-styling:
+  css:
+    theme:
+      assets/css/screen.min.css: {}
+      assets/css/ie.min.css: {}
+      assets/css/print.min.css: {}
+
+global-js:
+  js:
+    assets/js/bootstrap.min.js: {}
+    assets/js/skeletor.min.js: {}
+  dependencies:
+    - core/drupal
+    - core/jquery
+    - core/jquery.once
+    - core/drupalSettings
