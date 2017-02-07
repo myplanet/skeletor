@@ -1,9 +1,7 @@
 global-styling:
   css:
     theme:
-      assets/css/screen.min.css: {}
-      assets/css/ie.min.css: {}
-      assets/css/print.min.css: {}
+      assets/css/skeletor.min.css: {}
 
 global-js:
   js:
