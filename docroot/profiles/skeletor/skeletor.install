@@ -1,12 +1,9 @@
 <?php
+
 /**
  * @file
  * Install, update and uninstall functions for the Relay Robin installation profile.
  */
-
-use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
-use Drupal\user\Entity\User;
-use Drupal\user\RoleInterface;
 
 /**
  * Implements hook_install().
@@ -16,7 +13,5 @@ use Drupal\user\RoleInterface;
  * @see system_install()
  */
 function skeletor_install() {
-  // First, do everything in standard profile.
-  include_once DRUPAL_ROOT . '/core/profiles/standard/standard.install';
-  standard_install();
+  // Install tasks go here!
 }
