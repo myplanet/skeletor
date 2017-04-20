@@ -6,42 +6,20 @@ core: 8.x
 distribution: TRUE
 dependencies:
   - block
-  - block_content
-  - breakpoint
-  - ckeditor
-  - color
-  - comment
+  - admin_toolbar
   - config
-  - contact
   - contextual
   - datetime
-  - dblog
-  - editor
-  - entity_reference
-  - field_ui
-  - file
   - filter
-  - help
-  - history
   - image
   - link
-  - menu_link_content
   - menu_ui
   - node
-  - node
-  - options
   - page_cache
   - path
-  - quickedit
-  - rdf
-  - search
-  - shortcut
   - system
-  - taxonomy
-  - text
   - user
   - views
-  - views_ui
 themes:
   - bartik
   - seven
