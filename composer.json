@@ -19,7 +19,7 @@
     "drupal/core": "~8.0",
     "drush/drush": "~8.0",
     "drupal/console": "~1.0",
-    "drupal/admin_toolbar": "1.15"
+    "drupal/admin_toolbar": "1.19"
   },
   "require-dev": {},
   "conflict": {
