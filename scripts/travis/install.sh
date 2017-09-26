@@ -6,7 +6,7 @@ mysql -e "CREATE DATABASE IF NOT EXISTS ${PROFILE};"
 
 # Run the make script.
 echo "::Running build"
-COMPOSER_COMMAND="install";
+COMPOSER_COMMAND="install --no-suggest";
 
 # If this isn't a pull request, pass the production flag.
 if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
