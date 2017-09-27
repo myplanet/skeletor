@@ -10,6 +10,23 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "myplanet/react-redux-skeletor",
+        "version": "1.0",
+        "type": "npm-package",
+        "source": {
+          "type": "git",
+          "reference": "presentation",
+          "url": "https://github.com/myplanet/react-redux-skeletor.git"
+        },
+        "require": {
+          "composer/installers": "^1.2",
+          "oomphinc/composer-installers-extender": "dev-master"
+        }
+      }
     }
   ],
   "require": {
@@ -20,7 +37,8 @@
     "drush/drush": "~8.0",
     "drupal/console": "~1.0",
     "webflo/drupal-finder": "^1.0",
-    "drupal/admin_toolbar": "1.15"
+    "drupal/admin_toolbar": "1.15",
+    "myplanet/skeletor-scaffold": "^1.0"
   },
   "require-dev": {},
   "conflict": {
