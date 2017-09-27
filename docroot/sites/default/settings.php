@@ -720,9 +720,9 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 
 /**
  * If on Acquia environment, include file with DB credentials.
-*/
+ */
 
-$subscription = 'skeletor';
+$subscription = 'skeletor'; // @todo: change!
 
 if (file_exists('/var/www/site-php')) {
   require("/var/www/site-php/${subscription}/${subscription}-settings.inc");
@@ -739,8 +739,8 @@ $is_prod = isset($_ENV['AH_PRODUCTION']) ? $_ENV['AH_PRODUCTION'] : FALSE;
 
 // Password protect non-production sites.
 if (!$cli && !$is_local && !$is_prod) {
-  $username = $_ENV['AH_SITE_ENVIRONMENT']; //TODO: change!
-  $password = 'testing'; //TODO: change!
+  $username = $_ENV['AH_SITE_ENVIRONMENT']; // @todo: change!
+  $password = 'testing'; // @todo: change!
 
   if (!(isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER'] == $username && $_SERVER['PHP_AUTH_PW'] == $password))) {
     header('WWW-Authenticate: Basic realm="This site is protected"');
@@ -762,6 +762,11 @@ if (drupal_installation_attempted()) {
 else {
   $config_directories[CONFIG_SYNC_DIRECTORY] = './../config/sync';
 }
+
+/**
+ * Trusted Host Patterns.
+ */
+$settings['trusted_host_patterns'][] = '^.+\.skeletor\.com$'; // @todo: change!
 
 /**
  * Load local development override configuration, if available.
