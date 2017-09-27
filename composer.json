@@ -65,12 +65,14 @@
   "extra": {
     "installer-paths": {
       "docroot/core": ["type:drupal-core"],
-      "docroot/profiles/skeletor/libraries/contrib/{$name}": ["type:drupal-library"],
-      "docroot/profiles/skeletor/modules/contrib/{$name}": ["type:drupal-module"],
-      "docroot/profiles/skeletor/themes/contrib/{$name}": ["type:drupal-theme"],
+      "docroot/libraries/contrib/{$name}": ["type:drupal-library"],
+      "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+      "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
       "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-      "drush/contrib/{$name}": ["type:drupal-drush"]
+      "drush/contrib/{$name}": ["type:drupal-drush"],
+      "docroot/modules/npm-packages/{$name}": ["type:npm-package"]
     },
+    "installer-types": ["npm-package"],
     "patches": {},
     "drupal-scaffold": {
       "excludes": [
