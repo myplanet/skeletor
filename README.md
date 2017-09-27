@@ -1,6 +1,6 @@
 # Skeletor Install Profile <img  height="30px" width="30px" src="https://cdn.rawgit.com/wiki/myplanetdigital/drupal-skeletor/images/noun_131083_cc.svg" alt="Skeletor"> 
 
-[![Build Status](https://travis-ci.org/myplanetdigital/drupal-skeletor.svg?branch=8.x)](https://travis-ci.org/myplanetdigital/drupal-skeletor)
+[![Build Status](https://travis-ci.org/myplanet/skeletor.svg?branch=8.x)](https://travis-ci.org/myplanet/skeletor)
 
 A skeleton Drupal install profile to set up an appropriate layout for Myplanet's install profile development strategy, striving toward continuous delivery and greater good.
 
