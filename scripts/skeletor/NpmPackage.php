@@ -69,7 +69,7 @@ class NpmPackage {
     // Find all npm instances in the package root,
     // that are not contained in contrib, vendor or node_module directories.
     $finder = new Finder();
-    return $finder->in($packageRoot)->notPath("/core|contrib|vendor|node_modules/")->name("package.json");
+    return $finder->in($packageRoot)->notPath("/core|contrib|vendor|libraries|node_modules/")->name("package.json");
   }
 
   /**
