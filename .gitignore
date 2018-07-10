@@ -1,0 +1,9 @@
+# Libraries should not include a lock file. Let the implementing project deal
+# with it.
+composer.lock
+
+# Ignore Composer dependencies
+/vendor
+
+# System
+.DS_Store
