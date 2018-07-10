@@ -11,7 +11,7 @@ use Composer\Script\Event;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class ProductionBuild extends BaseScriptHandler {
+class ProductionHandler extends BaseScriptHandler {
 
   public static function placeGitIgnore(Event $event) {
     $filesystem = new Filesystem();
@@ -26,11 +26,11 @@ class ProductionBuild extends BaseScriptHandler {
   public static function removeGitFolders(Event $event) {
     $filesystem = new Filesystem();
     $finder = new Finder();
-    $drupal_root = static::getDrupalRoot(getcwd());
+    $drupal_root = static::getDrupalRoot();
 
     // Find all .git directories found in the drupal root.
     $git_dirs = $finder->directories()->ignoreVCS(FALSE)->ignoreDotFiles(FALSE)
-      ->in($drupal_root)->name(".git")->path("/contrib|libraries|vendor/");
+      ->in($drupal_root)->name(".git")->path(static::getContribDirs());
 
     // Remove them.
     $filesystem->remove($git_dirs);
@@ -44,7 +44,7 @@ class ProductionBuild extends BaseScriptHandler {
 
     // Find all npm instances in the drupal root,
     // that are not contained in contrib or vendor directories.
-    $npm = $finder->in($drupal_root)->notPath("/contrib|vendor/")->name("package.json");
+    $npm = $finder->in($drupal_root)->notPath(static::getContribDirs())->name("package.json");
 
     foreach ($npm as $package) {
       $path = $package->getRelativePath();

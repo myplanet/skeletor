@@ -46,22 +46,9 @@
   "prefer-stable": true,
   "autoload": {
     "classmap": [
-      "scripts/composer/BaseScriptHandler.php",
+      "scripts/composer/BaseHandler.php",
       "scripts/composer/PHPCSHandler.php",
-      "scripts/composer/ProductionBuild.php"
+      "scripts/composer/ProductionHandler.php"
     ]
-  },
-  "scripts": {
-    "deploy": [
-      "@composer install --prefer-dist --no-dev",
-      "Skeletor\\composer\\ProductionBuild::placeGitIgnore",
-      "Skeletor\\composer\\ProductionBuild::removeGitFolders"
-    ],
-    "pre-install-cmd": [],
-    "pre-update-cmd": [],
-    "post-package-install": [
-      "Skeletor\\composer\\ProductionBuild::installNPM"
-    ],
-    "post-update-cmd": []
   }
 }
