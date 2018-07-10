@@ -1,0 +1,8 @@
+# System
+.DS_Store
+*.bak
+
+# Backups
+*.tar.gz
+*.zip
+*.sql

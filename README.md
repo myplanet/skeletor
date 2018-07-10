@@ -1,8 +1,8 @@
-# Skeletor Install Profile <img  height="30px" width="30px" src="https://cdn.rawgit.com/wiki/myplanetdigital/drupal-skeletor/images/noun_131083_cc.svg" alt="Skeletor"> 
+# Skeletor Install Profile <img  height="30px" width="30px" src="https://cdn.rawgit.com/wiki/myplanetdigital/drupal-skeletor/images/noun_131083_cc.svg" alt="Skeletor">
 
-[![Build Status](https://travis-ci.org/myplanet/skeletor.svg?branch=8.x)](https://travis-ci.org/myplanet/skeletor)
+[![Build Status](https://travis-ci.org/myplanetdigital/drupal-skeletor.svg?branch=8.2.x)](https://travis-ci.org/myplanetdigital/drupal-skeletor)
 
-A skeleton Drupal install profile to set up an appropriate layout for Myplanet's install profile development strategy, striving toward continuous delivery and greater good.
+A skeleton Drupal install profile that scaffolds Myplanet projects.
 
 <small>[Skull icon by Andre Cameron](https://thenounproject.com/CrocodileJock/collection/skulls/?oq=skull&cidx=0&i=131083)</small>
 
@@ -10,27 +10,42 @@ A skeleton Drupal install profile to set up an appropriate layout for Myplanet's
 
 1. [Build Instructions](#1-build-instructions)
 2. [Layout](#2-layout)
-3. [Documentation](#3-documentation)
-4. [Configuration Management](#4-configuration-management)
-5. [Production Build Requirements](#5-production-build-requirements)
+3. [Theme](#3-theme)
+4. [Modules](#4-modules)
+5. [Features](#5-features)
+6. [Documentation](#6-documentation)
+7. [Configuration Management](#7-configuration-management)
+8. [Production Build Requirements](#8-production-build-requirements)
 
 ## 1. Build Instructions
 
 ### Requirements
 
-* PHP 5.6.*
-* Drush 8.0.*
-* Drupal Console 8.0.*
-* Compass 1.0.*
+* PHP 7.0.*
 
 May be useful to get [multiple versions of drush locally](https://www.lullabot.com/articles/switching-drush-versions)
 
 ### Building drupal
 
-From the project root:
+To start a new project based on Skeletor in `[target-dir-name]`, run:
 
-`composer install`
+    composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+    
+    cd some-dir
+    
+    composer require myplanetdigital/drupal-skeletor:8.2.x
+    
+Skeletor profile is installed in docroot/profiles/contrib/skeletor
 
+Then connect your new project to a git repository, from the project folder run:
+
+   git init
+   git remote add origin [git-url]
+   git add -A
+   git commit -m "Initial Commit"
+   git push origin
+
+----
 
 ### Adjusting Drupal files
 
@@ -42,8 +57,7 @@ drupal-scaffold:excludes array in composer.json, to prevent it from being overwr
     "extra": {
       "drupal-scaffold": {
         "excludes": [
-          "robots.txt",
-          "sites/default/default.settings.php"
+          "robots.txt"
         ]
 
 By default, we have excluded the settings.php file in the build process already. You can read more about further
@@ -52,45 +66,131 @@ documentation](https://github.com/drupal-composer/drupal-scaffold/blob/master/RE
 
 ## 2. Layout
 
-We will be attempting to follow [guidelines for a Drupal 8 composer project](https://github.com/drupal-composer/drupal-project).
+With 8.2.x we have pared Skeletor down to an install profile. 
 
-From the project root, we will be following this structure:
+Skeletor will be installed within a drupal-project composer build:  [guidelines for a Drupal 8 composer project](https://github.com/drupal-composer/drupal-project).
 
-    +-config/         (configuration that will be version controlled)
-    +-docroot/        (configuration that will be version controlled)
-    | +-core/         (drupal 8 core)
-    | +-sites/        (sites directory with required settings.php et al.)
-    | +-profiles/     
-    | | +-skeletor/   (full installation profile including modules for Skeletor project)
-    +-drush/          (commands, configuration and site aliases for Drush)
-    +-hooks/          (Acquia cloud hooks)
-    +-scripts/        
-    | +-composer/     (scripts used during the composer build process)
-    | +-travis/       (scripts used during the travis build process)
+Skeletor profile is installed in docroot/profiles/contrib/skeletor
 
-Here's the additional suggested folder structure for the install profile:
+Installation of Skeletor will scaffold the project.
 
-    +-modules/
-    | +-contrib/        (gitignored - all contrib modules should go here via makefile)
-    | +-custom/         (custom modules for the site)
+It will set up the following:
+
+- Travis 
+- npm
+- gulp
+- Acquia cloud hooks
+- PHP Codesniffer
+- Drush aliases
+- local configuration files (settings.local.php, etc)
+- git hooks
+
+
+    +-bin/
+    | +-skeletor-init-project.sh
+    | +-skeletor-setup.sh
+    +-config/install/
+    +-project-scaffold/ (Items to be copied to project root during initialization)
+    | +-drush
+    | | +-sites/
+    | | +-drush.yml
+    | +-hooks/ (Acquia hooks)
+    | | +-common/
+    | | | +-post-code-deploy
+    | | | +-post-code-update
+    | | | +- ...
+    | +-.env
+    | +-.gitignore
+    | +-.travis.yml
+    | +-phpcs.xml.dist
+    +-scripts/
+    | +-acquia-hooks/
+    | | +-post-code-update.sh
+    | +-git/
+    | | +-pre-commit.sh
+    | +-travis/
+    | | +-build.sh
+    | | +-test.sh
+    | | +-deploy.sh
     +-themes/
-    | +-contrib/        (gitignored - any contrib themes should go here via makefile)
-    | +-custom/         (custom themes for the site)
+    | +-barebones/
+    | +-barebones_bootstrap_STARTER/ (Scaffold files to be copied for a project-specific theme)
+    +-skeletor.info.yml
+    +-skeletor.profile
+    
+## 3. Theme
 
-## 3. Documentation
+Skeletor has a base theme (barebones) and one starterkit child theme that is based on Bootstrap.  If in the future teams want to create a child theme that is based on a different framework, they can base them off the base theme.
+
+The base (barebones) theme has the following:
+
+- All assets in src directory are moved to dist dir
+- Images in src/images moved and optimized to dist/images dir
+- Svg in src/svg moved and optimized to dist/svg
+- Icon font with svg files in src/icons
+- Mixin/preprocess for easily inserting svg as data-uri in sass
+- Libraries for each feature in css framework
+- Out-of-the-box template suggestions for: form & form elements, container, fields, blocks, taxonomy terms, paragraphs, media
+
+The child theme (barebones_bootstrap_STARTER) has the following: 
+
+- Bootstrap
+- Linters (sass-linter, eslint)
+- Live style guide
+- Templates for common features
+- Webpack integration
+
+Note: Teams should feel free to create new child themes from the base theme with different CSS frameworks and add new starterkit themes
+
+    
+## 4. Modules
+
+Skeletor contains modules that are commonly used in Myplanet projects:
+
+- paragraphs
+- pathauto
+- cweagans/composer-patches
+- drupal-composer/drupal-scaffold
+- oomphinc/composer-installers-extender
+- devel
+- admin_toolbar
+- rabbit_hole
+- google_tag
+- robotstxt
+- field_group
+- twig_tweak
+- coder
+- squizlabs/php_codesniffer
+- svg_image
+- memcache
+- config_split
+- xmlsitemap
+- metatag
+- seckit
+
+## 5. Features
+
+Skeletor contains the following features:
+
+- Skeletor Acquia
+- Skeletor Media
+- Skeletor Search
+
+
+## 6. Documentation
 
 Documentation for this project (and Skeletor based projects) should be placed in their [github wiki](/wiki).
 
-## 4. Configuration Management
+## 7. Configuration Management
 
-The Configuration Management system provides a consistent API for defining and 
-syncing configuration between instances of a Drupal site. [Read more about 
+The Configuration Management system provides a consistent API for defining and
+syncing configuration between instances of a Drupal site. [Read more about
 configuration management in our wiki](https://github.com/myplanetdigital/drupal-skeletor/wiki/Setup-&-Working-with-Configuration-Management)
 
-## 5. Production Build Requirements
+## 8. Production Build Requirements
 
 ### Trusted host security setting in Drupal 8
 
-Drupal 8 supports [trusted host patterns](https://www.drupal.org/node/2410395), where you can (and should) 
-specify a set of regular expressions that the domains on incoming requests must match. 
+Drupal 8 supports [trusted host patterns](https://www.drupal.org/node/2410395), where you can (and should)
+specify a set of regular expressions that the domains on incoming requests must match.
 It is important to setup them before deploying to ACQUIA or PANTHEON environments.
