@@ -6,7 +6,7 @@
     "email": "hello@myplanet.com"
   }],
   "type": "project",
-  "bin": ["bin/skeletor-init-project.sh”]
+  "bin": ["bin/skeletor-init-project.sh"],
   "repositories": [
     {
       "type": "composer",
@@ -33,7 +33,12 @@
     "drupal/seckit": "1.0-alpha2",
     "drupal/svg_image": "1.8",
     "drupal/twig_tweak": "^2.0",
-    "drupal/xmlsitemap": "1.0-alpha2"
+    "drupal/xmlsitemap": "1.0-alpha2",
+    "drupal/crop": "^1.5",
+    "drupal/entity_browser": "^1.5",
+    "drupal/media_entity_browser": "^1.0@beta",
+    "drupal/image_widget_crop": "^2.2",
+    "drupal/focal_point": "^1.0@beta"
   },
   "require-dev": {
     "drupal/devel": "^1.2",
