@@ -1,10 +1,10 @@
 <?php
+
 /**
  * @file
- * Enables modules and site configuration for a Relay Robin site installation.
+ * Enables modules and site configuration for a Skeletor site install.
  */
 
-use Drupal\contact\Entity\ContactForm;
 use Drupal\Core\Form\FormStateInterface;
 
 /**

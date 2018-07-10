@@ -11,7 +11,7 @@ use Composer\Script\Event;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class ProductionHandler extends BaseScriptHandler {
+class ProductionHandler extends BaseHandler {
 
   public static function placeGitIgnore(Event $event) {
     $filesystem = new Filesystem();

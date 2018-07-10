@@ -1,12 +1,9 @@
 <?php
+
 /**
  * @file
- * Install, update and uninstall functions for the Relay Robin installation profile.
+ * Install, update and uninstall functions for the Skeletor install profile.
  */
-
-use Drupal\comment\Plugin\Field\FieldType\CommentItemInterface;
-use Drupal\user\Entity\User;
-use Drupal\user\RoleInterface;
 
 /**
  * Implements hook_install().

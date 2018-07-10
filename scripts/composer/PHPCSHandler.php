@@ -12,7 +12,7 @@ use Composer\Script\Event;
 /**
  * Adds Drupal code sniffs to the installed PHP Codesniffer.
  */
-class PHPCSHandler extends BaseScriptHandler {
+class PHPCSHandler extends BaseHandler {
 
   /**
    * Runs the configuration command to associate PHPCS with coder Drupal sniffs.
