@@ -6,6 +6,7 @@
     "email": "hello@myplanet.com"
   }],
   "type": "project",
+  "bin": ["bin/skeletor-init-project.sh”]
   "repositories": [
     {
       "type": "composer",
@@ -63,7 +64,6 @@
       "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
     ],
     "post-install-cmd": [
-      "bin/skeletor-init-project.sh",
       "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
       "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
       "DrupalSkeletor\\composer\\ProductionBuild::installNPM"
