@@ -2,12 +2,17 @@
 
 # A script to scaffold the Skeletor profile and theme
 
-# Move all files in project-scaffold to the project root
+# Symlink to hooks
 
 ln -sfn ./web/profiles/contrib/skeletor/project-scaffold/hooks ./hooks
 
-rm ./.gitignore
-\cp ./web/profiles/contrib/skeletor/project-scaffold/.gitignore ./.gitignore
+# Copy .travis.yml to root
+
+rm ./.travis.yml
+\cp ./web/profiles/contrib/skeletor/project-scaffold/.gitignore ./.travis.yml
+
+# Copy .gitignore to root
 
 rm ./.gitignore
 \cp ./web/profiles/contrib/skeletor/project-scaffold/.gitignore ./.gitignore
+
