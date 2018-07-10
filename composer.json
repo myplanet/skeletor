@@ -52,7 +52,6 @@
   "prefer-stable": true,
   "autoload": {
     "classmap": [
-    "scripts/composer/ScriptHandler.php",
     "scripts/composer/ProductionBuild.php"
     ]
   },
@@ -62,19 +61,12 @@
       "DrupalSkeletor\\composer\\ProductionBuild::placeGitIgnore",
       "DrupalSkeletor\\composer\\ProductionBuild::removeGitFolders"
     ],
-    "pre-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-    ],
-    "pre-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-    ],
+    "pre-install-cmd": [],
+    "pre-update-cmd": [],
     "post-install-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
       "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
       "DrupalSkeletor\\composer\\ProductionBuild::installNPM"
     ],
-    "post-update-cmd": [
-      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-    ]
+    "post-update-cmd": []
   }
 }
