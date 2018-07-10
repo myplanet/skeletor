@@ -33,7 +33,7 @@ To start a new project based on Skeletor in `[target-dir-name]`, run:
     
     cd some-dir
     
-    composer require myplanetdigital/drupal-skeletor:8.2.x
+    composer require myplanet/skeletor:8.2.x-dev
     
 Skeletor profile is installed in docroot/profiles/contrib/skeletor
 
