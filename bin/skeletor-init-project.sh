@@ -4,4 +4,4 @@
 
 # Move all files in project-scaffold to the project root
 
-ln -sfn /web/profiles/contrib/skeletor/project-scaffold/hooks /hooks
+ln -sfn ./web/profiles/contrib/skeletor/project-scaffold/hooks ./hooks
