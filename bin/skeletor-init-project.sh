@@ -4,7 +4,9 @@
 
 # Symlink to hooks
 
-ln -sfn ./web/profiles/contrib/skeletor/project-scaffold/hooks ./hooks
+if [ ! -L ./hooks ]; then
+  ln -sfn ./web/profiles/contrib/skeletor/project-scaffold/hooks ./hooks
+fi
 
 # Copy .travis.yml to root
 
