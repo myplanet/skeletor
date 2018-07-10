@@ -5,7 +5,7 @@
     "name": "Myplanet",
     "email": "hello@myplanet.com"
   }],
-  "type": "project",
+  "type": "drupal-profile",
   "bin": ["bin/skeletor-init-project.sh"],
   "repositories": [
     {
