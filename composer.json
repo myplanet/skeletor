@@ -52,7 +52,9 @@
   "prefer-stable": true,
   "autoload": {
     "classmap": [
-    "scripts/composer/ProductionBuild.php"
+      "scripts/composer/BaseScriptHandler.php",
+      "scripts/composer/PHPCSHandler.php",
+      "scripts/composer/ProductionBuild.php",
     ]
   },
   "scripts": {

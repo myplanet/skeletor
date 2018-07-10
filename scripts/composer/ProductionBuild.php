@@ -1,28 +1,24 @@
 <?php
 
+namespace Skeletor\composer;
+
 /**
  * @file
- * Contains \DrupalSkeletor\composer\ProductionBuild.
+ * Contains \Skeletor\composer\ProductionBuild.
  */
-
-namespace DrupalSkeletor\composer;
 
 use Composer\Script\Event;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 
-class ProductionBuild {
-
-  protected static function getDrupalRoot($project_root) {
-    return $project_root . '/docroot';
-  }
+class ProductionBuild extends BaseScriptHandler {
 
   public static function placeGitIgnore(Event $event) {
     $filesystem = new Filesystem();
-    $project_root = getcwd();
+    $project_root = static::getProjectRoot();
 
     if ($filesystem->exists($project_root . '/prod.gitignore')) {
-      $filesystem->copy($project_root . '/prod.gitignore', $project_root . '/.gitignore', true);
+      $filesystem->copy($project_root . '/prod.gitignore', $project_root . '/.gitignore', TRUE);
       $event->getIO()->write("    Placed production gitignore in project root.");
     }
   }
@@ -32,10 +28,9 @@ class ProductionBuild {
     $finder = new Finder();
     $drupal_root = static::getDrupalRoot(getcwd());
 
-    // Find all .git directories found in the drupal root,
-    // searching only contrib or vendor folders.
-    $git_dirs = $finder->directories()->ignoreVCS(false)->ignoreDotFiles(false)
-      ->in($drupal_root)->name(".git")->path("/contrib|vendor/");
+    // Find all .git directories found in the drupal root.
+    $git_dirs = $finder->directories()->ignoreVCS(FALSE)->ignoreDotFiles(FALSE)
+      ->in($drupal_root)->name(".git")->path("/contrib|libraries|vendor/");
 
     // Remove them.
     $filesystem->remove($git_dirs);
@@ -45,16 +40,17 @@ class ProductionBuild {
 
   public static function installNPM(Event $event) {
     $finder = new Finder();
-    $drupal_root = static::getDrupalRoot(getcwd());
+    $drupal_root = static::getDrupalRoot();
 
     // Find all npm instances in the drupal root,
     // that are not contained in contrib or vendor directories.
     $npm = $finder->in($drupal_root)->notPath("/contrib|vendor/")->name("package.json");
 
-    foreach($npm as $package) {
+    foreach ($npm as $package) {
       $path = $package->getRelativePath();
       $event->getIO()->write("    Running npm install in $path");
       exec("cd $drupal_root/$path; npm install");
     }
   }
+
 }
