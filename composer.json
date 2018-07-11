@@ -42,7 +42,7 @@
     "enable-patching": true,
     "patches": {
       "drupal/entity_browser": {
-        "Patch entity browser to fix incorrect configuration": "https://www.drupal.org/files/issues/2849475_2.patch"
+        "Patch entity browser to fix incorrect configuration": "https://www.drupal.org/files/issues/2845037_15.patch"
       }
     }
   },
