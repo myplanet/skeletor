@@ -40,6 +40,20 @@ To start a new project based on Skeletor in `[target-dir-name]`, run:
 ```
 composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 cd some-dir
+```
+
+Open `composer.json` in `some-dir` and add `"enable-patching": true` in the `"extra"`section.
+
+``` json
+{
+    "extra": {
+        "enable-patching": true 
+    }
+}
+```    
+
+Then run:
+```
 composer require myplanet/skeletor:8.2.x-dev
 ```
 
