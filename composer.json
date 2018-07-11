@@ -40,8 +40,8 @@
   },
   "extra": {
     "patches": {
-      "drupal/drupal": {
-        "Add startup configuration for PHP server": "https://www.drupal.org/files/issues/add_a_startup-1543858-30.patch"
+      "drupal/entity_browser": {
+        "Patch entity browser to fix incorrect configuration": "https://www.drupal.org/files/issues/2849475_2.patch"
       }
     }
   },
