@@ -1,0 +1,16 @@
+name: Bare Bones
+type: theme
+base theme: stable
+description: A stripdown theme for skeletor based on stable.
+package: custom
+core: 8.x
+regions:
+  header: Header
+  navigation: Navigation
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  footer_first: "Footer Top"
+  footer_second: "Footer Second"
+  footer_third: "Footer Third"

@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Make sure to include all preprocess functions from the includes folder.
+ */
+
+foreach (glob(dirname(__FILE__) . "/includes/*.inc") as $filename) {
+  include_once $filename;
+}
+
+/**
+ * Implements template_preprocess_html().
+ */
+function barebones_preprocess_html(&$variables) {
+  // Add IE edge meta tag.
+  $xuacompatible = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'http-equiv' => 'X-UA-compatible',
+      'content' => 'IE=edge',
+    ],
+  ];
+  $variables['page']['#attached']['html_head'][] = [$xuacompatible, 'X-UA-compatible'];
+
+  // Add meta tag so Safari does not wrap phone numbers automatically.
+  $format_detection = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'format-detection',
+      'content' => 'telephone-no',
+    ],
+  ];
+  $variables['page']['#attached']['html_head'][] = [$format_detection, 'format-detection'];
+}
+
+/**
+ * Prepare data for theme hook suggestions.
+ */
+function barebones_suggestion_safe($string) {
+  return str_replace('-', '_', $string);
+}
