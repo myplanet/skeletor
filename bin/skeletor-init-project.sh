@@ -57,7 +57,9 @@ if prompt "Symlink travis build assets and scripts?"; then
         mkdir travis
     fi
     # Symlink scripts into travis dir.
-    ln -s web/profiles/contrib/skeletor/project-scaffold/travis/* travis/
+    cd travis
+    ln -s ../web/profiles/contrib/skeletor/project-scaffold/travis/* .
+    cd ..
     if [ ! $? -ne 0 ]; then
         echo "Symlinked travis scripts into:"
         echo "$(pwd)/travis"
@@ -72,7 +74,9 @@ if prompt "Symlink Acquia cloud hooks?"; then
         mkdir hooks
     fi
     # Symlink scripts into hooks dir.
-    ln -s web/profiles/contrib/skeletor/project-scaffold/hooks/* hooks/
+    cd hooks
+    ln -s ../web/profiles/contrib/skeletor/project-scaffold/hooks/* .
+    cd ..
     if [ ! $? -ne 0 ]; then
         echo "Symlinked Acquia cloud hooks into:"
         echo "$(pwd)/hooks"
