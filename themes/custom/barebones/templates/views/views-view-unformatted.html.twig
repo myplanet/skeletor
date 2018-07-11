@@ -1,0 +1,40 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% block wrapper %}
+  {% block title %}
+    {% if title %}
+      <h3>{{ title }}</h3>
+    {% endif %}
+  {% endblock title %}
+  {% block rows %}
+    {% for row in rows %}
+      {% block row %}
+        {%
+          set row_classes = [
+            default_row_class ? 'views-row',
+          ]
+        %}
+        {% block row_wrapper %}
+          <div{{ row.attributes.addClass(row_classes) }}>
+            {% block content %}{{ row.content }}{% endblock %}
+          </div>
+        {% endblock row_wrapper %}
+      {% endblock row %}
+    {% endfor %}
+  {% endblock rows %}
+{% endblock wrapper %}
