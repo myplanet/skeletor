@@ -37,24 +37,31 @@ A skeleton Drupal install profile that scaffolds Myplanet projects.
 
 To start a new project based on Skeletor in `[target-dir-name]`, run:
 
-```
+``` bash
 composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 cd some-dir
 ```
 
-Open `composer.json` in `some-dir` and add `"enable-patching": true` in the `"extra"`section.
+Open `composer.json` in `some-dir` and add `"enable-patching": true` in the `"extra"` section.
 
 ``` json
 {
     "extra": {
-        "enable-patching": true 
+        "enable-patching": true
     }
 }
 ```    
 
-Then run:
-```
+Now add skeletor as a dependency to your build:
+
+``` bash
 composer require myplanet/skeletor:8.2.x-dev
+```
+
+Once skeletor has successfully been added to the build we need to include scaffold files provided by skeletor. By default you will get Acquia cloud hooks, travis scripts, a .gitignore file to use on production and a .travis.yml file with sensible defaults. From the **project root**:
+
+``` bash
+./vendor/bin/skeletor-init-project.sh
 ```
 
 Then connect your new project to a git repository, from the project folder run:
@@ -70,6 +77,8 @@ git push origin
 ### Customizing your build
 
 Skeletor ships with composer scripts which can be viewed inside `skeletor/scripts/composer`. These can be added to your `composer.json` to automate parts of your build.
+
+**These scripts run during `composer install` or `composer update` so you will have to execute those again.**
 
 #### Script List
 
@@ -156,37 +165,6 @@ Installation of Skeletor will scaffold the project with the following:
 - Drush alias boilerplate.
 - local configuration files (settings.local.php, etc)
 - Opt In **git hooks** which can be linked into the project `.git/hooks` directory.
-
-```
-+-bin/
-| +-skeletor-init-project.sh
-| +-skeletor-setup.sh
-+-config/install/
-+-project-scaffold/ (Items to be copied to project root during initialization)
-| +-hooks/ (Acquia hooks)
-| | +-common/
-| | | +-post-code-deploy
-| | | +-post-code-update
-| | | +- ...
-| +-.env
-| +-.gitignore
-| +-.travis.yml
-| +-phpcs.xml.dist
-+-scripts/
-| +-acquia-hooks/
-| | +-post-code-update.sh
-| +-git/
-| | +-pre-commit.sh
-| +-travis/
-| | +-build.sh
-| | +-test.sh
-| | +-deploy.sh
-+-themes/
-| +-barebones/
-| +-barebones_bootstrap_STARTER/ (Scaffold files to be copied for a project-specific theme)
-+-skeletor.info.yml
-+-skeletor.profile
-```
 
 ## 3. Theme
 
