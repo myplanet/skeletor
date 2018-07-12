@@ -4,6 +4,7 @@ package: Skeletor
 
 type: module
 core: 8.x
+version: 1.0
 
 dependencies:
   - search_api:search_api
