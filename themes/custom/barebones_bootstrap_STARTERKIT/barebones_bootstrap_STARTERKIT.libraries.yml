@@ -1,0 +1,10 @@
+bootstrap:
+  version: VERSION
+  css:
+    base:
+      dist/app.css: {}
+  js:
+    dist/app.js: {}
+  dependencies:
+    - core/jquery.once
+    - core/drupal

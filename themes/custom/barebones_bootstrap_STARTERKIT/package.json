@@ -1,0 +1,23 @@
+{
+  "name": "barebones_bootstrap_STARTERKIT",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev-server": "./node_modules/encore dev-server",
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production"
+  },
+    "devDependencies": {
+    "@symfony/webpack-encore": "^0.20.1",
+    "autoprefixer": "^8.6.5",
+    "bootstrap": "^4.1.2",
+    "copy-webpack-plugin": "^4.5.2",
+    "imagemin-webpack-plugin": "^2.1.5",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.2",
+    "popper.js": "^1.14.3",
+    "postcss-loader": "^2.1.6",
+    "sass-loader": "^7.0.3"
+  }
+}
