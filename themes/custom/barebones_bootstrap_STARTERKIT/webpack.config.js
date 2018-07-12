@@ -37,7 +37,7 @@ Encore
 
     .addPlugin(new CopyWebpackPlugin([{
         from: 'src/images/',
-        to: 'dist/images/'
+        to: 'images/'
     }]))
     .addPlugin(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }))
 ;
