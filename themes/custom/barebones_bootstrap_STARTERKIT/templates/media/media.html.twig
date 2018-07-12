@@ -1,0 +1,22 @@
+{#
+/**
+ * @file
+ * Theme override to display a media item.
+ *
+ * Available variables:
+ * - name: Name of the media.
+ * - content: Media content.
+ *
+ * @see template_preprocess_media()
+ *
+ * @ingroup themeable
+ */
+#}
+{% block wrapper %}
+  <figure{{ attributes }}>
+    {{ title_suffix.contextual_links }}
+    {% if content %}
+      {% block content %}{{ content }}{% endblock %}
+    {% endif %}
+  </figure>
+{% endblock wrapper%}
