@@ -10,4 +10,5 @@
  * @see template_preprocess_input()
  */
 #}
-<input{{ attributes }} />{{ children }}
+{% block input %}<input{{ attributes }} />{% endblock %}
+{% block children %}{{ children }}{% endblock %}

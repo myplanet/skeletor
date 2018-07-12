@@ -14,24 +14,30 @@
  * @see template_preprocess_details()
  */
 #}
-<details{{ attributes }}>
-  {%
-    set summary_classes = [
-      required ? 'js-form-required',
-      required ? 'form-required',
-    ]
-  %}
-  {%- if title -%}
-    <summary{{ summary_attributes.addClass(summary_classes) }}>{{ title }}</summary>
-  {%- endif -%}
+{% block wrapper %}
+  <details{{ attributes }}>
+    {%
+      set summary_classes = [
+        required ? 'js-form-required',
+        required ? 'form-required',
+      ]
+    %}
+    {% block title %}
+      {%- if title -%}
+        <summary{{ summary_attributes.addClass(summary_classes) }}>{{ title }}</summary>
+      {%- endif -%}
+    {% endblock title %}
 
-  {% if errors %}
-    <div>
-      {{ errors }}
-    </div>
-  {% endif %}
+    {% block errors %}
+      {% if errors %}
+        <div>
+          {{ errors }}
+        </div>
+      {% endif %}
+    {% endblock errors %}
 
-  {{ description }}
-  {{ children }}
-  {{ value }}
-</details>
+    {% block description %}{{ description }}{% endblock %}
+    {% block children %}{{ children }}{% endblock %}
+    {% block value %}{{ value }}{% endblock %}
+  </details>
+{% endblock wrapper %}

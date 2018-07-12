@@ -21,5 +21,9 @@
   ]
 %}
 {% if title is not empty or required -%}
-  <label{{ attributes.addClass(classes) }}>{{ title }}</label>
+  {% block wrapper %}
+    <label{{ attributes.addClass(classes) }}>
+      {% block title %}{{ title }}{% endblock %}
+    </label>
+  {% endblock wrapper %}
 {%- endif %}

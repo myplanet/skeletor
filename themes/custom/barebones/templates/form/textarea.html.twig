@@ -13,6 +13,10 @@
  * @see template_preprocess_textarea()
  */
 #}
-<div{{ wrapper_attributes }}>
-  <textarea{{ attributes }}>{{ value }}</textarea>
-</div>
+{% block wrapper %}
+  <div{{ wrapper_attributes }}>
+    {% block textarea %}
+      <textarea{{ attributes }}>{{ value }}</textarea>
+    {% endblock textarea %}
+  </div>
+{% endblock wrapper %}

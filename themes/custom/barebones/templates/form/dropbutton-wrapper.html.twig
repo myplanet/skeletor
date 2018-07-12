@@ -11,10 +11,14 @@
 #}
 {% if children %}
   {% spaceless %}
-    <div class="dropbutton-wrapper">
-      <div class="dropbutton-widget">
-        {{ children }}
+    {% block wrapper %}
+      <div class="dropbutton-wrapper">
+        {% block widget %}
+          <div class="dropbutton-widget">
+            {% block children %}{{ children }}{% endblock %}
+          </div>
+        {% endblock widget %}
       </div>
-    </div>
+    {% endblock wrapper %}
   {% endspaceless %}
 {% endif %}

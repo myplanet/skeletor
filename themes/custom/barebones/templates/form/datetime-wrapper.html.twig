@@ -19,13 +19,19 @@
     required ? 'form-required',
   ]
 %}
-{% if title %}
-  <h4{{ title_attributes.addClass(title_classes) }}>{{ title }}</h4>
-{% endif %}
-{{ content }}
-{% if errors %}
-  <div>
-    {{ errors }}
-  </div>
-{% endif %}
-{{ description }}
+{% block wrapper %}
+  {% block title %}
+    {% if title %}
+      <h4{{ title_attributes.addClass(title_classes) }}>{{ title }}</h4>
+    {% endif %}
+  {% endblock title %}
+  {% block content %}{{ content }}{% endblock %}
+  {% block errors %}
+    {% if errors %}
+      <div>
+        {{ errors }}
+      </div>
+    {% endif %}
+  {% endblock erros %}
+  {% block description %}{{ description }}{% endblock %}
+{% endblock wrapper %}

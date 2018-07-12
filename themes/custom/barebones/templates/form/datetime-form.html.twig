@@ -10,6 +10,8 @@
  * @see template_preprocess_datetime_form()
  */
 #}
-<div{{ attributes }}>
-  {{ content }}
-</div>
+{% block wrapper %}
+  <div{{ attributes }}>
+    {% block content %}{{ content }}{% endblock %}
+  </div>
+{% endblock wrapper %}

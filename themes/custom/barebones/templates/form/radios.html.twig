@@ -10,4 +10,8 @@
  * @see template_preprocess_radios()
  */
 #}
-<div{{ attributes }}>{{ children }}</div>
+{% block wrapper %}
+  <div{{ attributes }}>
+    {% block children %}{{ children }}{% endblock %}
+  </div>
+{% endblock %}
