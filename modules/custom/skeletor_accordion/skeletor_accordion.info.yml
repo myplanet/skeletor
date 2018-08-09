@@ -1,0 +1,11 @@
+name: Accordion
+type: module
+core: 8.x
+dependencies:
+  - entity_reference_revisions
+  - field
+  - paragraphs
+  - text
+version: 8.x-1.0
+package: Skeletor
+description: 'Accordion component.'

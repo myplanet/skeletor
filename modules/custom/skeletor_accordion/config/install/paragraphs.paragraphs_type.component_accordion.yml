@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_accordion
+label: Accordion
+icon_uuid: null
+description: 'Full accordion component'
+behavior_plugins: {  }

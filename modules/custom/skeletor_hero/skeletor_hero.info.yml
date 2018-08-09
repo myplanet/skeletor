@@ -1,0 +1,11 @@
+name: Hero
+description: 'Hero Component.'
+type: module
+core: 8.x
+dependencies:
+  - entity_reference_revisions
+  - field
+  - link
+  - paragraphs
+version: 8.x-1.0
+package: Skeletor

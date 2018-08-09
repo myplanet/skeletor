@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_hero_link
+    - paragraphs.paragraphs_type.component_hero_text
+  module:
+    - link
+id: paragraph.component_hero_text.field_component_hero_link
+field_name: field_component_hero_link
+entity_type: paragraph
+bundle: component_hero_text
+label: Link
+description: 'Add an internal or external button link to hero component.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 2
+field_type: link

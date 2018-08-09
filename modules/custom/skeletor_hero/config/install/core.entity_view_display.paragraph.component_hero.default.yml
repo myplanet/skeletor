@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_hero.field_hero_content
+    - paragraphs.paragraphs_type.component_hero
+  module:
+    - entity_reference_revisions
+id: paragraph.component_hero.default
+targetEntityType: paragraph
+bundle: component_hero
+mode: default
+content:
+  field_hero_content:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }
