@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.accordion_content.field_accordion_content_text
-    - paragraphs.paragraphs_type.accordion_content
+    - field.field.paragraph.component_accordion_item_content.field_accordion_item_text
+    - paragraphs.paragraphs_type.component_accordion_item_content
   module:
     - text
-id: paragraph.accordion_content.default
+id: paragraph.component_accordion_item_content.default
 targetEntityType: paragraph
-bundle: accordion_content
+bundle: component_accordion_item_content
 mode: default
 content:
-  field_accordion_content_text:
+  field_accordion_item_text:
     weight: 0
     settings:
       rows: 5

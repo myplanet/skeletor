@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: accordion_content
-label: 'Accordion Content'
-icon_uuid: null
-description: 'Content inside the accordion item.'
-behavior_plugins: {  }

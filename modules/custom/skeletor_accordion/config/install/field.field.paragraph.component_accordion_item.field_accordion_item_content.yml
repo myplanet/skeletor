@@ -2,16 +2,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_accordion_items
-    - paragraphs.paragraphs_type.component_accordion
+    - field.storage.paragraph.field_accordion_item_content
     - paragraphs.paragraphs_type.component_accordion_item
+    - paragraphs.paragraphs_type.component_accordion_item_content
   module:
     - entity_reference_revisions
-id: paragraph.component_accordion.field_accordion_items
-field_name: field_accordion_items
+id: paragraph.component_accordion_item.field_accordion_item_content
+field_name: field_accordion_item_content
 entity_type: paragraph
-bundle: component_accordion
-label: 'Accordion Items'
+bundle: component_accordion_item
+label: Content
 description: ''
 required: true
 translatable: false
@@ -22,21 +22,18 @@ settings:
   handler_settings:
     negate: 0
     target_bundles:
-      component_accordion_item: component_accordion_item
+      component_accordion_item_content: component_accordion_item_content
     target_bundles_drag_drop:
-      component_accordion:
-        weight: 6
-        enabled: false
       component_accordion_item:
-        enabled: true
-        weight: 7
-      component_accordion_item_content:
-        weight: 8
+        weight: 5
         enabled: false
+      component_accordion_item_content:
+        enabled: true
+        weight: 6
       component_hero:
-        weight: 9
+        weight: 7
         enabled: false
       component_hero_text:
-        weight: 10
+        weight: 8
         enabled: false
 field_type: entity_reference_revisions

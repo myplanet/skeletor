@@ -4,8 +4,8 @@ dependencies:
   module:
     - paragraphs
     - text
-id: paragraph.field_accordion_content_text
-field_name: field_accordion_content_text
+id: paragraph.field_accordion_item_text
+field_name: field_accordion_item_text
 entity_type: paragraph
 type: text_long
 settings: {  }

@@ -1,5 +1,5 @@
-name: Hero
-description: 'Hero Component.'
+name: 'Skeletor Hero Component'
+description: 'Hero component for skeletor profile.'
 type: module
 core: 8.x
 dependencies:

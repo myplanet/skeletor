@@ -4,5 +4,5 @@ dependencies: {  }
 id: component_accordion
 label: Accordion
 icon_uuid: null
-description: 'Full accordion component'
+description: 'Wrapper for multiple accordion items.'
 behavior_plugins: {  }

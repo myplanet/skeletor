@@ -2,16 +2,15 @@ langcode: en
 status: true
 dependencies:
   module:
+    - entity_reference_revisions
     - paragraphs
-id: paragraph.field_accordion_title
-field_name: field_accordion_title
+id: paragraph.field_accordion_item_content
+field_name: field_accordion_item_content
 entity_type: paragraph
-type: string
+type: entity_reference_revisions
 settings:
-  max_length: 255
-  is_ascii: false
-  case_sensitive: false
-module: core
+  target_type: paragraph
+module: entity_reference_revisions
 locked: false
 cardinality: 1
 translatable: true
