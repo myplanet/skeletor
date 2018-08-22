@@ -1,0 +1,9 @@
+name: 'Skeletor Title Component'
+description: 'Sub-component for adding titles/sub-titles to components.'
+type: module
+core: 8.x
+dependencies:
+  - field
+  - paragraphs
+version: 8.x-1.0
+package: Skeletor

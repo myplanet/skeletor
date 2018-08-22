@@ -1,0 +1,40 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_title.field_component_title_divider
+    - field.field.paragraph.component_title.field_component_title_subtitle
+    - field.field.paragraph.component_title.field_component_title_title
+    - paragraphs.paragraphs_type.component_title
+id: paragraph.component_title.default
+targetEntityType: paragraph
+bundle: component_title
+mode: default
+content:
+  field_component_title_divider:
+    weight: 2
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_component_title_subtitle:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_component_title_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
