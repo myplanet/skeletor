@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_text
+label: Text
+icon_uuid: null
+description: 'Basic text component. '
+behavior_plugins: {  }

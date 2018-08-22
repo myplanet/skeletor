@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_text_component
+    - node.type.page
+    - paragraphs.paragraphs_type.component_text
+  module:
+    - entity_reference_revisions
+id: node.page.field_text_component
+field_name: field_text_component
+entity_type: node
+bundle: page
+label: 'Text Component'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_text: component_text
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 8
+        enabled: false
+      component_accordion_item:
+        weight: 9
+        enabled: false
+      component_accordion_item_content:
+        weight: 10
+        enabled: false
+      component_hero:
+        weight: 11
+        enabled: false
+      component_hero_text:
+        weight: 12
+        enabled: false
+      component_text:
+        enabled: true
+        weight: 13
+      component_title:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

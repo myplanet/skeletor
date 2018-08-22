@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_text.field_component_text_title
+    - field.field.paragraph.component_text.field_component_textarea
+    - paragraphs.paragraphs_type.component_text
+  module:
+    - paragraphs
+    - text
+id: paragraph.component_text.default
+targetEntityType: paragraph
+bundle: component_text
+mode: default
+content:
+  field_component_text_title:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+  field_component_textarea:
+    weight: 2
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
