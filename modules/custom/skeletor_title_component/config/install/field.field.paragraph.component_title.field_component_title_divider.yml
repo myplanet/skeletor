@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_title_divider
+    - paragraphs.paragraphs_type.component_title
+id: paragraph.component_title.field_component_title_divider
+field_name: field_component_title_divider
+entity_type: paragraph
+bundle: component_title
+label: 'Add divider below title?'
+description: 'Add optional horizontal divider below title. '
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

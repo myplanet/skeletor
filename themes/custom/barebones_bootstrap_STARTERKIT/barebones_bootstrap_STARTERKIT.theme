@@ -32,6 +32,16 @@ function barebones_bootstrap_STARTERKIT_preprocess_html(&$variables) {
     ],
   ];
   $variables['page']['#attached']['html_head'][] = [$format_detection, 'format-detection'];
+
+  // Add Bootstrap friendly viewport metatag.
+  $viewport = [
+    '#tag' => 'meta',
+    '#attributes' => [
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1, shrink-to-fit=no',
+    ],
+  ];
+  $variables['page']['#attached']['html_head'][] = [$viewport, 'viewport'];
 }
 
 /**

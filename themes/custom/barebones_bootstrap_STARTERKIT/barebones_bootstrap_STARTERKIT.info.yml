@@ -1,12 +1,13 @@
 name: Bare Bones Bootstrap Starterkit
 type: theme
 base theme: barebones
-description: A starterkit theme based on barebones for Skeletor.
+description: A starter kit theme based on barebones for skeletor.
 package: custom
 core: 8.x
 regions:
-  header: Header
+  branding: Branding
   navigation: Navigation
+  header: Header
   breadcrumb: Breadcrumb
   highlighted: Highlighted
   help: Help
@@ -14,3 +15,5 @@ regions:
   footer_first: "Footer Top"
   footer_second: "Footer Second"
   footer_third: "Footer Third"
+libraries:
+  - barebones_bootstrap_STARTERKIT/bootstrap

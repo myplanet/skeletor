@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_hero_text.field_component_hero_link
+    - field.field.paragraph.component_hero_text.field_component_hero_subtitle
+    - field.field.paragraph.component_hero_text.field_component_hero_title
+    - paragraphs.paragraphs_type.component_hero_text
+  module:
+    - link
+id: paragraph.component_hero_text.default
+targetEntityType: paragraph
+bundle: component_hero_text
+mode: default
+content:
+  field_component_hero_link:
+    weight: 2
+    label: hidden
+    settings:
+      trim_length: 80
+      rel: nofollow
+      url_only: false
+      url_plain: false
+      target: '0'
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_component_hero_subtitle:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_component_hero_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

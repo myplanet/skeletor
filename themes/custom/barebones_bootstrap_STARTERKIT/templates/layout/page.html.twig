@@ -46,21 +46,37 @@
 {% block wrapper %}
   {% block header %}
     <header role="banner">
-      {{ page.navigation }}
+      <nav role="navigation" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid container-fluid--max-xl">
+          {{ page.branding }}
+          {% if page.navigation|render|striptags|trim %}
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          {% endif %}
+          {{ page.navigation }}
+        </div>
+      </nav>
       {{ page.header }}
     </header>
   {% endblock header %}
 
-  {% block breadcrumb %}{{ page.breadcrumb }}{% endblock %}
-  {% block highlighted %}{{ page.highlighted }}{% endblock %}
-  {% block help %}{{ page.help }}{% endblock %}
+  <div class="container-fluid container-fluid--max-xl">
+    {% block breadcrumb %}{{ page.breadcrumb }}{% endblock %}
+    {% block highlighted %}{{ page.highlighted }}{% endblock %}
+    {% block help %}{{ page.help }}{% endblock %}
+  </div>
 
   {% block main %}
     <main role="main">
       {% block skip_link %}
           <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
       {% endblock skip_link %}
-      {% block content %}{{ page.content }}{% endblock %}
+      {% block content %}
+        <div class="container-fluid container-fluid--max-xl">
+          {{ page.content }}
+        </div>
+      {% endblock content %}
     </main>
   {% endblock main %}
 

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_title
+label: Title
+icon_uuid: null
+description: 'Sub-component for titles inside other components.'
+behavior_plugins: {  }

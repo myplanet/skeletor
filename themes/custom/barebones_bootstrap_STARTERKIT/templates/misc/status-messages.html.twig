@@ -21,25 +21,28 @@
  *   - class: HTML classes.
  */
 #}
+
 {% for type, messages in message_list %}
   <div role="contentinfo" aria-label="{{ status_headings[type] }}"{{ attributes|without('role', 'aria-label') }}>
-    {% if type == 'error' %}
-      <div role="alert">
+    {% if status_headings[type] %}
+      <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
     {% endif %}
-      {% if status_headings[type] %}
-        <h2 class="visually-hidden">{{ status_headings[type] }}</h2>
-      {% endif %}
-      {% if messages|length > 1 %}
-        <ul>
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% else %}
-        {{ messages|first }}
-      {% endif %}
-    {% if type == 'error' %}
-      </div>
-    {% endif %}
+      {% for message in messages %}
+        {% if type == 'status' %}
+          {% set alert_type = 'alert-success' %}
+        {% elseif type == 'error' %}
+          {% set alert_type = 'alert-danger' %}
+        {% elseif type == 'warning' %}
+          {% set alert_type = 'alert-warning' %}
+        {% else %}
+          {% set alert_type = 'alert-info' %}
+        {% endif %}
+        <div class="alert {{ alert_type }}" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
   </div>
 {% endfor %}

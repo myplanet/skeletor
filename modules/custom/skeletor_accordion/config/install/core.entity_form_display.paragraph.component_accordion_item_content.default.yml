@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_accordion_item_content.field_accordion_item_text
+    - paragraphs.paragraphs_type.component_accordion_item_content
+  module:
+    - text
+id: paragraph.component_accordion_item_content.default
+targetEntityType: paragraph
+bundle: component_accordion_item_content
+mode: default
+content:
+  field_accordion_item_text:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

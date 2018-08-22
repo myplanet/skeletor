@@ -14,10 +14,10 @@
         <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
       {% endblock title %}
       {% block list %}
-        <ol>
+        <ol class="breadcrumb">
         {% for item in breadcrumb %}
           {% block item %}
-            <li>
+            <li class="breadcrumb-item">
               {% if item.url %}
                 <a href="{{ item.url }}">{{ item.text }}</a>
               {% else %}

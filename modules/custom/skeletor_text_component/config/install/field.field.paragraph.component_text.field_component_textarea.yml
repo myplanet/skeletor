@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_textarea
+    - paragraphs.paragraphs_type.component_text
+  module:
+    - text
+id: paragraph.component_text.field_component_textarea
+field_name: field_component_textarea
+entity_type: paragraph
+bundle: component_text
+label: Text
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

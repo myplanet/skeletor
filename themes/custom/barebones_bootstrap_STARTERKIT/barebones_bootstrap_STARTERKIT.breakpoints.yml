@@ -1,0 +1,42 @@
+barebones_bootstrap_STARTERKIT.xs:
+  label: xs
+  mediaQuery: 'all and (min-width: 0)'
+  weight: 0
+  multipliers:
+    - 1x
+    - 2x
+barebones_bootstrap_STARTERKIT.sm:
+  label: sm
+  mediaQuery: 'all and (min-width: 576px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+barebones_bootstrap_STARTERKIT.md:
+  label: md
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 2
+  multipliers:
+    - 1x
+    - 2x
+barebones_bootstrap_STARTERKIT.lg:
+  label: lg
+  mediaQuery: 'all and (min-width: 992px)'
+  weight: 3
+  multipliers:
+    - 1x
+    - 2x
+barebones_bootstrap_STARTERKIT.xl:
+  label: xl
+  mediaQuery: 'all and (min-width: 1200px)'
+  weight: 4
+  multipliers:
+    - 2x
+    - 1x
+barebones_bootstrap_STARTERKIT.xxl:
+  label: xl
+  mediaQuery: 'all and (min-width: 1600px)'
+  weight: 5
+  multipliers:
+    - 2x
+    - 1x

@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_hero_text
+label: 'Hero Text'
+icon_uuid: null
+description: 'Container for text inside hero component.'
+behavior_plugins: {  }

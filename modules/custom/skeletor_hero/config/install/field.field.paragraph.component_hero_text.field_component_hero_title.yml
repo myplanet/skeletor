@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_hero_title
+    - paragraphs.paragraphs_type.component_hero_text
+id: paragraph.component_hero_text.field_component_hero_title
+field_name: field_component_hero_title
+entity_type: paragraph
+bundle: component_hero_text
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

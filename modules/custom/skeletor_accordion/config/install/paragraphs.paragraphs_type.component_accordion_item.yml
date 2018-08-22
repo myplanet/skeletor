@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_accordion_item
+label: 'Accordion Item'
+icon_uuid: null
+description: 'Paragraph containt accordion title & content.'
+behavior_plugins: {  }

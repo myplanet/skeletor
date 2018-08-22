@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_accordion_item_content
+label: 'Accordion Item Content'
+icon_uuid: null
+description: 'The main content container for an accordion item.'
+behavior_plugins: {  }

@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_title.field_component_title_divider
+    - field.field.paragraph.component_title.field_component_title_subtitle
+    - field.field.paragraph.component_title.field_component_title_title
+    - paragraphs.paragraphs_type.component_title
+id: paragraph.component_title.default
+targetEntityType: paragraph
+bundle: component_title
+mode: default
+content:
+  field_component_title_subtitle:
+    weight: 1
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_component_title_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden:
+  field_component_title_divider: true

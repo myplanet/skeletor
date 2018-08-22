@@ -16,7 +16,7 @@
 {% block wrapper %}
   <div{{ wrapper_attributes }}>
     {% block textarea %}
-      <textarea{{ attributes }}>{{ value }}</textarea>
+      <textarea{{ attributes.addClass('form-control') }}>{{ value }}</textarea>
     {% endblock textarea %}
   </div>
 {% endblock wrapper %}

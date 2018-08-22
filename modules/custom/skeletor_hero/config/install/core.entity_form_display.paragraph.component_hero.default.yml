@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_hero.field_hero_content
+    - paragraphs.paragraphs_type.component_hero
+  module:
+    - paragraphs
+id: paragraph.component_hero.default
+targetEntityType: paragraph
+bundle: component_hero
+mode: default
+content:
+  field_hero_content:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true
