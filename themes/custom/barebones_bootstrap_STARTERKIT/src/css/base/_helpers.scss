@@ -5,6 +5,7 @@
   width: 100vw;
 }
 
+// Add per breakpoint helper classes.
 @each $name, $breakpoint in $grid-breakpoints {
   // Add full-width per breakpoint.
   .full-width--max-#{$name} {
