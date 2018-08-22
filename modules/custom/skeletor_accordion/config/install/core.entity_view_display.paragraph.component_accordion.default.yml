@@ -22,11 +22,12 @@ content:
     third_party_settings: {  }
     region: content
   field_component_accordion_title:
+    type: entity_reference_revisions_entity_view
     weight: 0
     label: hidden
     settings:
-      link_to_entity: false
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    type: string
     region: content
 hidden: {  }
