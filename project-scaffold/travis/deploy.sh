@@ -17,7 +17,9 @@ echo "::Deploying"
 git config --global user.email "travis@myplanet.com"
 git config --global user.name  "Travis CI - $ACQUIA_PROJECT"
 
+echo "::Creating dir ${DEPLOY_DEST}"
 mkdir $DEPLOY_DEST
+echo "::Cloning out ${DEPLOY_REPO} into ${DEPLOY_DEST}"
 git clone $DEPLOY_REPO $DEPLOY_DEST
 cd $DEPLOY_DEST
 git checkout $DEPLOY_BRANCH
@@ -25,8 +27,8 @@ git checkout $DEPLOY_BRANCH
 # Create a travis-build branch off of our test commit since we're in a detached state.
 cd $PROJECT_ROOT
 PULL_REQUEST_MESSAGE=$(git log -n 1 --pretty=format:%s $TRAVIS_COMMIT)
-rm -rf .git
-cp -a $PROJECT_ROOT/. $DEPLOY_DEST
+echo "::Latest message ${PULL_REQUEST_MESSAGE}"
+rsync -a $PROJECT_ROOT/ $DEPLOY_DEST --exclude .git --delete
 
 cd $DEPLOY_DEST
 echo "::Adding new files."
