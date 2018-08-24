@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_tabs
+id: block_content.skeletor_tabs
+target_entity_type_id: block_content
+target_bundle: skeletor_tabs
+default_langcode: site_default
+language_alterable: false

@@ -1,8 +1,8 @@
 langcode: en
 status: true
 dependencies: {  }
-id: component_text
-label: 'Text Component'
+id: component_tab
+label: Tab
 icon_uuid: null
-description: 'Basic text component. '
+description: 'Individual tab for tabs component.'
 behavior_plugins: {  }

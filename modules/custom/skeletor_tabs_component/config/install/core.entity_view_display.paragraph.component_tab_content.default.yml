@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_tab_content.field_tab_content_text
+    - paragraphs.paragraphs_type.component_tab_content
+  module:
+    - text
+id: paragraph.component_tab_content.default
+targetEntityType: paragraph
+bundle: component_tab_content
+mode: default
+content:
+  field_tab_content_text:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden: {  }

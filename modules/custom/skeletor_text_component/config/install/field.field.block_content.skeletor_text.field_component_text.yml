@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_text
+    - field.storage.block_content.field_component_text
+    - paragraphs.paragraphs_type.component_text
+  module:
+    - entity_reference_revisions
+id: block_content.skeletor_text.field_component_text
+field_name: field_component_text
+entity_type: block_content
+bundle: skeletor_text
+label: 'Component Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_text: component_text
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 12
+        enabled: false
+      component_accordion_item:
+        weight: 13
+        enabled: false
+      component_accordion_item_content:
+        weight: 14
+        enabled: false
+      component_hero:
+        weight: 15
+        enabled: false
+      component_hero_text:
+        weight: 16
+        enabled: false
+      component_tab:
+        weight: 17
+        enabled: false
+      component_tab_content:
+        weight: 18
+        enabled: false
+      component_tab_title:
+        weight: 19
+        enabled: false
+      component_tabs:
+        weight: 20
+        enabled: false
+      component_text:
+        enabled: true
+        weight: 21
+      component_title:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

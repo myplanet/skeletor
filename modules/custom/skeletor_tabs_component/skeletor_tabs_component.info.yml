@@ -1,5 +1,5 @@
-name: 'Skeletor Text Component'
-description: 'Basic text component for Skeletor.'
+name: 'Skeletor Tabs Component'
+description: 'Tabs component for skeletor profile.'
 type: module
 core: 8.x
 dependencies:

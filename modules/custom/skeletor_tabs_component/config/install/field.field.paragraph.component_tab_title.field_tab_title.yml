@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_title
+    - paragraphs.paragraphs_type.component_tab_title
+id: paragraph.component_tab_title.field_tab_title
+field_name: field_tab_title
+entity_type: paragraph
+bundle: component_tab_title
+label: 'Tab Title'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

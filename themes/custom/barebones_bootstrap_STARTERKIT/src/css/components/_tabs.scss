@@ -1,0 +1,16 @@
+// Styles for Skeletor Tabs/Accordion component.
+// -----------------------------------------------------------------------------
+
+.tabs-accordion__content > .tab-pane {
+  // sass-lint:disable-block no-important
+  @include media-breakpoint-down(sm) {
+    display: block !important;
+    opacity: 1 !important;
+  }
+}
+
+.tabs-accordion__content > .card {
+  @include media-breakpoint-up(md) {
+    border: 0 none;
+  }
+}

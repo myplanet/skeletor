@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.component_no_title
+    - field.field.paragraph.component_text.field_component_text_title
+    - field.field.paragraph.component_text.field_component_textarea
+    - paragraphs.paragraphs_type.component_text
+  module:
+    - text
+id: paragraph.component_text.component_no_title
+targetEntityType: paragraph
+bundle: component_text
+mode: component_no_title
+content:
+  field_component_textarea:
+    weight: 0
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+hidden:
+  created: true
+  field_component_text_title: true
+  status: true
+  uid: true

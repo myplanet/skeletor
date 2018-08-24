@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.component_no_title
+    - field.field.paragraph.component_accordion.field_accordion_items
+    - field.field.paragraph.component_accordion.field_component_accordion_title
+    - paragraphs.paragraphs_type.component_accordion
+  module:
+    - paragraphs
+id: paragraph.component_accordion.component_no_title
+targetEntityType: paragraph
+bundle: component_accordion
+mode: component_no_title
+content:
+  field_accordion_items:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Item
+      title_plural: Items
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: component_accordion_item
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_component_accordion_title: true
+  status: true
+  uid: true

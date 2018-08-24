@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_accordion
+    - field.field.block_content.skeletor_accordion.field_component_accordion
+  module:
+    - entity_reference_revisions
+id: block_content.skeletor_accordion.default
+targetEntityType: block_content
+bundle: skeletor_accordion
+mode: default
+content:
+  field_component_accordion:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

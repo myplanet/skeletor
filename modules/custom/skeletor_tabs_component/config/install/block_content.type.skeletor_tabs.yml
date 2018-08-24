@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_tabs
+label: Tabs
+revision: 0
+description: 'Create tabs block using Skeletor tabs component.'
