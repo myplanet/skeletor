@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_tabs
+label: 'Tabs Component'
+icon_uuid: null
+description: 'Tabs component (becomes accordion on mobile)'
+behavior_plugins: {  }

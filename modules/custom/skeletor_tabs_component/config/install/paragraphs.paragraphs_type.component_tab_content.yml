@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_tab_content
+label: 'Tab Content'
+icon_uuid: null
+description: 'Container for content inside individual tab.'
+behavior_plugins: {  }

@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: component_hero
-label: Hero
+label: 'Hero Component'
 icon_uuid: null
 description: 'Full Hero Component.'
 behavior_plugins: {  }

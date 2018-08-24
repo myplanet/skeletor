@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_content_text
+    - paragraphs.paragraphs_type.component_tab_content
+  module:
+    - text
+id: paragraph.component_tab_content.field_tab_content_text
+field_name: field_tab_content_text
+entity_type: paragraph
+bundle: component_tab_content
+label: Text
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

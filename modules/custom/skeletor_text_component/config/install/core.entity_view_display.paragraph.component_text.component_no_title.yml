@@ -1,0 +1,24 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.component_no_title
+    - field.field.paragraph.component_text.field_component_text_title
+    - field.field.paragraph.component_text.field_component_textarea
+    - paragraphs.paragraphs_type.component_text
+  module:
+    - text
+id: paragraph.component_text.component_no_title
+targetEntityType: paragraph
+bundle: component_text
+mode: component_no_title
+content:
+  field_component_textarea:
+    type: text_default
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_component_text_title: true

@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_tab
+    - paragraphs.paragraphs_type.component_tab
+    - paragraphs.paragraphs_type.component_tabs
+  module:
+    - entity_reference_revisions
+id: paragraph.component_tabs.field_component_tab
+field_name: field_component_tab
+entity_type: paragraph
+bundle: component_tabs
+label: Tab
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_tab: component_tab
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 12
+        enabled: false
+      component_accordion_item:
+        weight: 13
+        enabled: false
+      component_accordion_item_content:
+        weight: 14
+        enabled: false
+      component_hero:
+        weight: 15
+        enabled: false
+      component_hero_text:
+        weight: 16
+        enabled: false
+      component_tab:
+        enabled: true
+        weight: 17
+      component_tab_content:
+        weight: 18
+        enabled: false
+      component_tab_title:
+        weight: 19
+        enabled: false
+      component_tabs:
+        weight: 20
+        enabled: false
+      component_text:
+        weight: 21
+        enabled: false
+      component_title:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

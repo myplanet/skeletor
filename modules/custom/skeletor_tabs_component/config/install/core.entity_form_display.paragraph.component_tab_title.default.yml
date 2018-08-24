@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_tab_title.field_tab_title
+    - paragraphs.paragraphs_type.component_tab_title
+id: paragraph.component_tab_title.default
+targetEntityType: paragraph
+bundle: component_tab_title
+mode: default
+content:
+  field_tab_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

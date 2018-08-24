@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.component_no_title
+    - field.field.paragraph.component_accordion.field_accordion_items
+    - field.field.paragraph.component_accordion.field_component_accordion_title
+    - paragraphs.paragraphs_type.component_accordion
+  module:
+    - entity_reference_revisions
+id: paragraph.component_accordion.component_no_title
+targetEntityType: paragraph
+bundle: component_accordion
+mode: component_no_title
+content:
+  field_accordion_items:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_component_accordion_title: true

@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_tabs_title
+    - paragraphs.paragraphs_type.component_tabs
+    - paragraphs.paragraphs_type.component_title
+  module:
+    - entity_reference_revisions
+id: paragraph.component_tabs.field_component_tabs_title
+field_name: field_component_tabs_title
+entity_type: paragraph
+bundle: component_tabs
+label: 'Component Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_title: component_title
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 9
+        enabled: false
+      component_accordion_item:
+        weight: 10
+        enabled: false
+      component_accordion_item_content:
+        weight: 11
+        enabled: false
+      component_hero:
+        weight: 12
+        enabled: false
+      component_hero_text:
+        weight: 13
+        enabled: false
+      component_tabs:
+        weight: 14
+        enabled: false
+      component_text:
+        weight: 15
+        enabled: false
+      component_title:
+        enabled: true
+        weight: 16
+      component_tab:
+        weight: 17
+        enabled: false
+      component_tab_content:
+        weight: 18
+        enabled: false
+      component_tab_title:
+        weight: 19
+        enabled: false
+field_type: entity_reference_revisions

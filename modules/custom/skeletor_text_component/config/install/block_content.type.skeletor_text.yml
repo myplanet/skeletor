@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_text
+label: Text
+revision: 0
+description: 'Create text block using Skeletor text component.'

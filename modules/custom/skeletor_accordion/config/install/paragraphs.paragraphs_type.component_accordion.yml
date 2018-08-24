@@ -2,7 +2,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: component_accordion
-label: Accordion
+label: 'Accordion Component'
 icon_uuid: null
 description: 'Wrapper for multiple accordion items.'
 behavior_plugins: {  }

@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.component_no_title
+label: 'No Title'
+targetEntityType: paragraph
+cache: true

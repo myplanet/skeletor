@@ -3,8 +3,10 @@ description: 'Hero component for skeletor profile.'
 type: module
 core: 8.x
 dependencies:
+  - block_content
   - entity_reference_revisions
   - field
+  - language
   - link
   - paragraphs
 version: 8.x-1.0

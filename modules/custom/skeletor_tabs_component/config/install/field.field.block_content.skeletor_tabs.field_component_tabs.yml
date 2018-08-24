@@ -1,0 +1,60 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_tabs
+    - field.storage.block_content.field_component_tabs
+    - paragraphs.paragraphs_type.component_tabs
+  module:
+    - entity_reference_revisions
+id: block_content.skeletor_tabs.field_component_tabs
+field_name: field_component_tabs
+entity_type: block_content
+bundle: skeletor_tabs
+label: Tabs
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_tabs: component_tabs
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 12
+        enabled: false
+      component_accordion_item:
+        weight: 13
+        enabled: false
+      component_accordion_item_content:
+        weight: 14
+        enabled: false
+      component_hero:
+        weight: 15
+        enabled: false
+      component_hero_text:
+        weight: 16
+        enabled: false
+      component_tab:
+        weight: 17
+        enabled: false
+      component_tab_content:
+        weight: 18
+        enabled: false
+      component_tab_title:
+        weight: 19
+        enabled: false
+      component_tabs:
+        enabled: true
+        weight: 20
+      component_text:
+        weight: 21
+        enabled: false
+      component_title:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

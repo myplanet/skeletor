@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.component_no_title
+    - field.field.paragraph.component_tabs.field_component_tab
+    - field.field.paragraph.component_tabs.field_component_tabs_title
+    - paragraphs.paragraphs_type.component_tabs
+  module:
+    - paragraphs
+id: paragraph.component_tabs.component_no_title
+targetEntityType: paragraph
+bundle: component_tabs
+mode: component_no_title
+content:
+  field_component_tab:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Tab
+      title_plural: Tabs
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: component_tab
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  field_component_tabs_title: true
+  status: true
+  uid: true

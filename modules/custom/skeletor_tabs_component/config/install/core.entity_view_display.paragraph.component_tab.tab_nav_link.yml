@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.tab_nav_link
+    - field.field.paragraph.component_tab.field_component_tab_content
+    - field.field.paragraph.component_tab.field_component_tab_title
+    - paragraphs.paragraphs_type.component_tab
+  module:
+    - entity_reference_revisions
+id: paragraph.component_tab.tab_nav_link
+targetEntityType: paragraph
+bundle: component_tab
+mode: tab_nav_link
+content:
+  field_component_tab_title:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_component_tab_content: true

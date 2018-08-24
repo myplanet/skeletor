@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_accordion
+label: Accordion
+revision: 0
+description: 'Create accordion block using Skeletor accordion component.'
