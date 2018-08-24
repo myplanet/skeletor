@@ -51,9 +51,6 @@ dependencies:
   - user
   - views
   - views_ui
-  - skeletor_media
-  - skeletor_search
-  - skeletor_acquia
 themes:
   - bartik
   - seven
