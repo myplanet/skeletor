@@ -1,0 +1,15 @@
+name: 'Skeletor Media'
+type: module
+core: 8.x
+dependencies:
+  - field
+  - file
+  - image
+  - media
+  - path
+  - svg_image
+  - user
+  - views
+version: 8.x-1.0
+package: Skeletor
+description: 'Basic media settings for Skeletor profile.'

@@ -26,6 +26,7 @@ dependencies:
   - history
   - image
   - link
+  - media
   - menu_link_content
   - menu_ui
   - node
@@ -49,6 +50,7 @@ dependencies:
   - user
   - views
   - views_ui
+  - skeletor_media
 themes:
   - seven
   - bartik
