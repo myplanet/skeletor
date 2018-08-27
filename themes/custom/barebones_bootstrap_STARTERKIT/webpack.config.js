@@ -5,6 +5,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var ImageminPlugin = require('imagemin-webpack-plugin').default;
 
+const sassLintPlugin = require('sasslint-webpack-plugin');
+
 Encore
 // the project directory where all compiled assets will be stored
     .setOutputPath('dist/')
@@ -40,6 +42,13 @@ Encore
         to: 'images/'
     }]))
     .addPlugin(new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }))
+
+    .addPlugin(
+      new sassLintPlugin({
+        glob: './src/css/**/*.scss',
+        testing: false
+      }),
+    )
 ;
 
 // export the final configuration
