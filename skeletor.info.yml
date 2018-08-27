@@ -51,3 +51,4 @@ dependencies:
   - views_ui
 themes:
   - seven
+  - bartik
