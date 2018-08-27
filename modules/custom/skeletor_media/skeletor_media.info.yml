@@ -2,12 +2,18 @@ name: 'Skeletor Media'
 type: module
 core: 8.x
 dependencies:
+  - crop
+  - dropzonejs_eb_widget
+  - inline_entity_form
+  - entity_browser
   - field
   - file
   - image
   - media
+  - node
   - path
   - svg_image
+  - text
   - user
   - views
 version: 8.x-1.0

@@ -26,7 +26,6 @@ dependencies:
   - history
   - image
   - link
-  - media
   - menu_link_content
   - menu_ui
   - node
