@@ -19,6 +19,10 @@
     "popper.js": "^1.14.3",
     "postcss-loader": "^2.1.6",
     "sass-loader": "^7.0.3",
+    "sasslint-webpack-plugin": "^1.0.4",
     "webpack-notifier": "^1.6.0"
+  },
+  "dependencies": {
+    "sass-lint": "^1.12.1"
   }
 }
