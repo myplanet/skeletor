@@ -11,7 +11,6 @@ dependencies:
   - breakpoint
   - ckeditor
   - color
-  - comment
   - config
   - contact
   - contextual
@@ -23,7 +22,6 @@ dependencies:
   - field_group
   - file
   - filter
-  - google_tag
   - help
   - history
   - image
@@ -52,5 +50,4 @@ dependencies:
   - views
   - views_ui
 themes:
-  - bartik
   - seven
