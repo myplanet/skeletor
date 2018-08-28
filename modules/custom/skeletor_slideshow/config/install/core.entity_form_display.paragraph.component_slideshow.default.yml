@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_slideshow.field_component_slideshow_slides
+    - field.field.paragraph.component_slideshow.field_component_slideshow_title
+    - paragraphs.paragraphs_type.component_slideshow
+  module:
+    - paragraphs
+id: paragraph.component_slideshow.default
+targetEntityType: paragraph
+bundle: component_slideshow
+mode: default
+content:
+  field_component_slideshow_slides:
+    type: entity_reference_paragraphs
+    weight: 1
+    settings:
+      title: Slide
+      title_plural: Slides
+      edit_mode: open
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: component_slideshow_slide
+    third_party_settings: {  }
+    region: content
+  field_component_slideshow_title:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

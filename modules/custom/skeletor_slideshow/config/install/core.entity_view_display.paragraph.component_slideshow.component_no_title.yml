@@ -1,0 +1,26 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.component_no_title
+    - field.field.paragraph.component_slideshow.field_component_slideshow_slides
+    - field.field.paragraph.component_slideshow.field_component_slideshow_title
+    - paragraphs.paragraphs_type.component_slideshow
+  module:
+    - entity_reference_revisions
+id: paragraph.component_slideshow.component_no_title
+targetEntityType: paragraph
+bundle: component_slideshow
+mode: component_no_title
+content:
+  field_component_slideshow_slides:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_component_slideshow_title: true

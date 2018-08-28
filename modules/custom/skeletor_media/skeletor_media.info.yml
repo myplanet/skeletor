@@ -1,0 +1,25 @@
+name: 'Skeletor Media'
+type: module
+core: 8.x
+dependencies:
+  - crop
+  - dropzonejs_eb_widget
+  - entity_browser
+  - field
+  - field_group
+  - file
+  - focal_point
+  - image
+  - inline_entity_form
+  - media
+  - node
+  - paragraphs
+  - path
+  - responsive_image
+  - svg_image
+  - text
+  - user
+  - views
+version: 8.x-1.0
+package: Skeletor
+description: 'Basic media settings for Skeletor profile.'

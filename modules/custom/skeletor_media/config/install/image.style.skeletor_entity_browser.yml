@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+name: skeletor_entity_browser
+label: 'Skeletor Entity Browser'
+effects:
+  1a80536b-365a-408f-975a-49db1799c26a:
+    uuid: 1a80536b-365a-408f-975a-49db1799c26a
+    id: image_scale
+    weight: 1
+    data:
+      width: 320
+      height: null
+      upscale: false

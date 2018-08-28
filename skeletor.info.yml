@@ -49,6 +49,7 @@ dependencies:
   - user
   - views
   - views_ui
+  - skeletor_media
 themes:
   - seven
   - bartik

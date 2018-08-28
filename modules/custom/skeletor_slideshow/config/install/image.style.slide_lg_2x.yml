@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slide_lg_2x
+label: 'Slide LG @2X'
+effects:
+  28304e17-32f7-4ae6-bc2e-1d40c889ddb6:
+    uuid: 28304e17-32f7-4ae6-bc2e-1d40c889ddb6
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 2400
+      height: 1350
+      crop_type: focal_point

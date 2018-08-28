@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slide_xs
+label: 'Slide XS'
+effects:
+  a498ee5e-4658-47e8-a739-6a2424681645:
+    uuid: a498ee5e-4658-47e8-a739-6a2424681645
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 576
+      height: 576
+      crop_type: focal_point

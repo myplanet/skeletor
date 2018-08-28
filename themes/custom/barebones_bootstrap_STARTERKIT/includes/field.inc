@@ -11,6 +11,11 @@ function barebones_bootstrap_STARTERKIT_preprocess_field(array &$variables) {
   $field_name = $variables['element']['#field_name'];
 
   // Add unique ID in case a page has multiple accordion components.
+  if ($field_name == 'field_component_slideshow_slides') {
+    $variables['slideshow_id'] = Html::getUniqueID('slideshow');
+  }
+
+  // Add unique ID in case a page has multiple accordion components.
   if ($field_name == 'field_accordion_items') {
     $variables['accordion_id'] = Html::getUniqueID('accordion');
   }

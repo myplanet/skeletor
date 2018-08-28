@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_slideshow
+label: 'Slideshow Component'
+icon_uuid: null
+description: 'Wrapper for Skeletor slideshow component.'
+behavior_plugins: {  }

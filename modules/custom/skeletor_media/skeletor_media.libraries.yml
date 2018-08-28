@@ -1,0 +1,5 @@
+entity_browsers:
+  version: 1.x
+  css:
+    component:
+      css/entity-browsers.css: {}

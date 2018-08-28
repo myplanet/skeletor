@@ -1,0 +1,61 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_slideshow_slide.field_component_slide_media
+    - field.field.paragraph.component_slideshow_slide.field_component_slide_text
+    - field.field.paragraph.component_slideshow_slide.field_component_slide_title
+    - paragraphs.paragraphs_type.component_slideshow_slide
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_component_slide_caption:
+      children:
+        - field_component_slide_title
+        - field_component_slide_text
+      parent_name: ''
+      weight: 1
+      format_type: html_element
+      format_settings:
+        id: ''
+        classes: 'carousel-caption d-none d-md-block'
+        element: div
+        show_label: false
+        label_element: h3
+        attributes: ''
+        effect: none
+        speed: fast
+      label: Caption
+      region: content
+id: paragraph.component_slideshow_slide.default
+targetEntityType: paragraph
+bundle: component_slideshow_slide
+mode: default
+content:
+  field_component_slide_media:
+    type: entity_reference_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: slide
+      link: false
+    third_party_settings: {  }
+    region: content
+  field_component_slide_text:
+    weight: 3
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_component_slide_title:
+    weight: 2
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

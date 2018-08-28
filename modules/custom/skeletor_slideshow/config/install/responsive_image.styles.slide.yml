@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.slide_lg
+    - image.style.slide_lg_2x
+    - image.style.slide_md
+    - image.style.slide_md_2x
+    - image.style.slide_sm
+    - image.style.slide_sm_2x
+    - image.style.slide_xs
+    - image.style.slide_xs_2x
+  module:
+    - skeletor_media
+id: slide
+label: Slide
+image_style_mappings:
+  -
+    breakpoint_id: skeletor_media.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_lg
+  -
+    breakpoint_id: skeletor_media.lg
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_lg_2x
+  -
+    breakpoint_id: skeletor_media.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_md
+  -
+    breakpoint_id: skeletor_media.md
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_md_2x
+  -
+    breakpoint_id: skeletor_media.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_sm
+  -
+    breakpoint_id: skeletor_media.sm
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_sm_2x
+  -
+    breakpoint_id: skeletor_media.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_xs
+  -
+    breakpoint_id: skeletor_media.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_xs_2x
+breakpoint_group: skeletor_media
+fallback_image_style: slide_lg

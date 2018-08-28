@@ -1,0 +1,52 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.image
+    - views.view.skeletor_entity_browsers
+  module:
+    - dropzonejs_eb_widget
+    - media
+    - views
+name: skeletor_multiple_images_browser
+label: 'Multiple Images Browser'
+display: modal
+display_configuration:
+  width: '1070'
+  height: '840'
+  link_text: 'Select images'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  bd62f8aa-0313-4ccc-b15b-f53eadb64a18:
+    settings:
+      view: skeletor_entity_browsers
+      view_display: image
+      submit_text: 'Select images'
+      auto_select: false
+    uuid: bd62f8aa-0313-4ccc-b15b-f53eadb64a18
+    weight: 1
+    label: View
+    id: view
+  90b28d77-6b6e-49eb-89fc-9419c37be3cd:
+    settings:
+      form_mode: default
+      media_type: image
+      upload_location: 'public://[date:custom:Y]-[date:custom:m]'
+      dropzone_description: 'Drop files here to upload them'
+      max_filesize: 100M
+      extensions: 'jpg jpeg gif png svg'
+      clientside_resize: false
+      resize_width: null
+      resize_height: null
+      resize_quality: !!float 1
+      resize_method: contain
+      thumbnail_method: contain
+      submit_text: 'Select image'
+    uuid: 90b28d77-6b6e-49eb-89fc-9419c37be3cd
+    weight: 2
+    label: 'Add Image'
+    id: dropzonejs_media_entity_inline_entity_form
