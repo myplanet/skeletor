@@ -1,5 +1,5 @@
 bootstrap:
-  version: VERSION
+  version: 1.x
   css:
     base:
       dist/app.css: {}

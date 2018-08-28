@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_slideshow_slide
+label: 'Slideshow Slide'
+icon_uuid: null
+description: 'Individual slide for Skeletor slideshow component'
+behavior_plugins: {  }

@@ -1,0 +1,69 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - entity_browser.browser.skeletor_single_image_browser
+    - field.field.paragraph.component_slideshow_slide.field_component_slide_media
+    - field.field.paragraph.component_slideshow_slide.field_component_slide_text
+    - field.field.paragraph.component_slideshow_slide.field_component_slide_title
+    - paragraphs.paragraphs_type.component_slideshow_slide
+  module:
+    - entity_browser
+    - field_group
+third_party_settings:
+  field_group:
+    group_component_slide_caption:
+      children:
+        - field_component_slide_title
+        - field_component_slide_text
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        label: Caption
+        required_fields: true
+        id: ''
+        classes: ''
+        open: false
+      label: Caption
+      region: content
+id: paragraph.component_slideshow_slide.default
+targetEntityType: paragraph
+bundle: component_slideshow_slide
+mode: default
+content:
+  field_component_slide_media:
+    type: entity_browser_entity_reference
+    weight: 0
+    region: content
+    settings:
+      entity_browser: skeletor_single_image_browser
+      field_widget_display: rendered_entity
+      field_widget_edit: true
+      field_widget_remove: true
+      field_widget_replace: true
+      open: true
+      selection_mode: selection_append
+      field_widget_display_settings:
+        view_mode: entity_browser
+    third_party_settings: {  }
+  field_component_slide_text:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_component_slide_title:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

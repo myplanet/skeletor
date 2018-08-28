@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slide_lg
+label: 'Slide LG'
+effects:
+  dd9cddf5-54ca-4bb7-aac6-4cd5afbf5f2b:
+    uuid: dd9cddf5-54ca-4bb7-aac6-4cd5afbf5f2b
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1200
+      height: 675
+      crop_type: focal_point

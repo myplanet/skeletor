@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.component_slideshow.field_component_slideshow_slides
+    - field.field.paragraph.component_slideshow.field_component_slideshow_title
+    - paragraphs.paragraphs_type.component_slideshow
+  module:
+    - entity_reference_revisions
+id: paragraph.component_slideshow.default
+targetEntityType: paragraph
+bundle: component_slideshow
+mode: default
+content:
+  field_component_slideshow_slides:
+    type: entity_reference_revisions_entity_view
+    weight: 1
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_component_slideshow_title:
+    type: entity_reference_revisions_entity_view
+    weight: 0
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

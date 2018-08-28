@@ -3,50 +3,50 @@ status: true
 dependencies:
   config:
     - media.type.image
-    - views.view.media_entity_browser
+    - views.view.skeletor_entity_browsers
   module:
     - dropzonejs_eb_widget
     - media
     - views
-name: media_entity_browser
-label: 'Media Entity Browser'
+name: skeletor_single_image_browser
+label: 'Single Image Browser'
 display: modal
 display_configuration:
   width: '1070'
   height: '840'
-  link_text: 'Select entities'
+  link_text: 'Select image'
   auto_open: false
 selection_display: no_display
 selection_display_configuration: {  }
 widget_selector: tabs
 widget_selector_configuration: {  }
 widgets:
-  6586703a-6976-4124-8a49-cbb07ceaa3b1:
-    settings:
-      view: media_entity_browser
-      view_display: entity_browser_1
-      submit_text: 'Select entities'
-      auto_select: false
-    uuid: 6586703a-6976-4124-8a49-cbb07ceaa3b1
-    weight: 1
-    label: view
-    id: view
-  ef106856-5bce-47c0-aecb-143c883a5268:
+  126464da-3c11-453e-9249-563f3512e7af:
     settings:
       form_mode: default
       media_type: image
       upload_location: 'public://[date:custom:Y]-[date:custom:m]'
       dropzone_description: 'Drop files here to upload them'
-      max_filesize: 32M
-      extensions: 'jpg jpeg gif png'
+      max_filesize: 100M
+      extensions: 'jpg jpeg gif png svg'
       clientside_resize: false
       resize_width: null
       resize_height: null
       resize_quality: !!float 1
       resize_method: contain
       thumbnail_method: contain
-      submit_text: 'Select entities'
-    uuid: ef106856-5bce-47c0-aecb-143c883a5268
-    weight: 2
-    label: Upload
+      submit_text: 'Select image'
+    uuid: 126464da-3c11-453e-9249-563f3512e7af
+    weight: -9
+    label: 'Add Image'
     id: dropzonejs_media_entity_inline_entity_form
+  bda4cae9-1883-4e9e-8b32-6962b72e0f8f:
+    settings:
+      view: skeletor_entity_browsers
+      view_display: image
+      submit_text: 'Select image'
+      auto_select: false
+    uuid: bda4cae9-1883-4e9e-8b32-6962b72e0f8f
+    weight: -10
+    label: View
+    id: view

@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.slide_lg
+    - image.style.slide_lg_2x
+    - image.style.slide_md
+    - image.style.slide_md_2x
+    - image.style.slide_sm
+    - image.style.slide_sm_2x
+    - image.style.slide_xs
+    - image.style.slide_xs_2x
+  theme:
+    - barebones_bootstrap_STARTERKIT
+id: slide
+label: Slide
+image_style_mappings:
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.lg
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_lg
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.lg
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_lg_2x
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.md
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_md
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.md
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_md_2x
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.sm
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_sm
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.sm
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_sm_2x
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: slide_xs
+  -
+    breakpoint_id: barebones_bootstrap_STARTERKIT.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: slide_xs_2x
+breakpoint_group: barebones_bootstrap_STARTERKIT
+fallback_image_style: slide_lg

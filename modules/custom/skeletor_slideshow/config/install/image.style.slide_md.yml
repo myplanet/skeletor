@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slide_md
+label: 'Slide MD'
+effects:
+  333ace4f-1174-402d-8ad0-82b7583bf4ba:
+    uuid: 333ace4f-1174-402d-8ad0-82b7583bf4ba
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 992
+      height: 558
+      crop_type: focal_point

@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slide_md_2x
+label: 'Slide MD @2X'
+effects:
+  6f5922bc-6146-45d0-9521-ec61c7abe229:
+    uuid: 6f5922bc-6146-45d0-9521-ec61c7abe229
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 1984
+      height: 1116
+      crop_type: focal_point

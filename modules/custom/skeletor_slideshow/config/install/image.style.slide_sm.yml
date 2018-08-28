@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: slide_sm
+label: 'Slide SM'
+effects:
+  97a5134e-446c-4397-9d0a-748c1a45cfe7:
+    uuid: 97a5134e-446c-4397-9d0a-748c1a45cfe7
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 768
+      height: 432
+      crop_type: focal_point

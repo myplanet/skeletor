@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_slideshow_slides
+    - paragraphs.paragraphs_type.component_slideshow
+    - paragraphs.paragraphs_type.component_slideshow_slide
+  module:
+    - entity_reference_revisions
+id: paragraph.component_slideshow.field_component_slideshow_slides
+field_name: field_component_slideshow_slides
+entity_type: paragraph
+bundle: component_slideshow
+label: Slides
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_slideshow_slide: component_slideshow_slide
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 7
+        enabled: false
+      component_accordion_item:
+        weight: 8
+        enabled: false
+      component_accordion_item_content:
+        weight: 9
+        enabled: false
+      component_slideshow:
+        weight: 10
+        enabled: false
+      component_slideshow_slide:
+        enabled: true
+        weight: 11
+      component_title:
+        weight: 12
+        enabled: false
+field_type: entity_reference_revisions
