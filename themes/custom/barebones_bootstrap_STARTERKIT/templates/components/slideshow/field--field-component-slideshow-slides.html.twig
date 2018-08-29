@@ -19,15 +19,17 @@
   ]
 %}
 <div{{ attributes.addClass(classes).setAttribute('id', slideshow_id).setAttribute('data-slide', 'carousel') }}>
-  <ol class="carousel-indicators">
-    {% for item in items %}
-      {% if loop.index == 1 %}
-        <li data-target="#{{ slideshow_id }}" data-slide-to="{{ loop.index }}" class="active"></li>
-      {% else %}
-        <li data-target="#{{ slideshow_id }}" data-slide-to="{{ loop.index }}"></li>
-      {% endif %}
-    {% endfor %}
-  </ol>
+  {% if items.length > 1 %}
+    <ol class="carousel-indicators">
+      {% for item in items %}
+        {% if loop.index == 1 %}
+          <li data-target="#{{ slideshow_id }}" data-slide-to="{{ loop.index }}" class="active"></li>
+        {% else %}
+          <li data-target="#{{ slideshow_id }}" data-slide-to="{{ loop.index }}"></li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  {% endif %}
   <div class="carousel-inner">
     {% for item in items %}
       {% if loop.index == 1 %}
@@ -41,12 +43,14 @@
       {% endif %}
     {% endfor %}
   </div>
-  <a class="carousel-control-prev" href="#{{ slideshow_id }}" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">{{ 'Previous'|t }}</span>
-  </a>
-  <a class="carousel-control-next" href="#{{ slideshow_id }}" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">{{ 'Next'|t }}</span>
-  </a>
+  {% if items.length > 1 %}
+    <a class="carousel-control-prev" href="#{{ slideshow_id }}" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">{{ 'Previous'|t }}</span>
+    </a>
+    <a class="carousel-control-next" href="#{{ slideshow_id }}" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">{{ 'Next'|t }}</span>
+    </a>
+  {% endif %}
 </div>
