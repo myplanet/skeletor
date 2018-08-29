@@ -64,6 +64,17 @@ Once skeletor has successfully been added to the build we need to include scaffo
 ./vendor/bin/skeletor-init-project.sh
 ```
 
+In order to create a sub profile based on Skeletor, you have to apply a patch to Drupal core (until it's incorporated [into core](https://www.drupal.org/project/drupal/issues/1356276)). To do so, add the following to your ```composer.json```
+
+```json
+"patches": {
+    "drupal/core": {
+        "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order":
+        "https://www.drupal.org/files/issues/1356278-408--8.5.x-real.patch"
+    }
+},
+```
+
 Then connect your new project to a git repository, from the project folder run:
 
 ``` bash
