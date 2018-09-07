@@ -1,6 +1,4 @@
 bundle: skeletor
-excluded:
-  - core.entity_view_display.media.image.media_object
 required:
   - core.entity_form_display.paragraph.component_media_body.default
   - core.entity_form_display.paragraph.component_media_list.component_no_title
