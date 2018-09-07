@@ -1,0 +1,20 @@
+bundle: skeletor
+excluded:
+  - core.entity_view_display.media.image.media_object
+required:
+  - core.entity_form_display.paragraph.component_media_body.default
+  - core.entity_form_display.paragraph.component_media_list.component_no_title
+  - core.entity_form_display.paragraph.component_media_list.default
+  - core.entity_view_display.paragraph.component_media_body.default
+  - core.entity_view_display.paragraph.component_media_list.component_no_title
+  - core.entity_view_display.paragraph.component_media_list.default
+  - field.field.paragraph.component_media_body.field_media_body_text
+  - field.field.paragraph.component_media_body.field_media_body_title
+  - field.field.paragraph.component_media_list.field_component_media_title
+  - field.field.paragraph.component_media_list.field_media_objects
+  - field.storage.paragraph.field_component_media_title
+  - field.storage.paragraph.field_media_body_text
+  - field.storage.paragraph.field_media_body_title
+  - field.storage.paragraph.field_media_objects
+  - paragraphs.paragraphs_type.component_media_body
+  - paragraphs.paragraphs_type.component_media_list

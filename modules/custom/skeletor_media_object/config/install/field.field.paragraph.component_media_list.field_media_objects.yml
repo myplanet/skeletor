@@ -1,0 +1,48 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_media_objects
+    - paragraphs.paragraphs_type.component_media_list
+    - paragraphs.paragraphs_type.component_media_object
+  module:
+    - entity_reference_revisions
+id: paragraph.component_media_list.field_media_objects
+field_name: field_media_objects
+entity_type: paragraph
+bundle: component_media_list
+label: 'Media Objects'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_media_object: component_media_object
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 8
+        enabled: false
+      component_accordion_item:
+        weight: 9
+        enabled: false
+      component_accordion_item_content:
+        weight: 10
+        enabled: false
+      component_media_body:
+        weight: 11
+        enabled: false
+      component_media_list:
+        weight: 12
+        enabled: false
+      component_media_object:
+        enabled: true
+        weight: 13
+      component_title:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

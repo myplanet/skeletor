@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: media_object_xs_2x
+label: 'Media Object XS @2x'
+effects:
+  c04cf1e7-cd49-441d-92d0-5dbccad160a5:
+    uuid: c04cf1e7-cd49-441d-92d0-5dbccad160a5
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 128
+      height: 128
+      crop_type: focal_point
