@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_media_objects
+label: 'Media Objects'
+revision: 0
+description: 'Create a list of media objects block using Skeletor media list component.'

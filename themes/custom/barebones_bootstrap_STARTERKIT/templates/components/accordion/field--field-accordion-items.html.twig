@@ -5,13 +5,7 @@
  *
  */
 #}
-{%
-  set classes = [
-    'component',
-    'component--accordion',
-  ]
-%}
-<section {{ attributes.addClass(classes) }} id="{{ accordion_id }}">
+<div id="{{ accordion_id }}">
   {% for item in items %}
     {% if loop.first %}
       {% set button = 'btn btn-link' %}
@@ -38,4 +32,4 @@
       </div>
     </div>
   {% endfor %}
-</section>
+</div>

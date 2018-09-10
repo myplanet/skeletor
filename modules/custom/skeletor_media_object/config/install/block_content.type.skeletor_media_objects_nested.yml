@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_media_objects_nested
+label: 'Media Objects (Nested)'
+revision: 0
+description: "Create a list of nested media objects block using Skeletor media list component.\t"

@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_media_objects_nested
+id: block_content.skeletor_media_objects_nested
+target_entity_type_id: block_content
+target_bundle: skeletor_media_objects_nested
+default_langcode: site_default
+language_alterable: false

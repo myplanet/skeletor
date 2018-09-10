@@ -3,12 +3,14 @@ description: 'Slideshow component for skeletor profile.'
 type: module
 core: 8.x
 dependencies:
+  - block_content
   - entity_browser
   - entity_reference_revisions
   - field
   - field_group
   - focal_point
   - image
+  - language
   - media
   - paragraphs
   - responsive_image

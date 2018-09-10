@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_media_objects_nested
+    - field.storage.block_content.field_component_media_list
+    - paragraphs.paragraphs_type.component_media_list
+  module:
+    - entity_reference_revisions
+id: block_content.skeletor_media_objects_nested.field_component_media_list
+field_name: field_component_media_list
+entity_type: block_content
+bundle: skeletor_media_objects_nested
+label: 'Media List'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_media_list: component_media_list
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 17
+        enabled: false
+      component_accordion_item:
+        weight: 18
+        enabled: false
+      component_accordion_item_content:
+        weight: 19
+        enabled: false
+      component_hero:
+        weight: 20
+        enabled: false
+      component_hero_text:
+        weight: 21
+        enabled: false
+      component_media_body:
+        weight: 22
+        enabled: false
+      component_media_list:
+        enabled: true
+        weight: 23
+      component_media_object:
+        weight: 24
+        enabled: false
+      component_slideshow:
+        weight: 25
+        enabled: false
+      component_slideshow_slide:
+        weight: 26
+        enabled: false
+      component_tab:
+        weight: 27
+        enabled: false
+      component_tab_content:
+        weight: 28
+        enabled: false
+      component_tab_title:
+        weight: 29
+        enabled: false
+      component_tabs:
+        weight: 30
+        enabled: false
+      component_text:
+        weight: 31
+        enabled: false
+      component_title:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

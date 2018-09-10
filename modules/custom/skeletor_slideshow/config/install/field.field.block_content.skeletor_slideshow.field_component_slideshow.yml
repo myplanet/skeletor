@@ -1,0 +1,75 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.skeletor_slideshow
+    - field.storage.block_content.field_component_slideshow
+    - paragraphs.paragraphs_type.component_slideshow
+  module:
+    - entity_reference_revisions
+id: block_content.skeletor_slideshow.field_component_slideshow
+field_name: field_component_slideshow
+entity_type: block_content
+bundle: skeletor_slideshow
+label: Slideshow
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      component_slideshow: component_slideshow
+    target_bundles_drag_drop:
+      component_accordion:
+        weight: 17
+        enabled: false
+      component_accordion_item:
+        weight: 18
+        enabled: false
+      component_accordion_item_content:
+        weight: 19
+        enabled: false
+      component_hero:
+        weight: 20
+        enabled: false
+      component_hero_text:
+        weight: 21
+        enabled: false
+      component_media_body:
+        weight: 22
+        enabled: false
+      component_media_list:
+        weight: 23
+        enabled: false
+      component_media_object:
+        weight: 24
+        enabled: false
+      component_slideshow:
+        enabled: true
+        weight: 25
+      component_slideshow_slide:
+        weight: 26
+        enabled: false
+      component_tab:
+        weight: 27
+        enabled: false
+      component_tab_content:
+        weight: 28
+        enabled: false
+      component_tab_title:
+        weight: 29
+        enabled: false
+      component_tabs:
+        weight: 30
+        enabled: false
+      component_text:
+        weight: 31
+        enabled: false
+      component_title:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions
