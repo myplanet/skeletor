@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: skeletor_slideshow
+label: Slideshow
+revision: 0
+description: 'Create slideshow block using Skeletor slideshow component.'

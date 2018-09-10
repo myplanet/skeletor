@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.media_object_xs
+    - image.style.media_object_xs_2x
+  module:
+    - skeletor_media
+id: media_object
+label: 'Media Object'
+image_style_mappings:
+  -
+    breakpoint_id: skeletor_media.xs
+    multiplier: 1x
+    image_mapping_type: image_style
+    image_mapping: media_object_xs
+  -
+    breakpoint_id: skeletor_media.xs
+    multiplier: 2x
+    image_mapping_type: image_style
+    image_mapping: media_object_xs_2x
+breakpoint_group: skeletor_media
+fallback_image_style: media_object_xs

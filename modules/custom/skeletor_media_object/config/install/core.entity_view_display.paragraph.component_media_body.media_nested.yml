@@ -1,0 +1,42 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.media_nested
+    - field.field.paragraph.component_media_body.field_media_body_text
+    - field.field.paragraph.component_media_body.field_media_body_title
+    - field.field.paragraph.component_media_body.field_media_objects_nested
+    - paragraphs.paragraphs_type.component_media_body
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.component_media_body.media_nested
+targetEntityType: paragraph
+bundle: component_media_body
+mode: media_nested
+content:
+  field_media_body_text:
+    weight: 1
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_media_body_title:
+    weight: 0
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_media_objects_nested:
+    type: entity_reference_revisions_entity_view
+    weight: 2
+    label: hidden
+    settings:
+      view_mode: component_no_title
+      link: ''
+    third_party_settings: {  }
+    region: content
+hidden: {  }

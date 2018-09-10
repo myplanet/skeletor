@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.media_object
+label: 'Media Object'
+targetEntityType: media
+cache: true

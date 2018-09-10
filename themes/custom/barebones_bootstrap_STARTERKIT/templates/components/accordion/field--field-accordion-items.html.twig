@@ -5,13 +5,7 @@
  *
  */
 #}
-{%
-  set classes = [
-    'component',
-    'component--accordion',
-  ]
-%}
-<section {{ attributes.addClass(classes) }} id="{{ accordion_id }}">
+<div id="{{ accordion_id }}">
   {% for item in items %}
     {% if loop.first %}
       {% set button = 'btn btn-link' %}
@@ -31,11 +25,11 @@
         </h3>
       </div>
 
-      <div id="collapse-{{ accordion_id }}-{{ loop.index }}" class="{{ cardshow }}" aria-labelledby="heading-{{ accordion_id }}-{{ loop.index }}" data-parent="#accordion">
+      <div id="collapse-{{ accordion_id }}-{{ loop.index }}" class="{{ cardshow }}" aria-labelledby="heading-{{ accordion_id }}-{{ loop.index }}" data-parent="#{{ accordion_id }}">
         <div class="card-body">
           {{ item.content }}
         </div>
       </div>
     </div>
   {% endfor %}
-</section>
+</div>

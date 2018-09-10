@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_media_list
+label: 'Media List Component'
+icon_uuid: null
+description: 'Create a list of media objects.'
+behavior_plugins: {  }

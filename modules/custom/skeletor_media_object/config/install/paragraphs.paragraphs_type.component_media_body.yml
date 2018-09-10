@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_media_body
+label: 'Media Body'
+icon_uuid: null
+description: 'Content inside the media object.'
+behavior_plugins: {  }

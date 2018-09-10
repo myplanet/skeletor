@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+id: component_media_object
+label: 'Media Object'
+icon_uuid: null
+description: 'Individual media object for media list component.'
+behavior_plugins: {  }

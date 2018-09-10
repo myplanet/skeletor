@@ -42,40 +42,13 @@
     'field--' ~ field_name|clean_class,
     'field--type-' ~ field_type|clean_class,
     'field--label-' ~ label_display,
+    'list-unstyled',
   ]
 %}
-{%
-  set title_classes = [
-    'field__label',
-    label_display == 'visually_hidden' ? 'visually-hidden',
-  ]
-%}
-{% if label_display != 'inline' %}
-  <div{{ attributes.addClass(classes) }}>
-    {% if label_display == 'above' or label_display == 'visually_hidden' %}
-      <h3{{ title_attributes.addClass(title_classes) }}>{{ label }}</h3>
-    {% endif %}
-    {% if items|length > 1 %}
-      <div class="field__items">
-    {% endif %}
-    {% for item in items %}
-      <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
-    {% endfor %}
-    {% if items|length > 1 %}
-      </div>
-    {% endif %}
-  </div>
-{% else %}
-  <div{{ attributes.addClass(classes) }}>
-    <span{{ title_attributes.addClass(title_classes) }}>{{ label }}</span>
-    {% if items|length > 1 %}
-      <span class="field__items">
-    {% endif %}
-    {% for item in items %}
-      <span{{ item.attributes.addClass('field__item') }}>{{ item.content }}</span>
-    {% endfor %}
-    {% if items|length > 1 %}
-      </span>
-    {% endif %}
-  </div>
-{% endif %}
+<ul{{ attributes.addClass(classes) }}>
+  {% for item in items %}
+    <li{{ item.attributes.addClass('media') }}>
+      {{ item.content }}
+    </li>
+  {% endfor %}
+</ul>
