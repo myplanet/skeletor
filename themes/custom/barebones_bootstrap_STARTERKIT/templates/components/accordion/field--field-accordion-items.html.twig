@@ -25,7 +25,7 @@
         </h3>
       </div>
 
-      <div id="collapse-{{ accordion_id }}-{{ loop.index }}" class="{{ cardshow }}" aria-labelledby="heading-{{ accordion_id }}-{{ loop.index }}" data-parent="#accordion">
+      <div id="collapse-{{ accordion_id }}-{{ loop.index }}" class="{{ cardshow }}" aria-labelledby="heading-{{ accordion_id }}-{{ loop.index }}" data-parent="#{{ accordion_id }}">
         <div class="card-body">
           {{ item.content }}
         </div>
