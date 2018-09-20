@@ -1,0 +1,7 @@
+name: Bare Bones Bootstrap Starterkit
+type: theme
+base theme: barebones
+description: A starter kit theme based on barebones for skeletor.
+hidden: true
+package: custom
+core: 8.x

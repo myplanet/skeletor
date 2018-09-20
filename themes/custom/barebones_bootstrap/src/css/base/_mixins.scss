@@ -1,0 +1,56 @@
+// Barebones Bootstrap mixins overrides.
+// -----------------------------------------------------------------------------
+
+// IE 10-11 & edge mixin
+@mixin ie-fix() {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { // sass-lint:disable-line no-vendor-prefixes max-line-length #for IE only issue.
+    @content;
+  }
+
+  @supports (-ms-ime-align: auto) { // sass-lint:disable-line no-vendor-prefixes
+    @content;
+  }
+}
+
+// IE 10-11 only fix mixin
+@mixin ie-10-11-fix() {
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) { // sass-lint:disable-line no-vendor-prefixes max-line-length #for IE only issue.
+    @content;
+  }
+}
+
+// IE Edge only fix mixin
+@mixin ie-edge-fix() {
+  @supports (-ms-ime-align: auto) { // sass-lint:disable-line no-vendor-prefixes
+    @content;
+  }
+}
+
+@mixin supports($property: $value) {
+  @supports ($property: $value) {
+    @content;
+  }
+}
+
+@mixin font-smoothing() {
+  // sass-lint:disable-block no-vendor-prefixes
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Respond to for inline media queries.
+@mixin respond-to($media) {
+  @if $media == 2x {
+    // sass-lint:disable-block max-line-length
+    @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+      @content;
+    }
+  }
+
+  @if $media == 3x {
+    // sass-lint:disable-block max-line-length
+    @media only screen and (min-device-pixel-ratio: 3), only screen and (min-resolution: 288dpi), only screen and (min-resolution: 3dppx) {
+      @content;
+    }
+  }
+}

@@ -3,6 +3,7 @@ type: theme
 base theme: barebones
 description: A starter kit theme based on barebones for skeletor.
 package: custom
+hidden: true
 core: 8.x
 regions:
   branding: Branding
