@@ -1,4 +1,4 @@
-# <img style="display:inline-block; width: 80px" src="skeletor.svg" alt="Skeletor icon">Skeletor Install Profile 
+# <img src="skeletor.png" alt="Skeletor icon">Skeletor Install Profile 
 
 [![Build Status](https://travis-ci.org/myplanetdigital/drupal-skeletor.svg?branch=8.2.x)](https://travis-ci.org/myplanetdigital/drupal-skeletor)
 
