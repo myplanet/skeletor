@@ -13,6 +13,7 @@
   - `src/css/base/_helpers.scss`
   - `src/css/base/_mixins.scss`
   - `src/css/base/_variables.scss`
+7. In the theme's `info.yml` file, remove the `hidden: true` parameter.
 
 ## Development Notes
 - At the root of your theme, run `yarn install`
