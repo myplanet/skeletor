@@ -1,4 +1,3 @@
-langcode: en
 status: true
 dependencies:
   config:
@@ -20,5 +19,4 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-hidden:
-  langcode: true
+hidden: {  }

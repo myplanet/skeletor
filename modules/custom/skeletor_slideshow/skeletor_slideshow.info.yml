@@ -10,7 +10,6 @@ dependencies:
   - field_group
   - focal_point
   - image
-  - language
   - media
   - paragraphs
   - responsive_image

@@ -1,4 +1,3 @@
-langcode: en
 status: true
 dependencies:
   config:
@@ -14,7 +13,6 @@ bundle: component_tab
 label: 'Tab Title'
 description: ''
 required: true
-translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
