@@ -4,16 +4,19 @@
 
 ## Instructions for creating a new theme
 1. Copy entire STARTERKIT directory somewhere in your Drupal installation. For the purposes of this documentation, let's call our new theme "example".
-2. Rename the directory to "example".
-3. In all the theme files with "STARTERKIT" in the name, replace it with "example".
-4. Do a search and replace in all the theme's file and replace the word "STARTERKIT" with "example".
-5. In the `webpack.config.js` (in the theme's root folder), change the path to your `dist` in the `setPublicPath` function (line 15).
-6. By default the Starterkit theme assumes following path: `profiles/custom/myprofile/themes/custom/example`. If this not the case for your project, you'll have to adjust the path in your theme's:
+2. Rename the theme directory to "example".
+3. In all the theme's files with "STARTERKIT" in the name, replace it with "example".
+4. Do a search and replace in all the theme's files and replace the word "STARTERKIT" with "example".
+5. In the `webpack.config.js` (in the theme's root folder), change the path to your `dist` in the `setPublicPath` function (approx. line 15).
+6. By default the Starterkit theme assumes following path pattern: `profiles/custom/myprofile/themes/custom/example`. If this not the case for your project, you will have to adjust the path in your theme's:
   - `src/css/base/_functions.scss`
   - `src/css/base/_helpers.scss`
   - `src/css/base/_mixins.scss`
   - `src/css/base/_variables.scss`
-7. In the theme's `info.yml` file, remove the `hidden: true` parameter.
+7. In the theme's `info.yml` file:
+  - Remove the `hidden: true` parameter
+  - Change the name parameter
+  - Change the description parameter
 
 ## Development Notes
 - At the root of your theme, run `yarn install`
