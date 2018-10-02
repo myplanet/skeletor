@@ -181,8 +181,7 @@ Installation of Skeletor will scaffold the project with the following:
 
 Skeletor has a base theme (`barebones`) and one starterkit sub-theme that implements Bootstrap. Teams that want to create a child theme that is based on a different framework, they can base them off the base theme.
 
-The base theme (`barebones`) has the following:
-
+### A. Barebones base theme (`barebones`) features
 - Mixin/preprocess for easily inserting SVG as data-uri in sass
 - Libraries for each feature in css framework
 - Out-of-the-box template suggestions for:
@@ -195,8 +194,20 @@ The base theme (`barebones`) has the following:
   - paragraphs
   - media
 
-The child theme (barebones_bootstrap_STARTER) has the following:
+### B. Barebone Bootstrap base theme (`barebones_bootstrap`) features
+- Templates for page/navigation/forms for basic bootstrap markup/architecture.
+- Template overrides for Skeletor Paragraph components
+	- [Tabs](https://getbootstrap.com/docs/4.1/components/navs/#javascript-behavior)
+	- [Accordion](https://getbootstrap.com/docs/4.1/components/collapse/)
+	- [Hero](https://getbootstrap.com/docs/4.1/components/jumbotron/)
+	- [Media Object](https://getbootstrap.com/docs/4.1/layout/media-object/)
+	- [Slideshow/Carousel](https://getbootstrap.com/docs/4.1/components/carousel/)
+	- Text
+- Bootstrap specific SASS files and preprocess functions.
+- A Starterkit child theme (`STARTERKIT`) theme to be used as starting point for a new theme.
 
+
+### C. Starterkit (`STARTERKIT`) features
 - Bootstrap
 - Linters (sass-linter, eslint)
 - Live style guide
@@ -206,7 +217,9 @@ The child theme (barebones_bootstrap_STARTER) has the following:
 - SVG in src/svg moved and optimized to dist/svg
 - Icon font with svg files in src/icons
 
-Note: Teams should feel free to create new child themes from the base theme with different CSS frameworks and add new starterkit themes
+See [Starterkit README](themes/contrib/barebones_bootstrap/starterkit/README.md)
+for instructions on how to create custom theme for your project.
+
 
 ## 4. Modules
 
@@ -237,6 +250,13 @@ Skeletor contains the following features:
 - Skeletor Acquia
 - Skeletor Media
 - Skeletor Search
+- Skeletor Paragraph Components
+  - Accordion
+	- Hero
+	- Media Object
+	- Slideshow/carousel
+	- Tabs
+	- Text
 
 ## 6. Documentation
 
