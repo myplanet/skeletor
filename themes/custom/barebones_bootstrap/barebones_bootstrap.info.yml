@@ -4,3 +4,4 @@ base theme: barebones
 description: Useful base theme for any bootstrap base theme.
 package: custom
 core: 8.x
+hidden: true

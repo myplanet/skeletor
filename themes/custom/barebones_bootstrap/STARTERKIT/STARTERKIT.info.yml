@@ -4,6 +4,7 @@ base theme: barebones_bootstrap
 description: A starter kit theme based on Barebones Bootstrap for Skeletor profile.
 package: custom
 core: 8.x
+hidden: true
 regions:
   branding: Branding
   navigation: Navigation

@@ -4,7 +4,7 @@
 
 A skeleton Drupal install profile that scaffolds Myplanet projects.
 
-<small>[Skull icon by Andre Cameron](https://thenounproject.com/CrocodileJock/collection/skulls/?oq=skull&cidx=0&i=131083)</small>
+<small>Skull icon by [Chanut is Industries](https://www.iconfinder.com/Chanut-is)</small>
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
