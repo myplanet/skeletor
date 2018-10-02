@@ -17,12 +17,9 @@
   - Remove the `hidden: true` parameter
   - Change the name parameter
   - Change the description parameter
-
-## Development Notes
-- At the root of your theme, run `yarn install`
-- To do a build, run `yarn build`
-- To watch the folder for any changes, run `yarn dev --watch`
-- Enable the theme.
+8. In the terminal, at the root of your theme, run `yarn install`
+9. To compile the JS/CSS, run `yarn build`, or to watch the folder for any changes in your JS/CSS, run `yarn dev --watch`
+10. Enable the theme.
 
 ## Development suggestions
 - Add add a `settings.local.yml` file in your `sites/default` directory with the following code:
