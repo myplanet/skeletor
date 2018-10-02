@@ -1,0 +1,20 @@
+name: Barebones Bootstrap Starterkit
+type: theme
+base theme: barebones_bootstrap
+description: A starter kit theme based on Barebones Bootstrap for Skeletor profile.
+package: custom
+core: 8.x
+regions:
+  branding: Branding
+  navigation: Navigation
+  header: Header
+  breadcrumb: Breadcrumb
+  highlighted: Highlighted
+  help: Help
+  content: Content
+  pre_footer: Pre-Footer
+  footer_first: "Footer Top"
+  footer_second: "Footer Second"
+  footer_third: "Footer Third"
+libraries:
+  - STARTERKIT/bootstrap

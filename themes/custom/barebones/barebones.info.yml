@@ -1,8 +1,7 @@
-name: Bare Bones
+name: Barebones
 type: theme
 base theme: stable
-description: A stripdown theme for skeletor based on stable.
-hidden: true
+description: A stripdown theme for skeletor based on stable. Recommended to be used only as a base theme.
 package: custom
 core: 8.x
 regions:
