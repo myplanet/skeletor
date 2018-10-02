@@ -217,7 +217,7 @@ Skeletor has a base theme (`barebones`) and one starterkit sub-theme that implem
 - SVG in src/svg moved and optimized to dist/svg
 - Icon font with svg files in src/icons
 
-*See Starterkit readme file* for instructions on how to create custom theme for your project.
+**See Starterkit README file** for instructions on how to create custom theme for your project.
 
 
 ## 4. Modules
