@@ -47,8 +47,12 @@ Encore
       new sassLintPlugin({
         glob: './src/css/**/*.scss',
         testing: false
-      }),
+      })
     )
+
+    .addAliases({
+        '/barebonesbase': path.resolve(__dirname, '../barebones_bootstrap/src/css/base')
+    })
 ;
 
 // export the final configuration
