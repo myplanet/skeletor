@@ -7,19 +7,16 @@
 2. Rename the theme directory to "example".
 3. In all the theme's files with "STARTERKIT" in the name, replace it with "example".
 4. Do a search and replace in all the theme's files and replace the word "STARTERKIT" with "example".
-5. In the `webpack.config.js` (in the theme's root folder), change the path to your `dist` in the `setPublicPath` function (approx. line 15).
-6. By default the Starterkit theme assumes following path pattern: `profiles/custom/myprofile/themes/custom/example`. If this not the case for your project, you will have to adjust the path in your theme's:
-  - `src/css/base/_functions.scss`
-  - `src/css/base/_helpers.scss`
-  - `src/css/base/_mixins.scss`
-  - `src/css/base/_variables.scss`
-7. In the theme's `info.yml` file:
+5. In the `webpack.config.js` (in the theme's root folder)
+  - Change the path to your `dist` in the `setPublicPath()` function (approx. line 15).
+  - Change the relative path to the Barebones Bootstrap `/src/css/base` directory in the `addAliases()` function.
+6. In the theme's `info.yml` file:
   - Remove the `hidden: true` parameter
   - Change the name parameter
   - Change the description parameter
-8. In the terminal, at the root of your theme, run `yarn install`
-9. To compile the JS/CSS, run `yarn build`, or to watch the folder for any changes in your JS/CSS, run `yarn dev --watch`
-10. Enable the theme.
+7. In the terminal, at the root of your theme, run `yarn install`
+8. To compile the JS/CSS, run `yarn build`, or to watch the folder for any changes in your JS/CSS, run `yarn dev --watch`
+9. Enable the theme.
 
 ## Development suggestions
 - Add add a `settings.local.yml` file in your `sites/default` directory with the following code:

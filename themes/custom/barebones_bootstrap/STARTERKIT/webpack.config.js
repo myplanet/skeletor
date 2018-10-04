@@ -5,6 +5,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var ImageminPlugin = require('imagemin-webpack-plugin').default;
 
+var path = require('path');
+
 const sassLintPlugin = require('sasslint-webpack-plugin');
 
 Encore
@@ -12,7 +14,7 @@ Encore
     .setOutputPath('dist/')
 
     // the public path used by the web server to access the previous directory
-    .setPublicPath('/profiles/contrib/skeletor/themes/custom/STARTERKIT/dist')
+    .setPublicPath('/profiles/contrib/skeletor/themes/custom/barebones_bootstrap/STARTERKIT/dist')
 
     // will create dist/app.js and dist/app.css
     .addEntry('app', './src/js/app.js')

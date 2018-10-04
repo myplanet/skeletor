@@ -2,4 +2,6 @@
 // -----------------------------------------------------------------------------
 
 @import "~bootstrap/scss/variables";
-@import "../../../../../../../../contrib/skeletor/themes/custom/barebones_bootstrap/src/css/base/variables"; // sass-lint:disable-line max-line-length
+@import "~/barebonesbase/variables";
+
+// Add your custom variables overrides below.
