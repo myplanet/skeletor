@@ -28,5 +28,4 @@ required:
   - paragraphs.paragraphs_type.component_media_list
   - core.entity_form_mode.paragraph.media_nested
   - core.entity_view_mode.paragraph.media_nested
-  - language.content_settings.block_content.skeletor_media_objects
   - block_content.type.skeletor_media_objects

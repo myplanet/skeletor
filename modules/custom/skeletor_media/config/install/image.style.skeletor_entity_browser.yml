@@ -1,4 +1,3 @@
-langcode: en
 status: true
 dependencies: {  }
 name: skeletor_entity_browser

@@ -6,7 +6,6 @@ dependencies:
   - block_content
   - entity_reference_revisions
   - field
-  - language
   - link
   - paragraphs
 version: 8.x-1.0
