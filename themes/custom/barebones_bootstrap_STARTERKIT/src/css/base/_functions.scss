@@ -1,7 +1,0 @@
-@import "~bootstrap/scss/functions";
-
-// pixel to rem mixin
-@function pixels-rem($pixels) {
-  $rem: ($pixels / 16);
-  @return #{$rem}rem;
-}

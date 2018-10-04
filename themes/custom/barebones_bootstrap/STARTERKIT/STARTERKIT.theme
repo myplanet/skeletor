@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * @file
+ * Make sure to include all preprocess functions from the includes folder.
+ */
+
+foreach (glob(dirname(__FILE__) . "/includes/*.inc") as $filename) {
+  include_once $filename;
+}
