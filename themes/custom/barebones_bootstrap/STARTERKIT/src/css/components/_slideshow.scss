@@ -1,4 +1,6 @@
 // STARTERKIT overrides for Bootstrap slideshow component.
 // -----------------------------------------------------------------------------
 
-@import "../../../../../../../../contrib/skeletor/themes/custom/barebones_bootstrap/src/css/components/slideshow"; // sass-lint:disable-line max-line-length
+@import "~/barebonesBootstrapPath/src/css/components/slideshow";
+
+// Add your custom slideshow styles below.

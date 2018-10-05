@@ -9,7 +9,7 @@
 4. Do a search and replace in all the theme's files and replace the word "STARTERKIT" with "example".
 5. In the `webpack.config.js` (in the theme's root folder)
   - Change the path to your `dist` in the `setPublicPath()` function (approx. line 15).
-  - Change the relative path to the Barebones Bootstrap `/src/css/base` directory in the `addAliases()` function.
+  - Change the relative path to the Barebones Bootstrap theme in the `addAliases()` function (approx. line 57).
 6. In the theme's `info.yml` file:
   - Remove the `hidden: true` parameter
   - Change the name parameter
