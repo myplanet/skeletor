@@ -3,7 +3,6 @@ type: profile
 description: 'A skeleton Drupal install profile for Myplanet projects.'
 version: 8.2.x
 core: 8.x
-distribution: TRUE
 dependencies:
   - admin_toolbar
   - block
