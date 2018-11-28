@@ -51,34 +51,34 @@ fi
 
 # travis
 # Create travis dir and symlink scripts.
-if prompt "Symlink travis build assets and scripts?"; then
+if prompt "Create travis build assets and scripts?"; then
     # Create travis dir.
     if [ ! -d travis ]; then
         mkdir travis
     fi
     # Symlink scripts into travis dir.
     cd travis
-    ln -s ../web/profiles/contrib/skeletor/project-scaffold/travis/* .
+    cp ../web/profiles/contrib/skeletor/project-scaffold/travis/* .
     cd ..
     if [ ! $? -ne 0 ]; then
-        echo "Symlinked travis scripts into:"
+        echo "Created travis scripts in:"
         echo "$(pwd)/travis"
     fi
 fi
 
 # hooks
 # Create hooks and symlink hooks.
-if prompt "Symlink Acquia cloud hooks?"; then
+if prompt "Create Acquia cloud hooks?"; then
     # Create hooks dir.
     if [ ! -d hooks ]; then
         mkdir hooks
     fi
     # Symlink scripts into hooks dir.
     cd hooks
-    ln -s ../web/profiles/contrib/skeletor/project-scaffold/hooks/* .
+    cp ../web/profiles/contrib/skeletor/project-scaffold/hooks/* .
     cd ..
     if [ ! $? -ne 0 ]; then
-        echo "Symlinked Acquia cloud hooks into:"
+        echo "Created Acquia cloud hooks in:"
         echo "$(pwd)/hooks"
     fi
 fi
