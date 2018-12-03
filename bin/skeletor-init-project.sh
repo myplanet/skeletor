@@ -2,7 +2,7 @@
 
 # A script to scaffold the Skeletor profile and theme
 echo Skeletor Initialization
-echo Scaffolds and Symlinks assets for your project
+echo Scaffolds assets for your project
 
 function prompt {
     local promptReturn=1
@@ -50,13 +50,13 @@ if prompt "Replace .travis.yml with skeletor default?"; then
 fi
 
 # travis
-# Create travis dir and symlink scripts.
+# Create travis dir and copy scripts.
 if prompt "Create travis build assets and scripts?"; then
     # Create travis dir.
     if [ ! -d travis ]; then
         mkdir travis
     fi
-    # Symlink scripts into travis dir.
+    # Copy scripts into travis dir.
     cd travis
     cp ../web/profiles/contrib/skeletor/project-scaffold/travis/* .
     cd ..
@@ -73,7 +73,7 @@ if prompt "Create Acquia cloud hooks?"; then
     if [ ! -d hooks ]; then
         mkdir hooks
     fi
-    # Symlink scripts into hooks dir.
+    # Copy scripts into hooks dir.
     cd hooks
     cp ../web/profiles/contrib/skeletor/project-scaffold/hooks/* .
     cd ..
