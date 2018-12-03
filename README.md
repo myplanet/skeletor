@@ -70,7 +70,7 @@ In order to create a sub profile based on Skeletor, you have to apply a patch to
 "patches": {
     "drupal/core": {
         "1356276 - Allow profiles to provide a base/parent profile and load them in the correct order":
-        "https://www.drupal.org/files/issues/1356278-408--8.5.x-real.patch"
+        "https://www.drupal.org/files/issues/2018-10-23/1356276-549-8.6.x.patch"
     }
 },
 ```
