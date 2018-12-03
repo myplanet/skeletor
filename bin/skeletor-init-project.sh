@@ -67,7 +67,7 @@ if prompt "Create travis build assets and scripts?"; then
 fi
 
 # hooks
-# Create hooks and symlink hooks.
+# Create hooks dir and copy hooks.
 if prompt "Create Acquia cloud hooks?"; then
     # Create hooks dir.
     if [ ! -d hooks ]; then
