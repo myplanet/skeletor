@@ -18,6 +18,10 @@
         "name"    : "enyo/dropzone",
         "version" : "5.1.1",
         "type"    : "drupal-library",
+        "dist"    : {
+          "url"       : "https://github.com/enyo/dropzone.git",
+          "type"      : "drupal-library"
+        },
         "source"  : {
           "url"       : "https://github.com/enyo/dropzone.git",
           "type"      : "git",
