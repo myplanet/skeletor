@@ -56,7 +56,7 @@
     "drupal/purge": "3.0-beta8",
     "drupal/acquia_purge": "1.0-beta3",
     "drupal/inline_entity_form": "^1.0@RC",
-    "drupal/dropzonejs": "^2.0",
+    "drupal/dropzonejs": "2.0-alpha3",
     "enyo/dropzone": "^5.1.1"
   },
   "config": {
