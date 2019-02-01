@@ -36,5 +36,6 @@ git config --global core.safecrlf false # Suppress warning for differing line en
 git add --all .
 
 git commit -m "${PULL_REQUEST_MESSAGE}
+
 Commit ${TRAVIS_COMMIT}"
 git push origin $DEPLOY_BRANCH
