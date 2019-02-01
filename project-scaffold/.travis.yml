@@ -26,7 +26,6 @@ env:
     # The Acquia git repository to deploy built commits to.
     - DEPLOY_REPO=skeletor@svn-NNNN.devcloud.hosting.acquia.com:skeletor.git
     - DEPLOY_DEST=$HOME/skeletor
-    - DEPLOY_BRANCH=develop
 services:
   - memcached
   - mysql
