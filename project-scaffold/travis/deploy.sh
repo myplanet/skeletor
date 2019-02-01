@@ -31,6 +31,15 @@ echo "::Latest message ${PULL_REQUEST_MESSAGE}"
 rsync -a $PROJECT_ROOT/ $DEPLOY_DEST --exclude .git --delete
 
 cd $DEPLOY_DEST
+
+# Change webroot from web/ to docroot/ for Acquia if necessary.
+if [[ -d "web" && ! -L "web" ]]; then
+  mv ${DEPLOY_DEST}/web/ ${DEPLOY_DEST}/docroot/
+  # Composer autoloader files still reference web/, so use symlink to avoid
+  # needing to change composer.json and rebuilding.
+  ln -s docroot web
+fi
+
 echo "::Adding new files."
 git config --global core.safecrlf false # Suppress warning for differing line endings.
 git add --all .

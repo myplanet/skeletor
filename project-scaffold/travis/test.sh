@@ -2,8 +2,15 @@
 
 set -e
 
+if [[ -d "${TRAVIS_BUILD_DIR}/web" ]]; then
+  cd ${TRAVIS_BUILD_DIR}/web
+elif [[ -d "${TRAVIS_BUILD_DIR}/docroot" ]]; then
+  cd ${TRAVIS_BUILD_DIR}/docroot
+else
+  echo "ERROR: Unable to find webroot directory"
+  exit 1
+fi
 # Insert smoke tests here!
-cd ${PROJECT_ROOT}/docroot
 drush cache-rebuild
 drush core-cron
 
