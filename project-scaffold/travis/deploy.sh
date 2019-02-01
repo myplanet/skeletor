@@ -32,6 +32,7 @@ rsync -a $PROJECT_ROOT/ $DEPLOY_DEST --exclude .git --delete
 
 cd $DEPLOY_DEST
 echo "::Adding new files."
+git config --global core.safecrlf false # Suppress warning for differing line endings.
 git add --all .
 
 git commit -m "${PULL_REQUEST_MESSAGE}
