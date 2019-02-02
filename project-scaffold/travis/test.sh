@@ -3,7 +3,7 @@
 set -e
 
 # Insert smoke tests here!
-cd ${PROJECT_ROOT}/docroot
+cd ${TRAVIS_BUILD_DIR}/docroot
 drush cache-rebuild
 drush core-cron
 
