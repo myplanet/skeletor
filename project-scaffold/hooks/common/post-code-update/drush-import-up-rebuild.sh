@@ -10,9 +10,11 @@ deployed_tag=$4
 repo_url=$5
 repo_type=$6
 
-drush_alias=$site'.'$target_env
+drush_alias=${site}'.'${site}'.'${target_env}
 
-drush @$drush_alias -y updatedb
-#drush @$drush_alias -y entity-updates
-drush @$drush_alias -y config-import sync
-#drush @$drush_alias twig-compile
+# Show commands being executed in the log.
+set -x
+
+/var/www/html/${site}.${target_env}/vendor/bin/drush @${drush_alias} updb -y
+/var/www/html/${site}.${target_env}/vendor/bin/drush @${drush_alias} cim vcs -y
+/var/www/html/${site}.${target_env}/vendor/bin/drush @${drush_alias} cr
