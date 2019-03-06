@@ -47,8 +47,6 @@
     "drupal/purge": "3.0-beta8",
     "drupal/rabbit_hole": "^1.0-beta4",
     "drupal/robotstxt": "^1.2",
-    "drupal/search_api": "^1.8",
-    "drupal/search_api_solr": "^2.0",
     "drupal/seckit": "1.0-alpha2",
     "drupal/svg_image": "^1.8",
     "drupal/twig_tweak": "^2.0",
