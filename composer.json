@@ -48,7 +48,7 @@
     "drupal/focal_point": "^1.0@beta",
     "drupal/search_api": "^1.8",
     "drupal/search_api_solr": "^2.0",
-    "drupal/acquia_connector": "^1.14",
+    "drupal/acquia_connector": "^1.16",
     "drupal/purge": "3.0-beta8",
     "drupal/acquia_purge": "1.0-beta3",
     "drupal/inline_entity_form": "^1.0@RC",
