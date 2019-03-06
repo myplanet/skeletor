@@ -72,7 +72,8 @@
     "squizlabs/php_codesniffer": "^2.9"
   },
   "conflict": {
-    "drupal/drupal": "*"
+    "drupal/drupal": "*",
+    "drush/drush": "<9.0"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
