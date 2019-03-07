@@ -123,6 +123,9 @@ function barebones_theme_suggestions_select_alter(array &$suggestions, array $va
 
   if (isset($element["#name"])) {
     $suggestions[] = $element['#type'] . '__' . $element["#name"];
-    $suggestions[] = $element['#type'] . '__' . $element["#name"] . '__' . $element['#data-twig-suggestion'];
+
+    if (isset($element["#data-twig-suggestion"])) {
+      $suggestions[] = $element['#type'] . '__' . $element["#name"] . '__' . $element['#data-twig-suggestion'];
+    }
   }
 }
