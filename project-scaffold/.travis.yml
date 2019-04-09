@@ -19,13 +19,11 @@ env:
     - ACQUIA_PROJECT=skeletor
     # The Drupal profile name.
     - PROFILE=skeletor
-    - PROJECT_ROOT=$HOME/build/$TRAVIS_REPO_SLUG
-    - BUILD_SCRIPTS=$HOME/build/$TRAVIS_REPO_SLUG/scripts/travis
+    - BUILD_SCRIPTS=$TRAVIS_BUILD_DIR/scripts/travis
     - BUILD_CACHE=$HOME/.buildcache
     - BUILD_DB=$TRAVIS_REPO_SLUG.sql
     # The Acquia git repository to deploy built commits to.
     - DEPLOY_REPO=skeletor@svn-NNNN.devcloud.hosting.acquia.com:skeletor.git
-    - DEPLOY_DEST=$HOME/skeletor
     - DEPLOY_BRANCH=develop
 services:
   - memcached

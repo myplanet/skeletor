@@ -18,9 +18,9 @@ composer $COMPOSER_COMMAND
 
 # Copy local settings file for Travis env to the site folder.
 echo  "::Copying local settings file to the site folder"
-cp ${PROJECT_ROOT}/scripts/travis/assets/settings.local.php ${PROJECT_ROOT}/docroot/sites/default/settings.local.php
+cp ${TRAVIS_BUILD_DIR}/scripts/travis/assets/settings.local.php ${TRAVIS_BUILD_DIR}/docroot/sites/default/settings.local.php
 
-cd ${PROJECT_ROOT}/docroot
+cd ${TRAVIS_BUILD_DIR}/docroot
 
 # Install profile to dev DB.
 echo  "::Installing profile ${PROFILE}"
