@@ -4,17 +4,10 @@ set -e
 
 mysql -e "CREATE DATABASE IF NOT EXISTS ${PROFILE};"
 
-# Run the make script.
-echo "::Running build"
-COMPOSER_COMMAND="install";
-
-# If this isn't a pull request, pass the production flag.
-if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
-  echo "::Using production settings."
-  COMPOSER_COMMAND="deploy";
-fi
-
-composer $COMPOSER_COMMAND
+echo -e 'travis_fold:start:composer-install\\r'
+echo  "::Installing composer dependencies"
+composer install --no-suggest
+echo -e 'travis_fold:end:composer-install\\r'
 
 if [[ -d "${TRAVIS_BUILD_DIR}/web" ]]; then
   WEBROOT=web
