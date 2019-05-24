@@ -24,13 +24,13 @@ cp ${TRAVIS_BUILD_DIR}/scripts/travis/assets/settings.local.php ${TRAVIS_BUILD_D
 
 cd ${TRAVIS_BUILD_DIR}/${WEBROOT}
 
-# Install profile to dev DB.
-echo  "::Installing profile ${PROFILE}"
-drush si $PROFILE -y
-
-export DIR=../config/sync
-if [[ -e ${DIR}/*.yml ]]; then
-  echo  "::Importing configuration"
-  drush -y config-import
+echo -e 'travis_fold:start:drush-site-install\\r'
+if [[ -f "${TRAVIS_BUILD_DIR}/config/sync/system.site.yml"  ]]; then
+  # Install site from existing config if present.
+  echo  "::Installing from site config"
+  drush site:install --yes --existing-config
+else
+  echo  "::Installing profile ${PROFILE}"
+  drush site:install --yes ${PROFILE}
 fi
-drush cache-rebuild
+echo -e 'travis_fold:end:drush-site-install\\r'
