@@ -102,7 +102,9 @@ function barebones_theme_suggestions_form_element_alter(array &$suggestions, arr
 function barebones_theme_suggestions_input_alter(array &$suggestions, array $variables) {
   $element = $variables['element'];
 
-  $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#name'];
+  if (array_key_exists('#name', $element)) {
+    $suggestions[] = 'input__' . $element['#type'] . '__' . $element['#name'];
+  }
 
   // Add per form theme hook suggestion.
   if (isset($element['#data-twig-suggestion'])) {
