@@ -8,8 +8,8 @@ cache:
   directories:
     - $HOME/.rvm
     - $HOME/.buildcache
-    - $HOME/.composer
-    - $HOME/.drush/cache
+    - $HOME/.composer/cache/files
+    - $HOME/.composer/cache/vcs
 branches:
   only:
     - 8.2.x
