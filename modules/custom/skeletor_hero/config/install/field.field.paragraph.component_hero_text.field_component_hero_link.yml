@@ -1,3 +1,4 @@
+langcode: en
 status: true
 dependencies:
   config:
@@ -12,6 +13,7 @@ bundle: component_hero_text
 label: Link
 description: 'Add an internal or external button link to hero component.'
 required: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

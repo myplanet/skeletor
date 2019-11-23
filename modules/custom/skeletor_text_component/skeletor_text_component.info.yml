@@ -11,3 +11,4 @@ dependencies:
   - text
 version: 8.x-1.0
 package: Skeletor
+core_incompatible: false

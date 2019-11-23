@@ -4,16 +4,17 @@ type: module
 core: 8.x
 dependencies:
   - block_content
-  - entity_browser
   - entity_reference_revisions
   - field
   - field_group
   - focal_point
   - image
   - media
+  - media_library
   - paragraphs
   - responsive_image
   - skeletor_media
   - skeletor_title_component
-version: 8.x-1.0
+version: 8.x-1.1
 package: Skeletor
+core_incompatible: false

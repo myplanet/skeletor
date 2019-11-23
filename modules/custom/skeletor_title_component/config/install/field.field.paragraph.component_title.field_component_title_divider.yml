@@ -1,3 +1,4 @@
+langcode: en
 status: true
 dependencies:
   config:
@@ -10,6 +11,7 @@ bundle: component_title
 label: 'Add divider below title?'
 description: 'Add optional horizontal divider below title. '
 required: false
+translatable: true
 default_value:
   -
     value: 0

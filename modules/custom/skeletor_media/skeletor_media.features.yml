@@ -1,5 +1,2 @@
 bundle: skeletor
-excluded:
-  - views.view.media
-  - core.entity_view_mode.media.token
 required: true

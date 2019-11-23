@@ -1,13 +1,13 @@
+langcode: en
 status: true
 dependencies:
   config:
     - core.entity_form_mode.paragraph.media_nested
-    - entity_browser.browser.skeletor_multiple_images_browser
     - field.field.paragraph.component_media_object.field_media_object_body
     - field.field.paragraph.component_media_object.field_media_object_image
     - paragraphs.paragraphs_type.component_media_object
   module:
-    - entity_browser
+    - media_library
     - paragraphs
 id: paragraph.component_media_object.media_nested
 targetEntityType: paragraph
@@ -29,17 +29,9 @@ content:
   field_media_object_image:
     weight: 0
     settings:
-      entity_browser: skeletor_multiple_images_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: entity_browser
-      field_widget_replace: false
+      media_types: {  }
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: media_library_widget
     region: content
 hidden:
   created: true

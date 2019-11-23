@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Field with wrapper only override.
+ *
+ */
+#}
+{%
+  set classes = [
+    'media-figure',
+    'mb-3',
+    'mr-3',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
+</div>
