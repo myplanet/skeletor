@@ -59,6 +59,9 @@
     "patches": {
       "drupal/entity_browser": {
         "Patch entity browser to fix incorrect configuration": "https://www.drupal.org/files/issues/2845037_15.patch"
+      },
+      "drupal/focal_point": {
+        "Integrate focal point with media_library": "https://www.drupal.org/files/issues/2020-01-09/3094478-10.patch"
       }
     }
   },
