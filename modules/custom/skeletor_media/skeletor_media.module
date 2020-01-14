@@ -1,9 +1,0 @@
-<?php
-
-use Drupal\views\ViewExecutable;
-
-function skeletor_media_views_pre_render(ViewExecutable $view) {
-  if (isset($view) && $view->storage->id() == 'skeletor_entity_browsers') {
-    $view->element['#attached']['library'][] = 'skeletor_media/entity_browsers';
-  }
-}

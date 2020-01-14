@@ -1,4 +1,5 @@
-status: true
+langcode: en
+status: false
 dependencies:
   config:
     - core.entity_view_mode.media.entity_browser

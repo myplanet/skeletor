@@ -1,0 +1,23 @@
+{#
+/**
+ * @file
+ * Theme override for a field.
+ *
+ */
+#}
+{%
+  set classes = [
+    'field',
+    'field--' ~ field_name|clean_class,
+    'field--type-' ~ field_type|clean_class,
+    'field--label-' ~ label_display,
+    'list-unstyled',
+  ]
+%}
+<ul{{ attributes.addClass(classes) }}>
+  {% for item in items %}
+    <li{{ item.attributes.addClass('media') }}>
+      {{ item.content }}
+    </li>
+  {% endfor %}
+</ul>

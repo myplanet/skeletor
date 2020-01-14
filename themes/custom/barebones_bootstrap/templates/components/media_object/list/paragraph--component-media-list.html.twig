@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ */
+#}
+{%
+  set classes = [
+    'component',
+    'component--media-list',
+  ]
+%}
+{% block paragraph %}
+  <section{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </section>
+{% endblock paragraph %}

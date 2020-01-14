@@ -9,5 +9,6 @@ dependencies:
   - paragraphs
   - skeletor_title_component
   - text
-version: 8.x-1.0
+version: 8.x-1.1
 package: Skeletor
+core_incompatible: false

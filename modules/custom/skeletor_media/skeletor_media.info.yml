@@ -3,8 +3,6 @@ type: module
 core: 8.x
 dependencies:
   - crop
-  - dropzonejs_eb_widget
-  - entity_browser
   - field
   - field_group
   - file
@@ -12,6 +10,7 @@ dependencies:
   - image
   - inline_entity_form
   - media
+  - media_library
   - node
   - paragraphs
   - path
@@ -20,6 +19,7 @@ dependencies:
   - text
   - user
   - views
-version: 8.x-1.0
+version: 8.x-1.1
 package: Skeletor
 description: 'Basic media settings for Skeletor profile.'
+core_incompatible: false

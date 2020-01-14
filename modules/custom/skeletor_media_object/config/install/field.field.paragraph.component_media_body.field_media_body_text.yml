@@ -1,3 +1,4 @@
+langcode: en
 status: true
 dependencies:
   config:
@@ -12,6 +13,7 @@ bundle: component_media_body
 label: Text
 description: ''
 required: true
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -1,14 +1,14 @@
+langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.skeletor_single_image_browser
     - field.field.paragraph.component_slideshow_slide.field_component_slide_media
     - field.field.paragraph.component_slideshow_slide.field_component_slide_text
     - field.field.paragraph.component_slideshow_slide.field_component_slide_title
     - paragraphs.paragraphs_type.component_slideshow_slide
   module:
-    - entity_browser
     - field_group
+    - media_library
 third_party_settings:
   field_group:
     group_component_slide_caption:
@@ -19,7 +19,6 @@ third_party_settings:
       weight: 1
       format_type: details
       format_settings:
-        label: Caption
         required_fields: true
         id: ''
         classes: ''
@@ -32,19 +31,11 @@ bundle: component_slideshow_slide
 mode: default
 content:
   field_component_slide_media:
-    type: entity_browser_entity_reference
+    type: media_library_widget
     weight: 0
     region: content
     settings:
-      entity_browser: skeletor_single_image_browser
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      field_widget_replace: true
-      open: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: entity_browser
+      media_types: {  }
     third_party_settings: {  }
   field_component_slide_text:
     weight: 3

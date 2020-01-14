@@ -1,0 +1,19 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a paragraph.
+ *
+ */
+#}
+{%
+  set classes = [
+    'media-body',
+  ]
+%}
+{% block paragraph %}
+  <div{{ attributes.addClass(classes) }}>
+    {% block content %}
+      {{ content }}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}
