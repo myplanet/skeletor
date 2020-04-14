@@ -52,7 +52,7 @@
     "drupal/seckit": "1.0-alpha2",
     "drupal/svg_image": "^1.8",
     "drupal/twig_tweak": "^2.0",
-    "drupal/xmlsitemap": "1.0-alpha2",
+    "drupal/xmlsitemap": "1.0-rc1",
     "enyo/dropzone": "^5.1.1"
   },
   "config": {
