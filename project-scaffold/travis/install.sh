@@ -4,17 +4,10 @@ set -e
 
 mysql -e "CREATE DATABASE IF NOT EXISTS ${PROFILE};"
 
-# Run the make script.
-echo "::Running build"
-COMPOSER_COMMAND="install";
-
-# If this isn't a pull request, pass the production flag.
-if [[ $TRAVIS_PULL_REQUEST == 'false' ]]; then
-  echo "::Using production settings."
-  COMPOSER_COMMAND="deploy";
-fi
-
-composer $COMPOSER_COMMAND
+echo -e 'travis_fold:start:composer-install\\r'
+echo  "::Installing composer dependencies"
+composer install --no-suggest
+echo -e 'travis_fold:end:composer-install\\r'
 
 if [[ -d "${TRAVIS_BUILD_DIR}/web" ]]; then
   WEBROOT=web
@@ -31,13 +24,13 @@ cp ${TRAVIS_BUILD_DIR}/scripts/travis/assets/settings.local.php ${TRAVIS_BUILD_D
 
 cd ${TRAVIS_BUILD_DIR}/${WEBROOT}
 
-# Install profile to dev DB.
-echo  "::Installing profile ${PROFILE}"
-drush si $PROFILE -y
-
-export DIR=../config/sync
-if [[ -e ${DIR}/*.yml ]]; then
-  echo  "::Importing configuration"
-  drush -y config-import
+echo -e 'travis_fold:start:drush-site-install\\r'
+if [[ -f "${TRAVIS_BUILD_DIR}/config/sync/system.site.yml"  ]]; then
+  # Install site from existing config if present.
+  echo  "::Installing from site config"
+  drush site:install --yes --existing-config
+else
+  echo  "::Installing profile ${PROFILE}"
+  drush site:install --yes ${PROFILE}
 fi
-drush cache-rebuild
+echo -e 'travis_fold:end:drush-site-install\\r'
