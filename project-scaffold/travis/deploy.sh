@@ -32,6 +32,11 @@ rsync -a $PROJECT_ROOT/ $DEPLOY_DEST --exclude .git --delete
 
 cd $DEPLOY_DEST
 
+echo -e 'travis_fold:start:composer-install-prod\\r'
+echo  "::Installing production composer dependencies"
+composer install --no-dev --no-suggest --optimize-autoloader
+echo -e 'travis_fold:end:composer-install-prod\\r'
+
 # Change webroot from web/ to docroot/ for Acquia if necessary.
 if [[ -d "web" && ! -L "web" ]]; then
   mv ${DEPLOY_DEST}/web/ ${DEPLOY_DEST}/docroot/
