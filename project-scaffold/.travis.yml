@@ -11,8 +11,8 @@ cache:
     - $HOME/.composer/cache/files
     - $HOME/.composer/cache/vcs
 branches:
-  only:
-    - 8.2.x
+  except:
+    - /^[A-Z]{3,}-.*$/
 env:
   global:
     # The Acquia site name, as used in drush aliases.
@@ -26,7 +26,6 @@ env:
     # The Acquia git repository to deploy built commits to.
     - DEPLOY_REPO=skeletor@svn-NNNN.devcloud.hosting.acquia.com:skeletor.git
     - DEPLOY_DEST=$HOME/skeletor
-    - DEPLOY_BRANCH=develop
 services:
   - memcached
   - mysql

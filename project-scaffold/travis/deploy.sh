@@ -22,7 +22,17 @@ mkdir $DEPLOY_DEST
 echo "::Cloning out ${DEPLOY_REPO} into ${DEPLOY_DEST}"
 git clone $DEPLOY_REPO $DEPLOY_DEST
 cd $DEPLOY_DEST
-git checkout $DEPLOY_BRANCH
+
+if git rev-parse --verify origin/build-${TRAVIS_BRANCH}
+then
+  # Checkout the existing deploy branch.
+  echo "::Checking out existing branch build-${TRAVIS_BRANCH}"
+  git checkout build-${TRAVIS_BRANCH}
+else
+  # Create a new branch with empty history
+  echo "::Creating new branch build-${TRAVIS_BRANCH}"
+  git checkout --orphan build-${TRAVIS_BRANCH}
+fi
 
 # Create a travis-build branch off of our test commit since we're in a detached state.
 cd $PROJECT_ROOT
@@ -47,4 +57,4 @@ git add --all .
 git commit -m "${PULL_REQUEST_MESSAGE}
 
 Commit ${TRAVIS_COMMIT}"
-git push origin $DEPLOY_BRANCH
+git push origin build-${TRAVIS_BRANCH}
