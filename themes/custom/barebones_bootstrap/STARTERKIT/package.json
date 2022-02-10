@@ -15,7 +15,7 @@
     "copy-webpack-plugin": "^4.5.2",
     "imagemin-webpack-plugin": "^2.1.5",
     "jquery": "^3.4.0",
-    "node-sass": "^4.9.2",
+    "node-sass": "^7.0.0",
     "popper.js": "^1.14.3",
     "postcss-loader": "^2.1.6",
     "sass-loader": "^7.0.3",
